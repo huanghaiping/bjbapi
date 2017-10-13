@@ -1,0 +1,45 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+  <form  name="form" class="form-inline definewidth m10">
+    <button class="btn btn-success btn-sm" type="button" onClick="window.location.href='{:url('add_level')}'"> <i class="ace-icon fa fa-plus align-middle bigger-125"></i> 添加会员等级</button>
+  </form>
+</div>
+<table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+  <thead>
+    <tr>
+      <th width="5%">等级值</th>
+      <th width="20%">等级名称</th>
+      <th width="12%">消费额度</th>
+      <th width="10%">折扣率</th>
+      <th width="19%">描述</th>
+      <th width="10%">状态</th>
+      <th width="12%">添加时间</th>
+      <th width="22%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {volist name="list" id="vo" key="k"}
+  <tr id="{$vo.id}">
+    <td align="center"> {$vo.level_value}</td>
+    <td align="left">{$vo.level_name}</td>
+    <td align="left">{$vo.amount}</td>
+    <td align="left">{$vo.discount|default=0}%</td>
+    <td align="left">{$vo.description|default=0}</td>
+    <td align="left"><a href="javascript:void(0)" class="opStatus" val="{$vo.status}">{if condition="$vo['status'] eq 1"}启用
+      {else /} <span class="red">禁用</span>{/if}</a></td>
+    <td align="left">{$vo.ctime|Date='Y-m-d H:i:s',###}</td>
+    <td align="left"><a href="{:url('edit_level',array('id'=>$vo['id']))}"  data-rel="tooltip" data-original-title="修改"> 修改</a> | <a class="delete_row" href="javascript:void(0)" link="{:url('delete_level',array('id'=>$vo['id']))}" data-rel="tooltip" data-original-title="刪除"> 刪除 </a></td>
+  </tr>
+  {/volist}
+  {if condition="isset($page)&&trim($page) neq '' "}
+  <tr bgcolor="#FFFFFF">
+    <td colspan="9" align="right"><div class="dataTables_paginate paging_simple_numbers">{$page}</div></td>
+  </tr>
+  {/if}
+    </tbody>
+  
+</table>
+<script type="text/javascript">
+var _MODEL_TABLE_="user_level";
+var _CACHE_NAME_="";
+</script>

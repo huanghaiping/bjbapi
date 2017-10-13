@@ -1,0 +1,157 @@
+{__NOLAYOUT__}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文件管理-后台管理</title>
+{load href="__STATIC__/ace/css/bootstrap.min.css,__STATIC__/ace/js/jquery-2.1.4.min.js" /}
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+
+	ul li{
+		width:100px;
+		height:110px;
+		display:inline-block;
+		margin:10px;
+		overflow:hidden;
+		text-align:center;
+		position:relative;
+	}
+
+	ul li.images .imgok{
+		background: url(__STATIC__/uploadify/img/success.png) no-repeat;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right:0px;
+		bottom:35px;
+	}
+
+	ul li.files .imgok{
+		background: url(__STATIC__/uploadify/img/success.png) no-repeat;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right:17px;
+		bottom:25px;
+	}
+
+	ul li.images img{
+		height:75px;
+		border-radius:5px;
+		width:100px;
+	}
+
+	ul li.dir img,ul li.files img{
+		height:90px;
+	}
+
+	ul li .name{
+		text-align:center;
+		font-weight:bold;
+	}
+	.clear{
+		clear:both;
+		overflow:hidden;
+		font-size:0;
+		line-height:0;
+	}
+</style>
+
+<script type="text/javascript">
+/**
+ * [changeImgok 改变文件的状态]
+ * @param  {[type]} obj [description]
+ * @return {[type]}     [description]
+ */
+function changeImgok (obj) {
+	if($(obj).find('.imgok').length == 1){
+		$(obj).find('.imgok').remove();
+	} else {
+		$(obj).append('<div class="imgok"></div>');
+	}
+}
+
+/**
+ * [closeIframe 关闭父级iframe]
+ */
+function closeIframe(){
+    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+    parent.layer.close(index);
+}
+
+/**
+ * [returnData 返回数据]
+ * @param  {[type]} argument [description]
+ * @return {[type]}          [description]
+ */
+function returnData (type,iframe,myid) {
+	var imgok = $("#file_list").find('li.allfile').find('div.imgok');
+	var allfile = imgok.parent('li.allfile');
+	if(imgok.length <= 0){
+		parent.layer.msg("请选择文件！",{icon:2,time:2000,shade: [0.3,'#000']},function(){
+           return false;
+        });
+        return false;
+	}
+
+	//验证类型
+	$.each(allfile, function(index, val) {
+		var json = $.parseJSON($(val).attr('fileData'));
+		if(type == 'images'||type == 'image'){
+			var appendstr = '<div class="img images" onclick="changeImgok(this)"><img src="'+json.url+'" fileData='+escape(JSON.stringify(json))+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" title="删除" onclick="delNoFiles(this,event)"></div></div>';
+		} else {
+			var appendstr = '<div class="img files" onclick="changeImgok(this)"><img src="__STATIC__/uploadify/img/readme.png" fileData='+escape(JSON.stringify(json))+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" title="删除" onclick="delNoFiles(this,event)"></div></div>';
+		}
+ 
+		//获取数据放置页面id,这是暂时的一个解决方案
+		if(typeof parent.frames[iframe] == 'undefined'){
+			var parentId = $(parent.document).find(myid);
+		} else {
+			var parentId = $(parent.frames[iframe].document).find(myid);
+		}
+		parentId.append(appendstr);
+	});
+	closeIframe();
+}
+</script>
+
+</head>
+<body>
+<div class="container-fluid">
+	<ul style='padding-bottom: 30px;' id="file_list">
+	    <h3><pre>当前目录：{$dir_path}</pre></h3>
+        	
+            {if condition="$type eq 'image' or $type eq 'images'"}
+        	{volist name="file_list" id="vo"}
+	    	<li class='images allfile' title="{$vo.file_name}" onclick="changeImgok(this)" fileData='{$vo.file_data}'>
+	    			<img src="{$vo.file_path}">
+	    			<div class="name" title="{$vo.file_name}">{$vo.file_name}</div>
+	    		</li>
+           {/volist}
+           {else /}
+           {volist name="file_list" id="vo"}
+	    	<li class='images allfile' title="{$vo.file_name}" onclick="changeImgok(this)" fileData='{$vo.file_data}'>
+	    			<img src="__STATIC__/uploadify/img/readme.png">
+	    			<div class="name" title="{$vo.file_name}">{$vo.file_name}</div>
+	    		</li>
+            {/volist}
+           {/if}
+
+
+	</ul>
+	</div>
+	<div style='position:fixed;bottom:0;padding:5px 10px;border-top:1px solid #ccc;width:100%;background:#f5f5f5'>
+		<div class="row">
+			<div class="col-sm-12">
+		   		<button type="button" class="btn btn-primary"  onclick="returnData('{$type}','{$iframe}','#{$myid}')" style='margin-right: 2px'>确定</button>
+		   		<button type="button" class="btn btn-default" onclick="closeIframe()">取消</button>
+		   </div>
+		</div>
+
+</div>
+</body>
+</html>

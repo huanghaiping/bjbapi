@@ -1,0 +1,61 @@
+{include file="common:ueditor" /}
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('content',{autoHeightEnabled:false});
+</script>
+
+<form  class="definewidth m10"  action="{:url($method)}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$info.id|default=''}" />
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <tr>
+        <th width="130">碎片广告位置：</th>
+        <td><input id="position" type="text" class="form-control w30"  name="position" value="{$info.position|default=''}"/>
+         </td>
+      </tr>
+      <tr>
+        <th>广告唯一标识：</th>
+        <td><input id="identifier" type="text" class="form-control w30" name="identifier" value="{$info.identifier|default=''}"/>
+         </td>
+      </tr>        
+     <tr>
+        <th>跳转链接：</th>
+        <td><input id="jump_url" type="text" class="form-control w30"name="jump_url" value="{$info.jump_url|default=''}"/>
+         </td>
+      </tr>   
+       <tr>
+        <th>广告标题：</th>
+        <td><input id="title" type="text" class="form-control w30"name="title" value="{$info.title|default=''|stripslashes}"/>
+         </td>
+      </tr> 
+
+      <tr>
+        <th>广告内容：</th>
+        <td>
+
+        <textarea id="content" class="edui-default"  name="content" style="height:350px;">{$info.content|default=''|stripslashes}</textarea>
+        </td>
+      </tr>
+       <tr>
+        <th></th>
+        <td> <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </table>
+   
+  </form>
+<script type="text/javascript">
+$(function(){ 
+	$("#submit_form").click(function(){
+		if($("#position").val()==""){
+			layer.alert('广告位置不能为空',{icon: 2});
+			return false;
+		}
+		if($("#identifier").val()==""){
+			layer.alert('标识不能为空',{icon: 2});
+			return false;
+		}
+	
+	});
+});
+</script>

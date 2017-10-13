@@ -1,0 +1,52 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+<form action="{:url('index')}" method="post" name="form" class="form-inline definewidth m10">
+  <input name="title" type="text" class="form-control search_text" value="{$keyword|default=''}" placeholder="广告位置">
+  <button name="btn" type="submit" class="btn btn-primary  btn-sm"><i class="ace-icon fa fa-search align-middle bigger-125"></i> 查 询</button>
+  <button class="btn btn-success  btn-sm" type="button" onClick="window.location.href='{:url('add')}'"> <i class="ace-icon fa fa-plus align-middle bigger-125"></i> 添加广告</button>
+</form>
+</div>
+  <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+	<thead>
+    <tr>
+      <th>选择</th>
+      <th>广告位位置</th>
+      <th>广告位标识</th>
+   
+      <th>类型</th>
+      <th>添加时间</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    {volist name="list" id="vo" key="k"}
+      <tr>
+        <td align="left">
+          {$vo.id}</td>
+        <td align="left">{$vo.adname}</td>
+        <td align="left">{$vo.adid}</td>
+        
+        <td align="left">{switch name="vo.typeid" }
+            {case value="1" }表示代码(网页代码){/case}
+            {case value="2" }文字广告{/case}
+            {case value="3" }图片广告{/case}
+            {case value="4" }flash广告{/case}
+            {case value="5" }幻灯片{/case}
+            {default /}
+            未知类型 {/switch}</td>
+        <td align="left">{$vo.ctime|Date='Y-m-d H:i:s',###}</td>
+        <td align="left">{if condition="$vo.typeid eq 5"}<a href="{:url('Slide/index',array('id'=>$vo['id'],'table'=>'ad_slide'))}" data-rel="tooltip" data-original-title="上传图片">上传图片</a> | {/if}
+      	<a href="{:url('edit',array('id'=>$vo['id']))}" data-rel="tooltip" data-original-title="修改"> 修改</a> | <a href="javascript:void(0)" link="{:url('del',array('id'=>$vo['id']))}" class="delete_row" data-rel="tooltip" data-original-title="刪除"> 刪除 </a></td>
+      </tr>
+    {/volist}
+    {if condition="isset($page)&&trim($page) neq '' "}
+    <tr bgcolor="#FFFFFF">
+      <td colspan="7" align="right">
+      <div class="dataTables_paginate paging_simple_numbers">{$page}</div>
+        </td>
+    </tr>
+      {/if}
+    <tr bgcolor="#FFFFFF">
+      <td colspan="7" align="left">* 广告的类型: 1 表示代码(网页代码,2 表示文字广告,3 表示图片广告, 4 表示flash广告，5 表示幻灯片</td>
+    </tr>
+  </table>
+

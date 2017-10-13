@@ -1,0 +1,138 @@
+<form action="{:url('sms')}" method="post" enctype="multipart/form-data" name="form2" id="playList_sms">
+  <table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <tbody>
+      <tr>
+        <th width="11%">短信提供商：</th>
+        <td width="89%"><label style="float:left; margin-right:15px;"  title="网址：www.alidayu.com/"> 
+        <input type="radio" name="sms_type" value="Alidayu" id="sms_type_0" 
+              {empty name="sms_info['sms_type']" }checked {/empty}
+           {if condition="isset($sms_info['sms_type']) and $sms_info['sms_type'] eq 'Alidayu'" value="Alidayu"}checked{/if}
+            >
+            阿里大于</label>
+            
+            
+          <label title="网址：http://www.smsbao.com/"> <input type="radio" name="sms_type" value="Smsbao" id="sms_type_1" 
+                  
+            {if condition="isset($sms_info['sms_type']) and $sms_info['sms_type'] eq 'Smsbao'" value="Smsbao"}checked{/if}
+            >
+            短信宝</label>
+          <div class="help-block">例如：阿里大于</div></td>
+      </tr>
+      <tr>
+        <th>App Key：</th>
+        <td><input class="common-text required form-control w30" id="appkey" name="appkey" placeholder="相当于用户名" value="{$sms_info.appkey|default=''}" type="text">
+        </td>
+      </tr>
+      <tr>
+        <th>App Secret：</th>
+        <td><input class="common-text required form-control w30" id="appsecret" name="appsecret" placeholder="相当于密码"  value="{$sms_info.appsecret|default=''}" type="text">
+         </td>
+      </tr>
+      <tr>
+        <th>验证码长度：</th>
+        <td><input class="common-text required form-control w30" id="codelength" name="codelength" placeholder="验证码的长度" value="{$sms_info.codelength|default=6}" type="text">
+         </td>
+      </tr>
+      <tr>
+        <th>验证码类型：</th>
+        <td><select name="codetype" class="form-control w30">
+            <option value="1"   
+            {if condition="isset($sms_info['codetype']) and $sms_info['codetype'] eq 1" value="Smsbao"}selected{/if}
+            >数字
+            </option>
+            <option value="0"   
+           {if condition="isset($sms_info['codetype']) and $sms_info['codetype'] eq '0'" value="Smsbao"}selected{/if}
+            >字母+数字
+            </option>
+          </select></td>
+      </tr>
+      <tr>
+        <th>签名：</th>
+        <td><input class="common-text required form-control w30" id="sign" name="sign" placeholder="例如:友基科技"
+          {empty name="sms_info['sign']"} value="{$Think.config.SITE_NAME}"
+            {else /}
+            value="{$sms_info.sign|default=''}" {/empty}
+          type="text">
+      </td>
+      </tr>
+      <tr>
+        <th>短信模板：</th>
+        <td><textarea name="content" id="content" class="common-textarea form-control w30" placeholder="请输入短信模板">{notempty name="sms_info['content']"}{$sms_info.content}{else /}验证码${number}，您正进行手机号码的身份验证，打死不告诉别人！{/notempty}
+</textarea>
+          <div class="help-block">阿里大于需要些的是短信模板ID不是内容,主意修改此内容必须要跟短信提供商后台提供的模板一致</div></td>
+      </tr>
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" 
+                  
+            {if condition="isset($sms_info['status']) and  $sms_info['status'] eq 1"} selected="selected" {/if}
+            >开启
+                  
+            </option>
+            <option value="0"  
+                  
+            {if condition="isset($sms_info['status']) and $sms_info['status'] eq '0'"} selected="selected" {/if}
+            >关闭
+                  
+            </option>
+          </select></td>
+      </tr>
+      <tr>
+        <th>短信测试：</th>
+        <td><input class="common-text required form-control w30" id="ceshi_sms" name="ceshi_sms" value="{$sms_info.ceshi_sms|default=''}" placeholder="请输入测试手机号码" type="text" style="width:50%; float:left;">
+          <input class="btn btn-info btn6 mr10" value="发送测试短信" type="button" id="testsms" val="0"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><button class="btn btn-primary" type="submit" id="submit_sms"  val="1"> <i class="ace-icon fa fa-check bigger-110"></i> 保存配置 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<script type="text/javascript">    
+$(document).ready(function(){
+	$("#testsms,#submit_sms").click(function(){
+		var val=$(this).attr("val");
+		var appkey = $('#appkey').val();
+		if(appkey.length<=0){
+			layer.tips('请输入App Key', '#appkey',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var appsecret = $('#appsecret').val();
+		if(appsecret.length<=0){
+			layer.tips('请输入appsecret', '#port',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var content = $('#content').val();
+		if(content.length<=0){
+			layer.tips('请输入短信模板', '#content',{tips: [2, '#d9534f']});
+			return false;
+		}
+		if(val==1){
+			$("#ceshi_sms").val('');
+			return true;
+		}else{
+			if($("#ceshi_sms").val().length<=0){
+				layer.alert('请输入手机号码');
+				return false;	
+			}	
+		}
+		var loading=layer.msg('正在发送中', {icon: 16,time:20000});
+		$.post("{:url('sms')}",$("#playList_sms").serialize(),function(data){
+			layer.close(loading);
+			if(data.code==1){
+				 layer.msg(data.msg, {icon: 1});
+			}else{
+				layer.msg(data.msg, {icon: 2});	
+			}	
+			
+
+		});
+		return false;
+	});
+});
+
+</script>

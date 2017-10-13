@@ -1,0 +1,94 @@
+<div class="content">
+      <form action="{:url($method)}" method="post" enctype="multipart/form-data" name="form2" id="playList">
+        <input name="id" type="hidden" value="{$info.id|default=''}">
+        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+          <tbody>
+                   <tr>
+              <th width="11%">等级值：</th>
+              <td width="89%">
+              <select name="level_value" id="level_value" class="form-control w30">
+              	{volist name="level_value_list" id="vo"}
+                  <option value="{$vo}" {if condition="isset($info['level_value']) and $info['level_value'] eq $vo"}selected="selected" {/if}>{$vo} </option>
+                {/volist}
+                </select>
+                <div class="help-block">设置会员等级值,每个等级值都是递增10</div></td>
+            </tr>
+       <tr>
+            <tr>
+              <th width="11%">等级名称：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="level_name" name="level_name"  value="{$info.level_name|default=''}" type="text">
+                <div class="help-block">设置会员等级名称</div></td>
+            </tr>
+       <tr>
+              <th width="11%">消费额度：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="amount" name="amount"  value="{$info.amount|default='0'}" type="text">
+                <div class="help-block">设置会员等级升级所需要的消费额度,即需要消费满才可以升级</div></td>
+            </tr>
+            <tr>
+              <th width="11%">折扣率：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="discount" name="discount"  value="{$info.discount|default='100'}" type="text">
+                <div class="help-block">	折扣率单位为百分比，如输入90，表示该会员等级的用户可以以商品原价的90%购买</div></td>
+            </tr>
+            
+            <tr>
+              <th width="11%">折扣使用条件：</th>
+              <td width="89%"> 
+              
+               <select name="condition" id="condition" class="form-control w30">
+                  <option value="0" {if condition="isset($info['condition']) and $info['condition'] eq 0"}selected="selected" {/if}>无限制</option>
+                  <option value="1" {if condition="isset($info['condition']) and $info['condition'] eq 1"}selected="selected" {/if}>升级后首次购买</option>
+            
+                </select>
+              
+                <div class="help-block">无限制：只要购买就会使用折扣,会员首次购买:用户第一次购买,无付款订单</div></td>
+            </tr>
+            
+            <tr>
+              <th>等级描述：</th>
+              <td><textarea name="description" class="common-textarea form-control w30" id="description" >{$info.description|default=''|stripslashes}</textarea></td>
+            </tr>
+                   <tr>
+              <th>状态：</th>
+              <td><select name="status" class="form-control w30">
+                  <option value="1" 
+                
+                  {if condition="isset($info['status']) and $info['status'] eq 1"}selected="selected" {/if}
+                  >开启
+                
+                  </option>
+                  <option value="0"  
+                
+                  {if condition="isset($info['status']) and $info['status'] eq 0"}selected="selected" {/if}
+                  >禁用
+                
+                  </option>
+                </select></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+<script type="text/javascript">     
+$(document).ready(function(){	
+	$("#submit_form").click(function(){
+		var level_name = $('#level_name').val();
+		if(level_name.length<=0){
+			layer.tips('等级名称不能为空', '#level_name',{tips: [2, '#d9534f']});
+			return false;
+		}
+		return true;
+	 
+	});
+	
+	
+});
+
+</script>
+

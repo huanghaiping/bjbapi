@@ -1,0 +1,62 @@
+{__NOLAYOUT__}
+{switch name="type"}
+	{case value="image"}
+    	<input name="{$field}" id="{$field}" value="{$data_value|default=''}" type="text" class="form-control" style="border-radius: 4px 0px 0px 4px; width:50%; float:left" validate=" required:true ">
+        <button class="btn btn-info" style="float:left" type="button" onClick="dialogIframe('{$url}','{$btnText}')" ><i class=" ace-icon fa fa-upload"></i>{$btnText}</button>
+        <div id="{$field}_txt" class="img_info img_info_thumb"  {notempty name="data_value"} style="display:block" {else /} style="display:none"{/notempty}>
+        {notempty name="data_value"}
+        	<div class="{$type}_list"><img class="fancybox" src="{$data_value}" delfile="{$data_value}"><div class="imgdel" title="删除" onclick="delFiles(this,'{:url('Attachment/del')}','{$field}')"></div></div>
+        {/notempty}
+        </div>
+    {/case}
+    {case value="images"}
+ 
+     <button class="btn btn-info" style="float:left" type="button" onClick="dialogIframe('{$url}','{$btnText}')" ><i class=" ace-icon fa fa-upload"></i>{$btnText}</button>  
+     <div id="{$field}_txt" class="images_info images_info_thumbs" {notempty name="data_value"} style="display:block" {else /} style="display:none"{/notempty}>
+        {notempty name="data_value"}
+        	{volist name=":slide($data_value)" id="vo" }
+        	 <div class="{$type}_list">
+             	<img class="fancybox" src="{$vo.thumb}" delfile="{$vo.thumb}">
+                <div class="{$type}_name"><input type="text" class="common-text form-control" name="{$field}[{$key}][name]" placeholder="文件名称" value="{$vo.thumb}"></div>
+                <div class="{$type}_sort"><input type="text" class="common-text form-control" name="{$field}[{$key}][sort]" placeholder="文件排序" value="{$vo.sort}" onkeyup="value=value.replace(/[^\d]/ig,\'\')"></div>
+                <div class="imgdel" title="删除" onclick="delFiles(this,'{:url('Attachment/del')}','{$field}')"></div>
+                </div>
+            {/volist}
+        {/notempty}
+        </div>
+    	
+    {/case}
+    
+    {case value="file"}
+    <input name="{$field}" id="{$field}" value="{$data_value|default=''}" type="text" class="form-control" style="border-radius: 4px 0px 0px 4px; width:50%; float:left" validate=" required:true ">
+        <button class="btn btn-info" style="float:left" type="button" onClick="dialogIframe('{$url}','{$btnText}')" ><i class=" ace-icon fa fa-upload"></i>{$btnText}</button>
+        <div id="{$field}_txt" class="img_info img_info_thumb" {notempty name="data_value"} style="display:block" {else /} style="display:none"{/notempty}>
+        {notempty name="data_value"}
+        	<div class="{$type}_list"><img class="fancybox" src="__STATIC__/uploadify/img/readme.png" delfile="{$data_value}"><div class="imgdel" title="删除" onclick="delFiles(this,'{:url('Attachment/del')}','{$field}')"></div></div>
+        {/notempty}
+        </div>
+    
+    {/case}
+    
+     {case value="files"}
+    
+     <button class="btn btn-info" style="float:left" type="button" onClick="dialogIframe('{$url}','{$btnText}')" ><i class=" ace-icon fa fa-upload"></i>{$btnText}</button>
+     <div id="{$field}_txt" class="images_info images_info_thumbs" {notempty name="data_value"} style="display:block" {else /} style="display:none"{/notempty}>
+        {notempty name="data_value"}
+        	{volist name=":slide($data_value)" id="vo" }
+        	 <div class="{$type}_list">
+             	<img class="fancybox" src="__STATIC__/uploadify/img/readme.png" delfile="{$vo.thumb}">
+                <div class="{$type}_name"><input type="text" class="common-text form-control" name="{$field}{$key}[name]" placeholder="文件名称" value="{$vo.thumb}"></div>
+                <div class="{$type}_sort"><input type="text" class="common-text form-control" name="{$field}{$key}[sort]" placeholder="文件排序" value="{$vo.sort}" onkeyup="value=value.replace(/[^\d]/ig,\'\')"></div>
+                <div class="imgdel" title="删除" onclick="delFiles(this,'{:url('Attachment/del')}','{$field}')"></div>
+                </div>
+            {/volist}
+        {/notempty}
+        </div>
+    	
+    {/case}
+   
+    
+    
+    
+{/switch}

@@ -1,0 +1,77 @@
+<form action="{:url($method)}" method="post" class="definewidth m10" style="margin-left:0px;" enctype="multipart/form-data">
+<input name="id" type="hidden" value="{$info.id|default=''}" />
+  <table class="table table-bordered table-hover definewidth m10">
+    <tr>
+      <td width="10%" class="tableleft">语言名称</td>
+      <td><input type="text" name="name" id="name" class="form-control w30" value="{$info.name|default=''}" /></td>
+    </tr>
+    <tr>
+      <td width="10%" class="tableleft">语言标识</td>
+      <td><input type="text" name="mark" id="mark" class="form-control w30"  value="{$info.mark|default=''}" /></td>
+    </tr>
+    <tr>
+      <td width="10%" class="tableleft">语言图标</td>
+      <td> {:widget('Attachment/index',array('field'=>"flag",'type'=>"image","option"=>array("upload_maxnum"=>1),'btnText'=>"上传语言图标",'value'=>empty($info['flag']) ? "" : $info['flag']))}
+      </td>
+    </tr>
+    
+    <tr>
+      <td width="10%" class="tableleft">选择语言包</td>
+      <td><select name="copy_name" class="form-control w30" >
+          <option>==请选择语言包==</option>
+          
+        {volist name="lang_list" id="vo"}
+        
+          <option value="{$vo.id}">{$vo.name}</option>
+          
+        {/volist}
+      
+        </select>
+        <div class="help-block">&nbsp;选择需要复制的语言包</div></td>
+    </tr>
+    
+ 
+    
+    
+    <tr>
+      <td class="tableleft">绑定域名</td>
+      <td><input type="text" name="domain"  value="{$info.domain|default=''}" class="form-control w30"/>
+        <div class="help-block">&nbsp;需要把域名解析到服务器</div></td>
+    </tr>
+    <tr>
+      <td class="tableleft">排序</td>
+      <td><input type="text" name="listorder" value="{$info.listorder|default='50'}" class="form-control w30" />
+         <div class="help-block">&nbsp;排序从大到小</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="tableleft">状态</td>
+      <td><input type="radio" name="status" value="0" {if condition="isset($info['status']) and $info['status'] eq 0"}  checked {/if}   />
+        禁用
+        <input type="radio" name="status" value="1" {if condition="isset($info['status']) and $info['status'] eq 1"}  checked {/if} {empty name="info['status']"}checked{/empty} />
+        启用 </td>
+    </tr>
+    
+    
+    <tr>
+      <td class="tableleft"></td>
+      <td>
+        <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>&nbsp;&nbsp;
+         <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+$(function(){   
+		$(".btn-primary").click(function(){
+			if($("#name").val()==""){
+				layer.tips('请输入语言名称', '#name',{tips: [2, '#d9534f']});
+				return false;
+			}
+			if($("#mark").val()==""){
+				layer.tips('请输入语言标识', '#mark',{tips: [2, '#d9534f']});
+				return false;
+			}
+		});	
+});
+</script> 

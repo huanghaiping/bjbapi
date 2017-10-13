@@ -1,0 +1,64 @@
+{notempty name="list"}
+<table class="table table-bordered table-hover " style="width:100%">
+  <thead>
+    <tr>
+      <th width="186">SQL文件名</th>
+      <th width="189">卷数</th>
+      <th width="189">备份时间</th>
+      <th width="169">文件大小</th>
+      <th width="96">导入</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {volist name="list" id="vo"}
+  <tr>
+    <td>{$vo.name}
+      <div class="info red"></div></td>
+    <td>{$vo.part}</td>
+    <td>{$vo.time|date='Y-m-d H:i:s',###}</td>
+    <td>{$vo.size|byteFormat}</td>
+    <td><a href="javascript:void(0)" class="db-import green" link="{:url('Database/import',array('time'=>$vo['time']))}">还原</a>  | <a href="javascript:void(0)" link="{:url('Database/del',array('time'=>$vo['time']))}" class="delete_row green">删除</a></td>
+  </tr>
+  {/volist}
+</table>
+{else/}
+	暂无备份
+{/notempty}
+<script type="text/javascript">
+$(function(){
+  $(".db-import").click(function(){
+            var self = this, code = ".";
+			var href=$(this).attr("link");
+            $.get(href, success, "json");
+            window.onbeforeunload = function(){ return "正在还原数据库，请不要关闭！" }
+            return false;
+
+            function success(data){
+                if(data.code){
+                    if(data.data.gz){
+                        data.msg += code;
+                        if(code.length === 5){
+                            code = ".";
+                        } else {
+                            code += ".";
+                        }
+                    }
+					$(self).closest("tr").find(".info").html(data.msg);
+                    if(data.data.part){
+                        $.get(href, 
+                            {"part" : data.data.part, "start" : data.data.start}, 
+                            success, 
+                            "json"
+                        );
+                    }  else {
+                        window.onbeforeunload = function(){ return null; }
+                    }
+                } else {
+                    layer.alert(data.msg);
+                }
+            }
+        });
+
+});
+</script> 

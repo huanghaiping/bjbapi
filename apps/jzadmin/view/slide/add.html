@@ -1,0 +1,61 @@
+<form action="{:url($method)}" method="post" enctype="multipart/form-data" name="form2" id="playList">
+  <input name="typeid" type="hidden" value="{$typeid}" />
+  <input name="table" type="hidden" value="{$table}" />
+    <input name="id" type="hidden" value="{$info.id|default=''}" />
+  <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <tr>
+      <td width="11%"> 广告位标题： </td>
+      <td><input name="title" type="text" id="title" class="form-control" value="{$info.title|default=''|stripslashes}"></td>
+    </tr>
+    <tr  bgcolor="#FFFFFF" id="uploadurl">
+      <td height="30">图片上传：</td>
+      <td> {:widget('Attachment/index',array('field'=>"picurl",'type'=>"image","option"=>array("upload_maxnum"=>1,'path'=> base64_encode(UPLOADS_PATH."ad")),'btnText'=>"上传图片",'value'=>empty($info['picurl']) ? "" : $info['picurl']))}
+        <div style=" margin:15px 0px 0px 0px; width:100%;  display: inline-block;">
+          <div style="float:left; margin-right:15px">
+            <label style="float:left; margin-top:7px;">宽度:</label>
+            <input type="text" name="width" id="width" class="form-control" style=" width:150px;" value="{$info.width|default=''}">
+          </div>
+          <div  style="float:left; margin-right:15px">
+            <label style="float:left; margin-top:7px">高度：</label>
+            <input type="text" name="height" id="height" style=" width:150px;" class="form-control"  value="{$info.height|default=''}">
+          </div>
+        </div></td>
+    </tr>
+    <tr  bgcolor="#FFFFFF" id="jumpurl" >
+      <td height="30">跳转的url</td>
+      <td ><input name="linkurl" type="text" id="linkurl" class="form-control w30" value="{$info.linkurl|default=''}"></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td>排序</td>
+      <td><input name="sortslide" type="text" id="sortslide" class="form-control w30"  value="{$info.sortslide|default='50'}" />
+        <div class="help-block">排序方式：从小到大</div></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td>标题：</td>
+      <td><input type="text" name="product_title" id="product_title" class="form-control w30" value="{$info.product_title|default=''|stripslashes}"/>
+        <div class="help-block"> (选填)</div></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td>描述：</td>
+      <td><textarea name="product_description" id="product_description"  class="form-control">{$info.product_description|default=''|stripslashes}</textarea>
+        <div class="help-block"> (选填)</div></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+      <td  class="tLeft">&nbsp;</td>
+      <td colspan="4"  class="tLeft"><button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+        &nbsp;&nbsp;
+        <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+$(function(){
+	$("#submit_form").click(function(){
+		var picurl = $('#picurl').val();
+		if(picurl.length<=0){
+			layer.tips('请上传图片', '#picurl',{tips: [2, '#d9534f']});
+			return false;
+		}	
+	});	
+})
+</script>

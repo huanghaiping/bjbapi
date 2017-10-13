@@ -1,0 +1,46 @@
+<form action="{:url('addparam')}" method="post" class="definewidth m10" style="margin-left:0px;" enctype="multipart/form-data">
+  <table class="table table-bordered table-hover definewidth m10">
+    <tr>
+      <td width="10%" class="tableleft">参数名称</td>
+      <td><input type="text" name="name" id="name" class="form-control w30" /><div class="help-block">&nbsp;参数名称只能是英文+数字，例如Home</div></td>
+    </tr>
+       <tr>
+      <td width="10%" class="tableleft">参数说明</td>
+      <td><input type="text" name="alisa" id="alisa" class="form-control w30" /><div class="help-block">&nbsp;对上面参数名称解说，例如Home对应首页的位置</div></td>
+    </tr>
+     <tr>
+      <td class="tableleft">语言包类型</td>
+      <td><select name="module_type" class="form-control w30" id="module_type">
+        <option value="index">网站语言包</option>
+        <option value="api">接口语言包</option>
+      </select></td>
+    </tr>
+    {volist name="lang_list" id="vo"}
+    <tr>
+      <td width="10%" class="tableleft">{$vo.name}参数值</td>
+      <td><input type="text" name="{$vo.mark}_{$vo.id}" id="{$vo.mark}_{$vo.id}" class="form-control w30" /></td>
+    </tr>
+	{/volist}
+ 
+     
+    <tr>
+      <td class="tableleft"></td>
+      <td><button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>&nbsp;&nbsp;
+         <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+$(function(){   
+		$("#submit_form").click(function(){
+			if($("#name").val()==""){
+				layer.tips('请输入语言名称', '#name',{tips: [2, '#d9534f']});
+				return false;
+			}
+			if($("#mark").val()==""){
+				layer.tips('请输入语言标识', '#mark',{tips: [2, '#d9534f']});
+				return false;
+			}
+		});	
+});
+</script>

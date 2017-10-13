@@ -1,0 +1,53 @@
+<style type="text/css">
+.nav_time>li>a {padding:0 10px;}
+.nav_statistic li{ float:left; margin-right:15px;}
+.nav_statistic li a{ padding-left:25px; padding-right:25px; font-size:14px;}
+.btn.btn-app{ width:200px; font-size:16px;}
+.nav_statistic_total li a{ padding:10px 13px;}
+.nav_statistic_total li a .badge{ text-align:center; padding-top:5px}
+</style>
+
+
+
+
+<section>
+  <table class="table table-striped table-bordered table-hover dataTable no-footer" style="width:100%">
+    <tr>
+      <th colspan="4" align="left">系统基本信息</th>
+    </tr>
+    {volist name="server_info" id="vo" mod=2}
+    
+    {eq name="mod" value="0"}
+    <tr> {/eq}
+      <td width="120" align="left">{$key}：</td>
+      <td>{$vo}</td>
+      {eq name="mod" value="1"} </tr>
+    {/eq}
+    
+    {/volist}
+  </table>
+</section>
+<!-- /.row --> 
+
+{notempty name="new_order"}
+<div id="popMsgContent" style="font-size:12px; margin:10px 15px; display:none">
+  <p>您有 <strong style="color:#ff0000" id="spanNewOrder">{$new_order.new_total_order|default=0}</strong> 个新订单未处理 </p>
+  <p align="center" style="word-break:break-all"><a href="{:url('Order/index')}"><span style="color:#ff0000">点击查看新订单</span></a></p>
+</div>
+<script type="text/javascript">
+$(function(){
+	layer.open({
+	  type: 1,
+	  title: "新订单通知",
+	  closeBtn: 1, //不显示关闭按钮
+	  shade: [0],
+	  area: ['250px', '150px'],
+	  offset: 'rb', //右下角弹出
+	  time: 5000, //2秒后自动关闭
+	  shift: 2,
+	  content: $('#popMsgContent') //iframe的url，no代表不显示滚动条
+	  
+	});	
+})
+</script> 
+{/notempty} 

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据压缩包管理-数据管理-后台管理</title>
+<include file="Common:jscss" />
+</head>
+<body>
+<div class="container-fluid"> 
+<include file="Common:position" />
+<div id="Right">
+  <div class=" page-header definewidth m10" style="width:100%; margin:10px 0px; display:inline-block"> <span style=" float:left; margin-bottom:10px;">
+    <button class="btn btn-success"   onclick="javascript:window.location.href='__URL__/restore'">数据库导入</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-success" onclick="javascript:window.location.href='__URL__/zipList'">数据库压缩包</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-success" onclick="javascript:window.location.href='__URL__/repair'">数据库优化修复</button>
+    &nbsp;&nbsp; 
+    <button class="btn delZipFiles btn-danger"><i class="glyphicon glyphicon-trash"></i>删除所选</button>
+    </span> <span style="float:right;">共有{$files}个压缩包文件，共计{$total}</span> </div>
+  <form class="definewidth m10" method="post" action="" id="form1">
+    <table class="table table-bordered table-hover definewidth" style="margin-left:0px; width:100%">
+      <thead>
+        <tr>
+          <td width="55" align="center"> 
+              <input name="" class="chooseAll" type="checkbox"/>
+          </td>
+          <td width="632">压缩包名称</td>
+          <td width="233">打包时间</td>
+          <td width="199">文件大小</td>
+          <td width="157">解压</td>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="list" id="zip">
+          <tr align="center">
+            <td><input type="checkbox" name="zipFiles[]" value="{$zip.file}"/></td>
+            <td align="left"><a href="{:U('SysData/downFile',array('file'=>$zip['file'],'type'=>'zip'))}" target="_blank">{$zip.file}</a></td>
+            <td>{$zip.time}</td>
+            <td>{$zip.size}</td>
+            <td><button class="btn unzip  btn-default" file="{$zip.file}">解压</button></td>
+          </tr>
+        </volist>
+      </tbody>
+      <tfoot align="center">
+        <tr>
+          <td align="center">
+              <input name="" class="chooseAll" type="checkbox"/>
+          </td>
+          <td>&nbsp;</td>
+          <td>备份时间</td>
+          <td>总计：{$total}</td>
+          <td>解压</td>
+        </tr>
+      </tfoot>
+    </table>
+    
+  </form>
+</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	//全新反选
+	clickCheckbox();
+	 $(".unzip").click(function(){
+		$.post("__URL__/unzipSqlfile",{'zipFiles[]':$(this).attr("file")},function(json){
+//                        var json = eval("(" + json + ")");
+			json.status==1?alert(json.info):alert(json.info);
+			$(".btn").removeAttr("disabledSubmit");
+			if(json.url&&json.url!=''){
+				setTimeout(function(){
+					//top.window.location.href=json.url;
+				},2000);
+			}
+		});
+		return false;
+	});
+	//删除备份文件
+	$(".delZipFiles").click(function(){
+		if($(this).attr("disabledSubmit")){
+			layer.msg("已提交，系统在处理中...");
+			return false;
+		}
+		if($("tbody input[type='checkbox']:checked").size()==0){
+			 layer.msg("请先选择你要删除的zip文件吧");
+			return false;
+		}
+		layer.confirm('你确定要删除备份文件吗？',function(){
+				$(".btn").attr("disabledSubmit",true);
+				$(this).html("提交处理中...");
+				$("#form1").attr("action","__URL__/delZipFiles");
+				$("#form1").submit();
+		});
+		return false;
+	});
+});
+</script>
+</body>
+</html>

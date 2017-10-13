@@ -1,0 +1,105 @@
+<form  class="definewidth m10"  action="{:url($method)}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$info.id|default=''}" />
+      <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <tr>
+        <th width="150">名称：</th>
+        <td><input type="text" class="form-control w30" name="temp_title" id="temp_title" value="{$info.temp_title|default=''}"  /></td>
+      </tr>
+       <tr>
+        <th>key：</th>
+        <td><input type="text" class="form-control w30" name="temp_key" id="temp_key" value="{$info.temp_key|default=''}" /></td>
+      </tr>
+ 
+      <tr>
+        <th>是否发送邮件：</th>
+        <td>
+        <select name="send_email" id="send_email"  class="form-control w30">
+        	<option value="1" {if condition="isset($info['send_email']) and $info['send_email'] eq 1"}selected {/if}>是</option>
+            <option value="0" {if condition="isset($info['send_email']) and $info['send_email'] eq 0"}selected {/if}>否</option>
+        </select>
+     </td>
+      </tr>
+      <tr>
+        <th>是否发送消息：</th>
+        <td>
+           <select name="send_message" id="send_message"  class="form-control w30">
+        	<option value="1" {if condition="isset($info['send_message']) and $info['send_message'] eq 1"}selected {/if}>是</option>
+            <option value="0" {if condition="isset($info['send_message']) and $info['send_message'] eq 0"}selected {/if}>否</option>
+        </select>
+        </td>
+      </tr>
+        <tr>
+        <th>信息类型：</th>
+        <td>
+         <select name="type" id="type"  class="form-control w30">
+        	<option value="1" {if condition="isset($info['type']) and $info['type'] eq 1"}selected {/if}>用户发送</option>
+            <option value="2" {if condition="isset($info['type']) and $info['type'] eq 2"}selected {/if}>系统发送</option>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <th>标题：</th>
+        <td><input id="title_key" type="text" class="form-control w30" name="title_key" value="{$info.title_key|default=''}"/></td>
+      </tr>
+      <tr>
+        <th>发送内容：</th>
+        <td><textarea id="content_key" style="height: 400px;" name="content_key">{$info.content_key|default=''|stripcslashes}</textarea></td>
+      </tr>
+        <tr>
+        <th>说明提示：</th>
+        <td><input type="text" class="form-control w30" name="tip_message" value="{$info.tip_message|default=''}" /></td>
+      </tr>
+      <tr>
+        <th width="120"></th>
+        <td><button class="btn btn-primary" type="submit" id="submit"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </table>
+  </form>
+  {include file="common:ueditor" /} 
+<script type="text/javascript">
+$(function(){
+  <!-- 实例化编辑器 -->
+  var content = UE.getEditor('content_key',{autoHeightEnabled:false});
+  $("#submit").click(function(){
+	  	var temp_title=$("#temp_title");
+		if(temp_title.val().length<=0){
+			layer.tips("请输入名称", '#temp_title',{tips: [2, '#d9534f']});
+			temp_title.focus();
+			return false;
+		}
+		var temp_key=$("#temp_key");
+		if(temp_key.val().length<=0){
+			layer.tips("请输入KEY", '#temp_key',{tips: [2, '#d9534f']});
+			temp_key.focus();
+			return false;
+		}
+		var title_key=$("#title_key");
+		if(title_key.val().length<=0){
+			layer.tips("请输入标题", '#title_key',{tips: [2, '#d9534f']});
+			title_key.focus();
+			return false;
+		}
+		var temp_title=$("#temp_title");
+		if(temp_title.val().length<=0){
+			layer.tips("请输入名称", '#temp_title',{tips: [2, '#d9534f']});
+			temp_title.focus();
+			return false;
+		}
+		var temp_title=$("#temp_title");
+		if(temp_title.val().length<=0){
+			layer.tips("请输入标题", '#temp_title',{tips: [2, '#d9534f']});
+			temp_title.focus();
+			return false;
+		}
+		var content_key=$("#content_key");
+		if(content_key.val().length<=0){
+			layer.tips("请输入内容", '#content_key',{tips: [2, '#d9534f']});
+			content_key.focus();
+			return false;
+		}
+		return true;
+  });
+});
+</script>

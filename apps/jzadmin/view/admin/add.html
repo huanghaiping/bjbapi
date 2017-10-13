@@ -1,0 +1,76 @@
+<div class="">
+  <form action="{:url($method)}" method="post" enctype="multipart/form-data" id="myform">
+    <input type="hidden" name="id" value="{$info.user_id|default=0}">
+    <table class="table table-bordered table-hover definewidth m10">
+      <tbody>
+   
+        
+          <tr>
+        <th width="111">用户名：</th>
+        <td><input class="form-control w30" name="nickname" id="nickname" type="text" value="{$info.nickname|default=''}">
+          </td>
+      </tr>
+               <tr>
+        <th>登录密码：</th>
+        <td><input class="form-control w30" name="pwd" id="pwd" type="text" value="">
+         {if condition="$Request.action eq 'edit'"}<div class="help-block">如果不修改密码可留空</div>{/if}
+         </td>
+      </tr>
+      <tr>
+      	<th>管理员角色</th>
+        <td><select name="role_id" id="role_id" class="form-control w30">
+        {volist name="group_list" id="vo"}
+        <option value="{$vo.id}" {if condition="isset($info['role_id']) and $info['role_id'] eq $vo['id']"} selected="selected" {/if} > {$vo.title}</option> 
+        {/volist}
+        </select>
+        </td>
+      </tr>
+         <tr>
+        <th>联系方式：</th>
+        <td><input class="form-control w30" name="email" id="email" type="text" value="{$info.email|default=''}">
+          </td>
+      </tr>
+
+  
+  
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" {present name="info['status']"} {eq name="info['status']" value="1"} selected="selected" {/eq}  {/present} >启用</option>
+            <option value="0" {present name="info['status']"} {eq name="info['status']" value="0"} selected="selected" {/eq} {/present}  >禁用</option>
+          </select>
+          <div class="help-block">如果禁用就无法登录</div></td>
+      </tr>
+      <tr>
+        <th>描 述：</th>
+        <td><textarea name="remark" class="form-control">{$info.ramark|default=null}</textarea></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="clearfix form-actions">
+      <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- /row --> 
+<script type="text/javascript">
+$(function(){
+	$("#submit_form").click(function(){
+		if($("#nickname").val().length<=0){
+			layer.tips('请输入用户名', '#nickname',{tips: [2, '#d9534f']});
+			return false;
+		}
+		 {if condition="$Request.action eq 'add'"}
+			 if($("#pwd").val().length<=0){
+				layer.tips('请输入密码', '#pwd',{tips: [2, '#d9534f']});
+				return false;
+			}
+		 {/if}
+	});	
+});
+</script>
+

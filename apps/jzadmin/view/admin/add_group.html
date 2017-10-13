@@ -1,0 +1,49 @@
+<div class="">
+  <form action="{:url($method)}" method="post" enctype="multipart/form-data" id="myform">
+    <input type="hidden" name="id" value="{$info.id|default=0}">
+    <table class="table table-bordered table-hover definewidth m10">
+      <tbody>
+   
+        
+          <tr>
+        <th>角色名称：</th>
+        <td><input class="form-control w30" name="title" id="title" type="text" value="{$info.title|default=''}">
+          </td>
+      </tr>
+  
+  
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" {present name="info['status']"} {eq name="info['status']" value="1"} selected="selected" {/eq}  {/present} >启用</option>
+            <option value="0" {present name="info['status']"} {eq name="info['status']" value="0"} selected="selected" {/eq} {/present}  >禁用</option>
+          </select>
+          <div class="help-block">如果禁用那么只有超级管理员才可以访问，其他用户都无权访问</div></td>
+      </tr>
+      <tr>
+        <th>描 述：</th>
+        <td><textarea name="ramark" class="form-control">{$info.ramark|default=null}</textarea></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="clearfix form-actions">
+      <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- /row --> 
+<script type="text/javascript">
+$(function(){
+	$("#submit_form").click(function(){
+		if($("#title").val().length<=0){
+			layer.tips('请输入角色名称', '#title',{tips: [2, '#d9534f']});
+			return false;
+		}
+	});	
+});
+</script>
+

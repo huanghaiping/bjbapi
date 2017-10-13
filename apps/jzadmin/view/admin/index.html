@@ -1,0 +1,84 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+<form class="form-horizontal" action="{:url('index')}" method="post" >
+<input type="text" name="keyword" id="keyword" class="form-control search_text" placeholder="管理员名称" value="{$keyword|default=''}">
+
+<button type="submit" class="btn btn-primary btn-sm"><i class="ace-icon fa fa-search align-middle bigger-125"></i>查询</button>
+
+  <button class="btn btn-success btn-sm" type="button" onClick="window.location.href='{:url('add')}'"> <i class="ace-icon fa fa-plus align-middle bigger-125"></i> 添加管理员</button>
+</form>
+
+</div>
+
+<!-- /.page-header -->
+<div class="">
+  <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <thead>
+        <tr role="row">
+          <th  class="center"> <label class="pos-rel">ID<span class="lbl"></span> </label>
+          </th>
+          <th>管理员名称</th>
+          <th>角色名称</th>
+          <th>联系方式</th>
+          <th>添加时间</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+      	{volist name="roleList" id="vo" mod="2"}
+        <tr role="row" {eq name="mod" value="1"} class="even" {/eq} id="{$vo.user_id}" >
+          <td class="center">{$vo.user_id}</td>
+          <td ><a href="javascript:void(0)" data-rel="tooltip" data-original-title="{$vo.nickname}">{$vo.nickname}</a></td>
+          <td class="hidden-480">{$vo.title}</td>
+          <td class="hidden-480">{$vo.email}</td>
+          <td class="hidden-480">{$vo.addtime|date='Y-m-d H:i',###}</td>
+          <td class="hidden-480">
+          <a href="javascript:void" class="opStatus" val="{$vo.status}">
+          {eq name="vo['status']" value="0"}
+          	 <span class="bigger-110 red">禁用</span>
+          {else /}
+           <span class="bigger-110 green">启用</span>
+          {/eq}
+         </a>
+          </td>
+          
+          <td>
+          	<div class="hidden-sm hidden-xs action-buttons"> 
+          <div class="hidden-sm hidden-xs action-buttons btn-group"> 
+            <a class="btn btn-xs  btn-success" href="{:url('Admin/edit',array('id'=>$vo['user_id']))}" data-rel="tooltip" data-original-title="修改"> <i class="ace-icon fa fa-pencil bigger-130"></i> </a> 
+            <a class="btn btn-xs  btn-danger delete_row" href="javascript:void(0)" link="{:url('Admin/delete_admin',array('id'=>$vo['user_id']))}" data-rel="tooltip" data-original-title="删除" rid="{$vo.user_id}"> <i class="ace-icon fa fa-trash-o bigger-130"></i> </a> 
+            </div>
+            
+            
+            <div class="hidden-md hidden-lg">
+              <div class="inline pos-rel">
+                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto"> 
+                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i> </button>
+                
+                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                  <li> <a href="{:url('Admin/edit',array('id'=>$vo['user_id']))}" class="tooltip-success" data-rel="tooltip" title="" data-original-title="修改"> 
+                  <span class="green"> <i class="ace-icon fa fa-pencil-square-o bigger-120"></i> </span> </a> </li>
+                  <li> <a href="javascript:void(0)" link="{:url('Admin/delete_admin',array('id'=>$vo['user_id']))}" class="tooltip-error delete_row" data-rel="tooltip" title="" data-original-title="删除" rid="{4vo.id}"> 
+                  <span class="red"> <i class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a> </li>
+                </ul>
+              </div>
+            </div>
+            
+            </div>
+            
+            
+            </td>
+        </tr>
+        {/volist}
+        
+      </tbody>
+    </table>
+ 
+  </div>
+</div>
+<script type="text/javascript">
+var _MODEL_TABLE_="auth_group";
+var _CACHE_NAME_="";
+</script>

@@ -1,0 +1,22 @@
+<div class="breadcrumbs ace-save-state breadcrumbs-fixed" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="{:url('Index/index')}">首页</a> </li>
+    {volist name="menu_list.crumbs" id="vo"}
+    <li> <a href="{:url($vo['name'])}">{$vo.title}</a> </li>
+    {/volist}
+  </ul>
+  <!-- /.breadcrumb -->
+  
+  <div class="nav-search" id="nav-search">
+     <?php
+     $lang_model=model("Lang");
+     $lang_list=$lang_model->getLang();
+ 	  
+    ?>
+    {volist name="lang_list" id="vo"}
+    	 <a href="/{$Request.pathinfo}?lang={$vo.mark}" {if condition="LANG_SET eq $vo['mark']"} class="btn btn-minier btn-primary"  {/if}>{$vo.name}</a> &nbsp;
+    {/volist}
+ 
+  </div>
+  <!-- /.nav-search --> 
+</div>

@@ -1,0 +1,202 @@
+<style type="text/css">
+.xuanxiang_list{ width:100%; float:left; margin-top:15px;}
+.xuanxiang_list .li{ width:100%; float:left; margin-bottom:10px;}
+.xuanxiang_list .li span{ float:left; margin-right:10px; vertical-align:middle;}
+.xuanxiang_list .li a{ margin-top:10px; cursor:pointer; float:left}
+</style>
+<ul class="nav nav-tabs margin_bottom" id="myTab" >
+  {volist name="groupid" id="vo"}
+  <li {if condition="$key eq 1"} class="active" {/if} > <a href="#home_{$key}">{$vo}</a></li>
+  {/volist}
+  <li><a href="#smsconfig">短信设置</a></li>
+  <li><a href="#emailconfig">邮箱设置</a></li>
+  <li><a href="#waterconfig">水印设置</a></li>
+  <li><a href="#addSystem">添加参数</a></li>
+</ul>
+<div class="tab-content"> {volist name="groupid" id="vo"}
+  <div {if condition="$key eq 1"} class="tab-pane active" {else /}class="tab-pane"{/if}  id="home_{$key}">
+  {notempty name="system_list[$key]"}
+  <form action="{:url('Site/index')}" method="post" enctype="multipart/form-data">
+    <input name="groupid" type="hidden" value="{$key}">
+    <table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      {volist name="system_list[$key]" id="_v"}
+      <tr>
+        <th width="120">{$_v.info}：</th>
+        <td>{$_v.input_string} {notempty name="_v['mark']"}
+          <div class="help-block">{$_v.mark}</div>
+          {/notempty}</td>
+      </tr>
+      {/volist}
+      <tr>
+        <th width="120"></th>
+        <td><button class="btn btn-primary" type="submit" > <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </table>
+  </form>
+  {/notempty} </div>
+{/volist}
+<div class="tab-pane" id="smsconfig"> {include file="site:sms"} </div>
+<div class="tab-pane" id="emailconfig"> {include file="site:email"} </div>
+<div class="tab-pane" id="waterconfig"> {include file="site:watermark"} </div>
+<div class="tab-pane" id="addSystem">
+  <form action="{:url('Site/add')}" method="post">
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <tbody>
+        <tr>
+          <th style="width:140px;">变量名称:</th>
+          <td><input type="text" class="form-control w30" name="varname" id="varname" value="" ></td>
+        </tr>
+        <tr>
+          <th>变量说明:</th>
+          <td><input type="text" class="form-control w30" name="info" id="info" value=""></td>
+        </tr>
+        <tr>
+          <th>参数分类</th>
+          <td><select id="groupid" name="groupid"  class="form-control w30" >
+              <option value="">请选择参数分类</option>
+              ·{volist name="groupid" id="vo"}
+                   <option value="{$key}">{$vo}</option>
+               {/volist}
+             </select></td>
+        </tr>
+        <tr>
+          <th>变量类型</th>
+          <td><select id="input_type" name="input_type" required class="form-control w30" >
+              <option value="">请选择变量类型</option>
+              <option value="text">单行文本</option>
+              <option value="textarea">多行文本</option>
+              <option value="select" tip="格式value|text,value|text用英文逗号隔开 例子：1|文本,2|下拉菜单">下拉列表</option>
+              <option value="radio"  tip="格式value|text,value|text用英文逗号隔开 例子：1|文本,2|下拉菜单">单选按钮</option>
+              <option value="checkbox"  tip="格式value|text,value|text用英文逗号隔开 例子：1|文本,2|下拉菜单">复选框</option>
+              <option value="file">单文件上传</option>
+              <option value="multipart" tip="值留空">多参数</option>
+            </select></td>
+        </tr>
+        <tr id="value">
+          <th>变量值:</th>
+          <td><input type="text" class="form-control w30" name="value" value="">
+            <span id="tips"></span></td>
+        </tr>
+        <tr id="moban" style="display:none;">
+          <th>模板:</th>
+          <td><input type="text" class="form-control w30" name="html_text" value="">
+            <span id="html_text_tips"></span></td>
+        </tr>
+        <tr id="xuanxiang" style=" display:none">
+        	<th>选项值</th>
+            <td>
+            <button class="btn btn-success btn-sm" id="add_xuanxiang" data-number="1" type="button"><i class="ace-icon fa fa-plus align-middle bigger-125"></i>添加</button>
+            <div class="xuanxiang_list">
+            	<div class="li" id="li_1">
+                	<input name="multipart_id[]"  type="hidden" value="1" />
+                    <span>名称:<input type="text" name="multipart_remark_1" value="" /></span>
+                	<span>key:<input type="text" name="multipart_key_1" value="" /></span>
+               		<span> value :<input type="text" name="multipart_value_1" value="" /></span>
+                 	
+                     <a href="javascript:removeNode(1)" class="red"> 删除</a>
+                </div>
+          
+            </div>
+            
+            </td>
+        </tr>
+        <tr>
+          <th>备注提示:</th>
+          <td><textarea name="mark" cols="" rows="" class="form-control w30" ></textarea></td>
+        </tr>
+        <tr>
+          <th width="120"></th>
+          <td><button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+            &nbsp;&nbsp;
+            <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+</div>
+<script type="text/javascript"> 
+$(function () { 
+	$('#myTab a:first').tab('show');//初始化显示哪个tab  
+	$('#myTab a').click(function (e) { 
+	   e.preventDefault();//阻止a链接的跳转行为 
+	  $(this).tab('show');//显示当前选中的链接及关联的content 
+	}) 
+	
+	$("#input_type").change(function(){
+		var val=$(this).val();
+		if(val=="select"||val=="radio"||val=="checkbox")	{
+			$("#moban").show();
+			$("#html_text_tips").html($(this).find("option:selected").attr("tip"));	
+			$("#xuanxiang").hide();
+			$("#value").show();
+		}else if(val=="multipart"){
+			$("#xuanxiang").show();
+			$("#value").hide();
+			$("#moban").hide();
+			
+		}else{
+			$("#moban").hide();
+			$("#html_text_tips").html('');	
+			$("#xuanxiang").hide();	
+			$("#value").show();
+		}
+	});
+ //添加选择框
+ $("#add_xuanxiang").click(function(){
+		var data_number=$(this).attr("data-number");
+		var number=parseInt(data_number)+1;
+		var html='<div class="li" id="li_'+number+'">\
+                	<input name="multipart_id[]"  type="hidden" value="'+number+'" />\
+					<span>名称:<input type="text" name="multipart_remark_'+number+'" value="" /></span>\
+                	<span>key:<input type="text" name="multipart_key_'+number+'" value="" /></span>\
+               		<span> value :<input type="text" name="multipart_value_'+number+'" value="" /></span>\
+                    <a href="javascript:removeNode('+number+')" class="red"> 删除</a>\
+                </div>';
+		$(this).attr("data-number",number);
+		$(".xuanxiang_list").append(html);
+		
+  });
+  $(".delete_value").on("click",function(){
+			alert("ddd");  
+  })
+ //提交表单	
+  $("#submit_form").click(function(){
+		if($("#varname").val()==""){
+			layer.tips('请输入变量名称', '#varname',{tips: [2, '#d9534f']});
+			return false;
+		}
+		if($("#info").val()==""){
+			layer.tips('请输入变量说明', '#info',{tips: [2, '#d9534f']});
+			return false;
+		}
+		if($("#groupid").val()==""){
+			layer.tips('请输入选择参数分类', '#groupid',{tips: [2, '#d9534f']});
+			return false;
+		}
+		if($("#input_type").val()==""){
+			layer.tips('请输入选择变量类型', '#input_type',{tips: [2, '#d9534f']});
+			return false;
+		}
+	});	
+	
+ }) 
+ //移除添加的节点
+function removeNode(liid){
+	var li_length=$(".xuanxiang_list").find(".li").length;
+	if(li_length<2){
+		layer.alert("不能删除所有节点",{icon:2});
+		return false;
+	}
+	var obj=$("#li_"+liid);
+	layer.confirm('确定要移除?移除后不可恢复', {
+			btn: ['确定','取消'] //按钮
+	 }, function(index){
+		obj.remove();
+		layer.close(index);	
+	});
+
+}
+</script> 

@@ -1,0 +1,79 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+  <button class="btn btn-success btn-sm" onClick="window.location.href='{:url('add_rule')}'"> <i class="ace-icon fa fa-plus align-middle bigger-125"></i> 添加规则 </button>
+</div>
+
+<!-- /.page-header -->
+<div class="">
+  <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <thead>
+        <tr role="row">
+          <th  class="center"> <label class="pos-rel">
+              <input type="checkbox" class="ace">
+              <span class="lbl"></span> </label>
+          </th>
+          <th>菜单名称</th>
+          <th>图标</th>
+          <th>规则</th>
+          <th>条件</th>
+          <th>类型</th>
+          <th> 排序</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+      	{volist name="rule_list" id="vo" mod="2"}
+        <tr role="row" {eq name="mod" value="1"} class="even" {/eq} id="{$vo.id}" pid="{$vo.pid}">
+          <td class="center"><label class="pos-rel">
+              <input type="checkbox" class="ace" value="{$vo.id}">
+              <span class="lbl"></span> </label></td>
+          <td class="sort_tree" title="点击折叠"><a href="{:url('Admin/edit_rule',array('id'=>$vo['id']))}" data-rel="tooltip" data-original-title="{$vo.title}">{$vo.fullname}</a></td>
+          <td><i class="{$vo.icon}"></i></td>
+          <td>{$vo.name}</td>
+          <td class="hidden-480">{$vo.condition}</td>
+          <td>{$vo.level_text}</td>
+          <td title="点击排序" fd="sort" edit="0">{$vo.sort}</td>
+          <td class="hidden-480">
+          <a href="javascript:void" class="opStatus" val="{$vo.status}">
+          {eq name="vo['status']" value="0"}
+          	 <span class="bigger-110 red">禁用</span>
+          {else /}
+           <span class="bigger-110 green">启用</span>
+          {/eq}
+         </a>
+          </td>
+          
+          <td>
+          	<div class="hidden-sm hidden-xs action-buttons"> 
+            <a class="green" href="{:url('Admin/edit_rule',array('id'=>$vo['id']))}" data-rel="tooltip" data-original-title="修改"> <i class="ace-icon fa fa-pencil bigger-130"></i> </a> 
+            <a class="red delete_row" href="javascript:void(0)" link="{:url('Admin/delete_rule',array('id'=>$vo['id']))}" data-rel="tooltip" data-original-title="删除" rid="{$vo.id}"> <i class="ace-icon fa fa-trash-o bigger-130"></i> </a> 
+            </div>
+            
+            
+            <div class="hidden-md hidden-lg">
+              <div class="inline pos-rel">
+                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto"> 
+                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i> </button>
+                
+                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                  <li> <a href="{:url('Admin/edit_rule',array('id'=>$vo['id']))}" class="tooltip-success" data-rel="tooltip" title="" data-original-title="修改"> 
+                  <span class="green"> <i class="ace-icon fa fa-pencil-square-o bigger-120"></i> </span> </a> </li>
+                  <li> <a href="javascript:void(0)" link="{:url('Admin/delete_rule',array('id'=>$vo['id']))}" class="tooltip-error delete_row" data-rel="tooltip" title="" data-original-title="删除" rid="{4vo.id}"> 
+                  <span class="red"> <i class="ace-icon fa fa-trash-o bigger-120"></i> </span> </a> </li>
+                </ul>
+              </div>
+            </div></td>
+        </tr>
+        {/volist}
+        
+      </tbody>
+    </table>
+ 
+  </div>
+</div>
+<script type="text/javascript">
+var _MODEL_TABLE_="auth_rule";
+var _CACHE_NAME_="auth_rule_category";
+</script>

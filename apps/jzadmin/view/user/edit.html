@@ -1,0 +1,175 @@
+<div class="content">
+      <form action="{:url($method)}" method="post" enctype="multipart/form-data" name="form2" id="playList">
+        <input name="uid" type="hidden" value="{$info.uid|default=''}">
+        <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+          <tbody>
+            <tr>
+              <th width="11%">头像：</th>
+              <td width="89%">{notempty name="info['faceurl']"}<img src="{$info.faceurl}" width="100" style="max-height:200px" />{else /}未上传{/notempty}
+               </td>
+            </tr>
+            <tr>
+              <th width="11%">Last name：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="last_name" name="last_name"  value="{$info.last_name|default=''|stripslashes}" type="text">
+               </td>
+            </tr>
+             <tr>
+              <th width="11%">First name：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="first_name" name="first_name"  value="{$info.first_name|default=''|stripslashes}" type="text">
+               </td>
+            </tr>
+               <tr>
+              <th width="11%">绘画习惯：</th>
+              <td width="89%">
+                   <select name="drawing_habits"  class="form-control" style="width:85%">
+                       		<option value="0">Please choose drawing habits</option>
+                            <option value="1" {if condition="isset($info['drawing_habits']) and $info['drawing_habits'] eq 1"} selected="selected"{/if}>Left handed</option>
+                            <option value="2"  {if condition="isset($info['drawing_habits']) and $info['drawing_habits'] eq 2"} selected="selected"{/if}>Right handed</option>
+                       </select>
+             </td>
+            </tr>
+            
+                 <tr>
+              <th width="11%">生日日期：</th>
+              <td width="89%">  <input name="birth" id="birth" type="text" value="{$info.birth|default=''|date='m/d/Y',###}" class="form-control w30"></td>
+            </tr>
+            <tr>
+            	<td>所咋地区</td>
+                <td>
+        {include file="area/form" /}
+                </td>
+            </tr>
+             
+       <tr>
+              <th width="11%">用户积分：</th>
+              <td width="89%">{$info.score|default=0}</td>
+            </tr>
+            
+            <tr>
+              <th width="11%">邮件：</th>
+              <td width="89%">
+              <input name="old_email" type="hidden" value="{$info.email|default=''}">
+              <input class="common-text required form-control w30" id="email" name="email"  value="{$info.email|default=''}" type="text">
+              {if condition="$info['is_email'] eq 1"}
+              <div class="help-block"><a>已验证</a>,修改邮箱影响用户登录</div>
+              {else /}
+              <div class="help-block"><span class="red">邮箱未验证</span>,修改可能会邮箱影响用户登录</div>
+              {/if}
+               </td>
+            </tr>
+            
+            
+            <tr>
+              <th>新密码：</th>
+              <td><input class="common-text required form-control w30" id="password" name="password"  value="" type="text">
+              <div class="help-block">留空表示不修改密码</div>
+              </td>
+            </tr>
+            <tr>
+              <th>确认密码：</th>
+              <td><input class="common-text required form-control w30" id="re_password" name="re_password"  value="" type="text">
+              <div class="help-block">留空表示不修改密码</div>
+              </td>
+            </tr>
+            
+             <tr>
+              <th width="11%">性别：</th>
+              <td width="89%">
+              <select name="sex" class="form-control w30">
+                  <option value="1" 
+                
+                  {if condition="isset($info['sex']) and $info['sex'] eq 1"}selected="selected" {/if}
+                  >男
+                
+                  </option>
+                  <option value="0"  
+                
+                  {if condition="isset($info['sex']) and $info['sex'] eq 0"}selected="selected" {/if}
+                  >女
+                
+                  </option>
+                </select>
+               </td>
+            </tr>
+            
+              <tr>
+              <th width="11%">QQ：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="qq" name="qq"  value="{$info.qq|default=''}" type="text">
+               </td>
+            </tr>
+              <tr>
+              <th width="11%">手机：</th>
+              <td width="89%"><input class="common-text required form-control w30" id="mobile" name="mobile"  value="{$info.mobile|default=''}" type="text">
+               </td>
+            </tr>
+           
+              
+              <tr>
+              <th>冻结用户：</th>
+              <td><select name="status" class="form-control w30">
+                  <option value="1" 
+                
+                  {if condition="isset($info['status']) and $info['status'] eq 1"}selected="selected" {/if}
+                  >开启
+                
+                  </option>
+                  <option value="0"  
+                
+                  {if condition="isset($info['status']) and $info['status'] eq 0"}selected="selected" {/if}
+                  >禁用
+                
+                  </option>
+                </select></td>
+            </tr>
+              <tr>
+              <th width="11%">注册时间：</th>
+              <td width="89%">{$info.reg_time|default=''|getFormatTime}
+               </td>
+            </tr>
+               <tr>
+              <th width="11%">注册IP：</th>
+              <td width="89%">{$info.reg_ip|default=''}
+               </td>
+            </tr>
+              <tr>
+              <th width="11%">最后登录时间：</th>
+              <td width="89%">{$info.last_login|default=''|getFormatTime}
+               </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+{css href='__STATIC__/ace/css/bootstrap-datetimepicker.min.css' /}
+{js href='__STATIC__/ace/js/bootstrap-datetimepicker.min.js' /}
+<script type="text/javascript">  
+$("#birth").datetimepicker(
+   {
+	  format:"mm/dd/yyyy",
+	  todayBtn:  1,
+	  autoclose: 1,
+	  todayHighlight: 1,
+	  minView: "month",
+	  endDate : new Date()
+  }
+);   
+$(document).ready(function(){	
+	$("#submit_form").click(function(){
+		var level_name = $('#level_name').val();
+		if(level_name.length<=0){
+			layer.tips('等级名称不能为空', '#level_name',{tips: [2, '#d9534f']});
+			return false;
+		}
+		return true; 
+	});	
+});
+
+</script>
+

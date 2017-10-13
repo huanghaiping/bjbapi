@@ -1,0 +1,94 @@
+<!-- /.page-header -->
+
+<div class="">
+  <form action="{:url($method)}" method="post" enctype="multipart/form-data" id="myform">
+    <input type="hidden" name="id" value="{$info.id|default=0}">
+    <table class="table table-bordered table-hover definewidth m10">
+      <tbody>
+        <tr>
+          <th>父级菜单：</th>
+          <td><select name="pid" class="form-control w30">
+              <option value="0" level="-1">根节点</option>
+              {volist name="rule_list" id="vo"}
+              <option value="{$vo.id}" level="{$vo.level}" {present name="info['pid']"} {eq name="info['pid']" value="$vo['id']"} selected="selected" {/eq}{/present} >{$vo.fullname}</option>
+              {/volist}
+            </select></td>
+        </tr>
+        
+          <tr>
+        <th>菜单名称：</th>
+        <td><input class="form-control w30" name="title" id="title" type="text" value="{$info.title|default=''}">
+          <div class="help-block"> 中英文均可(开发人员填写)</div></td>
+      </tr>
+     
+      <tr>
+        <th width="120">权限规则：</th>
+        <td><input name="name" id="name" type="text" class="form-control w30" size="40" {if condition="isset($info['name'])"}value="{$info['name']}"{else/} value="{$Request.module}/" {/if} >
+          <div class="help-block"> 英文，为MODEL_NAME的时候首字母大写(开发人员填写)</div></td>
+      </tr>
+    
+      <tr>
+        <th>访问条件：</th>
+        <td><input class="form-control w30" name="condition" id="condition" type="text" size="40" value="{$info.condition|default=''}">
+          <div class="help-block"> 中英文均可(开发人员填写)</div></td>
+      </tr>
+         <tr>
+      <th>图标设置：</th>
+        <td><input name="icon" id="icon" type="text" class="form-control w30" size="40" value="{$info.icon|default=''}">
+          <div class="help-block">后台图标采用<a href="http://fontawesome.io/icons/" target="_blank">font-awesome字体图标</a></div></td>
+      </tr>
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" {present name="info['status']"} {eq name="info['status']" value="1"} selected="selected" {/eq}  {/present} >启用</option>
+            <option value="0" {present name="info['status']"} {eq name="info['status']" value="0"} selected="selected" {/eq} {/present}  >禁用</option>
+          </select>
+          <div class="help-block">如果禁用那么只有超级管理员才可以访问，其他用户都无权访问</div></td>
+      </tr>
+      <tr>
+        <th>类型：</th>
+        <td><select name="level" class="form-control w30">
+            <option value="1"  {present name="info['level']"}  {eq name="info['level']" value="1"} selected="selected" {/eq} {/present} >项目</option>
+            <option value="4"  {present name="info['level']"}  {eq name="info['level']" value="4"} selected="selected" {/eq} {/present} >栏目菜单</option>
+            <option value="2"  {present name="info['level']"}  {eq name="info['level']" value="2"} selected="selected" {/eq} {/present} >模块控制器</option>
+            <option value="3"  {present name="info['level']"}  {eq name="info['level']" value="3"} selected="selected" {/eq} {/present} >操作</option>
+          </select>
+          <div class="help-block">项目（GROUP） 栏目菜单（MODULE）  模块(CONTROLLER); 操作（ACTION_NAME）</div></td>
+      </tr>
+      <tr>
+        <th>显示排序：</th>
+        <td><input class="form-control w30" name="sort" type="text" size="40" value="{$info.sort|default=0}">
+        <div class="help-block">排序按从小到大排序</div>
+        </td>
+      </tr>
+      <tr>
+        <th>描 述：</th>
+        <td><textarea name="remark" class="form-control">{$info.remark|default=null}</textarea></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="clearfix form-actions">
+      <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- /row --> 
+<script type="text/javascript">
+$(function(){
+	$("#submit_form").click(function(){
+		if($("#title").val().length<=0){
+			var index=layer.alert('请输入菜单名称',{"icon":2},function(){
+				$("#title").focus();
+				layer.close(index);
+			});
+			
+			return false;
+		}
+	});	
+});
+</script>
+

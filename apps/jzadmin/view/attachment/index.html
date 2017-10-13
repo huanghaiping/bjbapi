@@ -1,0 +1,285 @@
+{__NOLAYOUT__}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{load href="__STATIC__/ace/css/bootstrap.min.css,__STATIC__/ace/js/jquery-2.1.4.min.js" /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/uploadify/uploadify.css">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <form id="myForm" name="myForm" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-sm-12">
+        <input id="file_upload" name="file_upload" type="file" multiple="true" style=" display:none">
+        <a class="btn btn-primary glyphicon glyphicon-open" style="float:left; margin-right:15px;" href="javascript:$('#file_upload').uploadify('upload','*')"> 
+        <span style='position:relative;'>开始上传</span></a>
+      <a class="btn btn-default glyphicon glyphicon-plus" style='margin-right: 15px' href="javascript:;" onclick="localFile('{:url('Attachment/lists',array('field'=>$info['field'],'type'=>$info['type'],'myid'=>'queueFile','path'=>$info['path']))}')">
+      <span style='padding-left:5px;position:relative;top:-1px'>浏览文件</span></a> 
+      <a class="btn btn-primary glyphicon glyphicon-plus" href="javascript:;" onclick="remoteFun('{$info.type}','{$info.field}')"> <span style='padding-left:5px;position:relative;top:-1px'>网络地址</span></a> 
+      </div>
+      <div class="col-sm-12" style="margin:10px 0px 0px 0px; padding:0;">
+      	  {if condition="$info['type'] eq 'image' or $info['type'] eq 'images'"}
+          <label class="checkbox-inline" style='color:red; float:left;'> <input type="checkbox" id="water" name="water">添加水印, </label>
+          {/if}
+          <div>最多上传<b id="upload_maxnum_total">{$info.upload_maxnum}</b>个文件,单文件最大 {$info.upload_maxsize|byteFormat}, 支持 {$info.upload_allowext|getImageExt} 格式。</div>
+      </div>
+    </div>
+    <div class="row" style='padding:0; margin:0'>
+    <div class="row"  style='padding:0 0 10px 0; margin:0'>共选择了<b id="total_file">0</b>个文件,成功上传 <b id="total_file_success">0</b> 个,上传失败<b  id="total_file_failure">0</b> 个</div>
+ 	<div class="row" style="border: 1px solid #E5E5E5; height:250px; overflow:auto;">
+        <div id="queue"></div>      	
+        <div id="queueFile"> </div>
+ 	</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12"> 
+        <!--returnData('tupian','contentlist','#tupian-layer-images')-->
+        <input id="sessionId" name="sessionId" type="hidden" value="<?php echo session_id();?>"/>
+        <button type="button" class="btn btn-primary" id="subok" onclick="returnData('{$info.field}','','#{$info.field}_txt')"><i class="glyphicon glyphicon-ok"></i>&nbsp;确定</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-default" onclick="closeIframe()"><i class="glyphicon glyphicon-remove"></i>&nbsp;取消</button>
+      </div>
+    </div>
+  </form>
+</div>
+<?php $timestamp = time();?>
+<script type="text/javascript">
+$(function() {
+		var upload_url="{:url('Attachment/upload')}";
+		var type="{$info.type}",Filedata="{$info.field}",path="{$info.path}",upload_maxnum="{$info.upload_maxnum}",upload_maxsize="{$info.upload_maxsize}",upload_allowext="{$info.upload_allowext|getImageExt}",upload_no_allowext="{$info.upload_allowext}",sessionId=$("#sessionId").val();
+		//判断已上传文件
+		var already_file=$(parent.document).find("#"+Filedata+"_txt").find("."+type+"_list").length;
+		if(already_file>0){
+			upload_maxnum=parseInt(upload_maxnum)-already_file;
+		}
+		$("#upload_maxnum_total").html(upload_maxnum);
+		if(upload_maxnum<=0){
+			parent.layer.msg("可上传文件数为0！",{icon:2,time:2000,shade: [0.3,'#000']},function(){
+				closeIframe();
+		   		return false;
+			});
+			
+		}
+		var formData={'type' : type,'field':Filedata,'path':path,'upload_allowext':upload_no_allowext,'upload_maxsize':upload_maxsize,'timestamp' : '<?php echo $timestamp;?>','token': "<?php echo md5('unique_salt' . $timestamp);?>",'PHPSESSID': sessionId};
+        $('#file_upload').uploadify({
+			'debug' : false, 
+            'swf'      : '__STATIC__/uploadify/uploadify.swf', //指定上传控件的主体文件
+            'uploader' :  upload_url+'?jsessionid='+sessionId+'&ver='+Math.random(),    //指定服务器端上传处理文件
+            'buttonText'   : '选择文件', //上传按钮样式
+			'buttonClass'  : 'glyphicon glyphicon-plus', //添加按钮class类
+			'auto'         : false, //是否自动上传
+			'fileSizeLimit': parseInt(upload_maxsize), //允许文件大小KB，3M,否则最大100M
+			'uploadLimit'  : parseInt(upload_maxnum),//可上载的文件的最大数目。
+			'queueSizeLimit' : parseInt(upload_maxnum),
+			'fileTypeExts' : upload_allowext, //文件类型
+			'height'	   : 36, //按钮高度
+			'queueID'      : 'queue', //文件显示队列的DOM id
+			'formData'     : formData, //额外发送数据
+			'fileObjName'  : Filedata, //$_FILES['Filedata']
+			'uploadScript' : upload_url, //服务器处理函数
+			'removeCompleted' : true, //移除上传的队列
+			'dnd'          : true, //文件拖拽上传
+			'onUploadComplete' : function(file) {
+					 
+			},
+			'onSelect' : function(file) {
+				var total_file=parseInt($("#total_file").html());
+            	$("#total_file").html(total_file+1);
+       		 },
+			'onUploadStart' : function(filesToUpload){
+					indexA = parent.layer.load(2,{shade:[0.3,'#000']});
+					if($('#water').prop('checked')){
+						$("#file_upload").uploadify("settings", "formData", { "watermark": 1 });
+					}
+			},
+			'onUploadSuccess':function(file, data, response){
+				 var json = $.parseJSON(data);
+				 if(json.status){
+						if(json.type == 'images'||json.type == 'image'){
+							$("#queueFile").append('<div class="img images" onclick="changeImgok(this)"><img src="'+json.url+'" fileData='+escape(data)+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" title="删除" onclick="delFiles(this,event)"></div></div>');
+						} else {
+							$("#queueFile").append('<div class="img files" onclick="changeImgok(this)"><img src="__STATIC__/uploadify/img/readme.png" fileData='+escape(data)+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" title="删除" onclick="delFiles(this,event)"></div></div>');
+						}
+						var total_file_success=parseInt($("#total_file_success").html());
+            			$("#total_file_success").html(total_file_success+1);
+						var upload_maxnum_total=$("#upload_maxnum_total").html();
+						$("#upload_maxnum_total").html(parseInt(upload_maxnum_total)-1);
+						
+					} else {
+						var total_file_failure=parseInt($("#total_file_failure").html());
+            			$("#total_file_failure").html(total_file_failure+1);
+						layer.msg(json.info,{icon:2,time:3000},function(){});
+					}
+			},
+			'onQueueComplete' : function(){
+					parent.layer.close(indexA);
+			},
+			'onUploadError':function(file, errorCode, errorMsg){
+				parent.layer.alert("上传失败:"+errorMsg+"=="+file.name+"=="+errorCode);
+			}
+
+        });
+		
+
+});
+
+/**
+ * [changeImgok 改变文件的状态]
+ * @param  {[type]} obj [description]
+ * @return {[type]}     [description]
+ */
+function changeImgok (obj) {
+	if($(obj).find('.imgok').length == 1){
+		$(obj).find('.imgok').remove();
+	} else {
+		$(obj).append('<div class="imgok"></div>');
+	}
+}
+
+/**
+ * [delNoFiles 只移除不删除文件]
+ * @param  {[type]} obj [description]
+ * @return {[type]}     [description]
+ */
+function delNoFiles (obj,event) {
+	//禁止冒泡
+	event.stopPropagation();
+	$(obj).parent('.img').remove();
+}
+
+/**
+ * [delFiles 删除文件]
+ * @param  {[type]} obj [description]
+ * @return {[type]}     [description]
+ */
+function delFiles (obj,event) {
+	//禁止冒泡
+	event.stopPropagation();
+	var json = $.parseJSON(unescape($(obj).siblings('img').attr('fileData')));
+	$.post("{:url('Attachment/del')}", json, function(data, textStatus, xhr) {
+		if(data.status){
+			$(obj).parent('.img').remove();
+			var upload_maxnum_total=$("#upload_maxnum_total").html();
+			$("#upload_maxnum_total").html(parseInt(upload_maxnum_total)+1);
+			$("#file_upload").uploadify("settings", "uploadLimit", parseInt(upload_maxnum_total)+1);
+		} else {
+			parent.layer.msg(data.info,{icon:2,time:2000,shade: [0.3,'#000']});
+		}
+
+	});
+}
+/**
+ * [localFile 获取本地文件]
+ * @return {[type]} [description]
+ */
+function localFile(url){
+	url = url + "?iframe=" + window.name;
+	parent.layer.open({
+		type:2,
+		title:'本地文件',
+		area: ['50%','60%'],
+		content: url
+	});
+}
+
+
+/**
+ * [remoteFun 获取远程文件]
+ * @return {[type]} [description]
+ */
+function remoteFun(type,field){
+	parent.layer.prompt({
+		value: '',
+		title: '网络地址'
+	}, function(value, index, elem){
+		//验证类型
+		if(type == 'image'||type == 'images'){
+			var json = {type:type,status:1,field:field,url:value,photo:value,savename:"demo"};
+			$("#queueFile").append('<div class="img images" onclick="changeImgok(this)"><img src="'+json.url+'" fileData='+escape(JSON.stringify(json))+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" data-rel="tooltip" data-original-title="删除" title="删除" onclick="delFiles(this,event)"></div></div>');
+		} else {
+			var json = {type:type,status:1,field:field,url:value,photo:value,savename:"demo"};
+			$("#queueFile").append('<div class="img files" onclick="changeImgok(this)"><img src="__STATIC__/uploadify/img/readme.png" fileData='+escape(JSON.stringify(json))+' title="'+json.name+'"><div class="imgok"></div><div class="imgdel" data-rel="tooltip" data-original-title="删除" title="删除" onclick="delFiles(this,event)"></div></div>');
+		}
+		var upload_maxnum_total=$("#upload_maxnum_total").html();
+		$("#upload_maxnum_total").html(parseInt(upload_maxnum_total)-1);
+		$("#file_upload").uploadify("settings", "uploadLimit", parseInt(upload_maxnum_total)-1);
+		parent.layer.close(index);
+	});
+}
+
+/**
+ * [closeIframe 关闭父级iframe]
+ */
+function closeIframe(){
+	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	parent.layer.close(index);
+}
+/**
+ * [returnData 返回数据给父级页面]
+ * @param  {[type]} field [父级字段id]
+ * @param  {[type]} myid  [放内容的id]
+ * @return {[type]}       [description]
+ */
+function returnData(field,iframe,myid){
+	//获取数据放置页面id,这是暂时的一个解决方案
+	if(typeof parent.frames[iframe] == 'undefined'){
+		var parentId = $(parent.document).find(myid);
+	} else {
+		var parentId = $(parent.frames[iframe].document).find(myid);
+	}
+
+	var myImg = $("#queueFile").find('div.img');
+	var imgok = myImg.find('div.imgok');
+
+	//未选中则提示错误
+	if(imgok.length <= 0){
+		parent.layer.msg("请选择文件！",{icon:2,time:2000,shade: [0.3,'#000']},function(){
+		   return false;
+		});
+		return false;
+	}
+
+	//获取imgok上级.img
+	var del_url="{:url('Attachment/del')}";
+	var imgokParent = imgok.parent('.img');
+	if(imgokParent.length > 0){
+		$.each(imgokParent, function(index, val) {
+			var jsondata = $.parseJSON(unescape($(val).find('img').attr('fileData')));
+			var indexdata = (index+1)*200;
+			switch(jsondata.type){
+				case "image" : 
+					var appendstr = '<div class="'+jsondata.type+'_list">\
+					<img class="fancybox"  src="'+jsondata.url+'" delfile="'+jsondata.url+'"><div class="imgdel" data-rel="tooltip" data-original-title="删除"  title="删除" onclick="delFiles(this,\''+del_url+'\',\''+field+'\')"></div></div>';
+					$(parent.document).find("#"+field).val(jsondata.url);
+					parentId.show();
+					parentId.html(appendstr);
+					break;
+				case "images" :  
+					var appendstr = '<div class="'+jsondata.type+'_list"><img class="fancybox" src="'+jsondata.url+'"  delfile="'+jsondata.url+'"><div class="'+jsondata.type+'_name"><input type="text" class="common-text form-control" name="'+field+'['+indexdata+'][name]" placeholder="文件名称" value="'+jsondata.url+'" ></div><div class="'+jsondata.type+'_sort"><input type="text" class="common-text form-control" name="'+field+'['+indexdata+'][sort]" placeholder="文件排序" value="'+(index+1)+'" onkeyup="value=value.replace(/[^\\d]/ig,\'\')" ></div><div class="imgdel" data-rel="tooltip" data-original-title="删除" title="删除" onclick="delFiles(this,\''+del_url+'\',\''+field+'\')"></div></div>';
+				parentId.show();
+				parentId.append(appendstr);
+				break;
+				
+				case "file" :
+				 var appendstr = '<div class="'+jsondata.type+'_list">\
+					<img class="fancybox"  src="__STATIC__/uploadify/img/readme.png"  delfile="'+jsondata.url+'"><div class="imgdel" data-rel="tooltip" data-original-title="删除" title="删除" onclick="delFiles(this,\''+del_url+'\',\''+field+'\')"></div></div>';
+					$(parent.document).find("#"+field).val(jsondata.url);
+					parentId.show();
+					parentId.html(appendstr);
+				break;
+				case "files" : 
+					var appendstr = '<div class="'+jsondata.type+'_list"><img class="fancybox" src="__STATIC__/uploadify/img/readme.png"  delfile="'+jsondata.url+'"><div class="'+jsondata.type+'_name"><input type="text" class="common-text form-control" name="'+field+'['+indexdata+'][name]" placeholder="文件名称" value="'+jsondata.url+'" ></div><div class="'+jsondata.type+'_sort"><input type="text" class="common-text form-control" name="'+field+'['+indexdata+'][sort]" placeholder="文件排序" value="'+(index+1)+'" onkeyup="value=value.replace(/[^\\d]/ig,\'\')" ></div><div class="imgdel" data-rel="tooltip" data-original-title="删除" title="删除" onclick="delFiles(this,\''+del_url+'\',\''+field+'\')"></div></div>';
+				parentId.show();
+				parentId.append(appendstr);
+				break;
+			}
+			
+		});
+	}
+	closeIframe();
+}
+
+</script>
+</body>
+</html>

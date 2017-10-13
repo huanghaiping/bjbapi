@@ -1,0 +1,49 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+    <button class="btn btn-success  btn-sm" onclick="javascript:window.location.href='{:url('add')}'" ><i class="ace-icon fa fa-plus align-middle bigger-125"></i>添加语言</button>
+    <button class="btn btn-success btn-sm"  onclick="javascript:window.location.href='{:url('addparam')}'"><i class="ace-icon fa fa-plus align-middle bigger-125"></i>添加参数</button>
+</div>
+
+  <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <thead>
+      <tr align="center">
+        <th>ID</th>
+        <th>语言名称</th>
+        <th width="13%">语言标识</th>
+        <th width="10%">语言图标</th>
+         <th width="12%">状态 </th>
+        <th width="15%">排序</th>
+        <th width="24%" colspan="2"> 操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {volist name="list" id="tree"}
+        <tr id="{$tree.id}">
+          <td width="10%" align="center">{$tree.id}
+            <input type="hidden" name="id" value="{$tree.id}"/></td>
+          <td width="16%" class="tree" style="cursor: pointer;">{$tree.name}</td>
+          <td>{$tree.mark}</td>
+          <td>{notempty name="tree['flag']"}<img src="{$tree.flag}" width="50" />{/notempty}</td>
+          <td><a href="javascript:void(0)" class="opStatus" val="{$tree.status}" field="status">
+            {if condition="$tree['status'] eq 0"}<span class="red">禁用</span>
+              {else /}
+              启用{/if}
+            </a></td>
+          <td fd="listorder" edit="0">{$tree.listorder}</td>
+          <td><a href="{:url('edit',array('id'=>$tree['id']))}"  class="green" data-rel="tooltip" data-original-title="修改">修改</a>&nbsp;|&nbsp;
+          <a href="javascript:void(0);" class="delete_row red"  link="{:url('dellang',array('id'=>$tree['id']))}" data-rel="tooltip" data-original-title="删除">删除</a>
+        &nbsp;|&nbsp;
+             <!--   <a href="{:url('setlang',array('id'=>$tree['id'],'type'=>'index'))}"  data-rel="tooltip" data-original-title="网站语言包"  class="green">网站语言包</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp;-->
+          <a href="{:url('setlang',array('id'=>$tree['id'],'type'=>'api'))}"  data-rel="tooltip" data-original-title="接口语言包"  class="green">接口语言包</a>
+          
+          </td>
+        </tr>
+      {/volist}
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+var _MODEL_TABLE_="lang";
+var _CACHE_NAME_="lang";
+</script>

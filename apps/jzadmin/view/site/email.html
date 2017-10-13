@@ -1,0 +1,111 @@
+<form action="{:url('email')}" method="post" enctype="multipart/form-data" name="form2" id="playList_email">
+  <table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <tbody>
+      <tr>
+        <th width="11%">邮箱地址：</th>
+        <td width="89%"><input class="common-text required form-control w30" id="from_name" name="from_name"  value="{$email_info.from_name|default=''}" type="text">
+          <div class="help-block">例如：例如：admin@qq.com</div></td>
+      </tr>
+      <tr>
+        <th>SMTP服务器：</th>
+        <td><input class="common-text required form-control w30" id="smtp" name="smtp" value="{$email_info.smtp|default=''}" type="text">
+          <div class="help-block">例如：smtp.qq.com</div></td>
+      </tr>
+      <tr>
+        <th>SMTP端口号：</th>
+        <td><input class="common-text required form-control w30" id="port" name="port"  value="{$email_info.port|default=''}" type="text">
+          <div class="help-block">例如：25</div></td>
+      </tr>
+      <tr>
+        <th>邮箱登录帐号：</th>
+        <td><input class="common-text required form-control w30" id="accout" name="accout" value="{$email_info.accout|default=''}" type="text">
+          <div class="help-block">例如:admin@qq.com</div></td>
+      </tr>
+      <tr>
+        <th>邮箱密码：</th>
+        <td><input class="common-text required form-control w30" id="password" name="password" value="{$email_info.password|default=''}" type="text"></td>
+      </tr>
+      <tr>
+        <th>发件人名字：</th>
+        <td><input class="common-text required form-control w30" id="fromusername" name="fromusername" value="{$email_info.fromusername|default=''}" type="text"></td>
+      </tr>
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" 
+            {if condition="isset($email_info['status']) and $email_info['status'] eq 1"} selected="selected" {/if}
+            >开启
+            </option>
+            <option value="0"  
+            {if condition="isset($email_info['status']) and $email_info['status'] eq '0'" } selected="selected" {/if}
+            >关闭
+            </option>
+          </select></td>
+      </tr>
+      <tr>
+        <th>邮件测试：</th>
+        <td><input class="common-text required form-control w30" id="ceshi_email" name="ceshi_email" value="{$email_info.ceshi_email|default=''}" placeholder="请输入测试邮件地址" type="text" style="float:left; width:50%;">
+          <input class="btn btn-info btn6 mr10" value="发送测试邮件" type="button" id="testemail" val="0"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><button class="btn btn-primary" type="submit" id="submit_email"  val="1"> <i class="ace-icon fa fa-check bigger-110"></i> 保存配置 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<script type="text/javascript">    
+$(document).ready(function(){
+	$("#testemail,#submit_email").click(function(){
+		var val=$(this).attr("val");
+		var from_name = $('#from_name').val();
+		if(from_name.length<=0){
+			layer.tips('邮箱地址地址不能为空', '#from_name',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var smtp = $('#smtp').val();
+		if(smtp.length<=0){
+			layer.tips('SMTP服务器不能为空', '#smtp',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var port = $('#port').val();
+		if(port.length<=0){
+			layer.tips('SMTP端口号不能为空', '#port',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var accout = $('#accout').val();
+		if(accout.length<=0){
+			layer.tips('邮箱登录帐号不能为空', '#accout',{tips: [2, '#d9534f']});
+			return false;
+		}
+		var password = $('#password').val();
+		if(password.length<=0){
+			layer.tips('邮箱密码不能为空', '#password',{tips: [2, '#d9534f']});
+			return false;
+		}
+		if(val==1){
+			$("#ceshi_email").val('');
+			return true;
+		}else{
+			if($("#ceshi_email").val().length<=0){
+				layer.alert('请输入邮箱');
+				return false;	
+			}	
+		}
+		var loading=layer.msg('正在发送中', {icon: 16,time:20000});
+		$.post("{:url('email')}",$("#playList_email").serialize(),function(data){
+			layer.close(loading);
+			if(data.code==1){
+				 layer.msg(data.msg, {icon: 1});	
+			}else{
+				layer.msg(data.msg, {icon: 2});	
+			}
+
+		});
+		return false;
+	});
+});
+
+</script> 

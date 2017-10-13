@@ -1,0 +1,104 @@
+<form action="{:url('watermark')}" method="post" class="definewidth m10" style="margin-left:0px;" enctype="multipart/form-data">
+  <table  class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <tr>
+      <td width="13%" class="tableleft">是否开启图片水印</td>
+     <td width="87%"><label><input type="radio" name="status" value="1" {if condition="!isset($water_info['status']) || $water_info['status'] eq 1 "} checked="" {/if} > 
+            启用</label>
+            <label>
+            <input type="radio" name="status" value="0"  {if condition="isset($water_info['status']) and $water_info['status'] eq 0 "} checked="" {/if}>
+            禁用</label> </td>
+    </tr>
+       <tr>
+      <td width="13%" class="tableleft">水印文字内容</td>
+      <td><input type="text" name="watemard_text" id="watemard_text" class="form-control w30" value="{$water_info.watemard_text|default=''}" /><div class="help-block">&nbsp;当时文字水印时填写,默认为空</div></td>
+    </tr>
+    
+        <tr>
+      <td width="13%" class="tableleft">文字大小	</td>
+      <td><input type="text" name="watemard_text_size" id="watemard_text_size" class="form-control w30" value="{$water_info.watemard_text_size|default=18}" /><div class="help-block">px</div></td>
+    </tr>
+    
+       <tr>
+      <td width="13%" class="tableleft">文字颜色	</td>
+      <td><input type="text" name="watemard_text_color" id="watemard_text_color" class="form-control w30" value="{$water_info.watemard_text_color|default='#FFFFFF'}" /><div class="help-block">#FFFFFF为白色 #000000为黑色</div></td>
+    </tr>
+   
+   
+   
+     <tr>
+      <td width="13%" class="tableleft">文字水印边距	</td>
+      <td><input type="text" name="watermark_pospadding" id="watermark_pospadding" class="form-control w30" value="{$water_info.watermark_pospadding|default=10}" /></td>
+    </tr>
+   
+      <tr>
+      <td width="13%" class="tableleft">水印添加条件		</td>
+      <td>
+      <div style="width:20%; float:left; margin-right:15px;">
+      <input type="text" name="watermark_minwidth" id="watermark_minwidth" class="form-control w30" value="{$water_info.watermark_minwidth|default=300}" />
+      <div class="help-block">PX 宽</div>
+      </div>
+       <div style="width:20%; float:left">
+      <input type="text" name="watermark_minheight" id="watermark_minheight" class="form-control w30" value="{$water_info.watermark_minheight|default=300}"  /><div class="help-block">PX 高</div>
+      </div>
+      
+      </td>
+    </tr>
+   
+   
+    <tr>
+      <td width="13%" class="tableleft">水印图片	</td>
+      <td>
+      
+        {:widget('Attachment/index',array('field'=>"watermark_img",'type'=>"image","option"=>array("upload_maxnum"=>1,'path'=>base64_encode(UPLOADS_PATH."font")),'btnText'=>"上传水印图片",'value'=>empty($water_info['watermark_img']) ? "" : $water_info['watermark_img']))}
+      </td>
+    </tr>
+    
+    
+      <tr>
+      <td width="13%" class="tableleft">字体	</td>
+      <td>    
+      
+            {:widget('Attachment/index',array('field'=>"watemard_text_face",'type'=>"file","option"=>array("upload_maxnum"=>1,'path'=>base64_encode(UPLOADS_PATH."font"),"ext"=>'ttf,eot,svg,woff,woff2'),'btnText'=>"上传字体文件",'value'=>empty($water_info['watemard_text_face']) ? "" : $water_info['watemard_text_face']))}
+       </td>
+    </tr>
+    
+     <tr>
+      <td width="13%" class="tableleft">水印透明度	</td>
+      <td><input type="text" name="watermark_pct" id="watermark_pct" class="form-control w30" value="{$water_info.watermark_pct|default=80}" /></td>
+    </tr>
+    
+     <tr>
+      <td width="13%" class="tableleft">JPEG 水印质量	</td>
+      <td><input type="text" name="watermark_quality" id="watermark_quality" class="form-control w30" value="{$water_info.watermark_quality|default=100}" /></td>
+    </tr>
+   
+     <tr>
+      <td width="13%" class="tableleft">水印位置		</td>
+      <td>
+      <table width="60%" class="radio-label" cellpadding="0" cellspacing="0">
+		  <tbody><tr>
+		   <td><label><input class="radio_style" name="watermark_pos" value="1" type="radio" {if condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 1"}checked=""{/if} > 顶部居左</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="2" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 2"}checked=""{/if} > 顶部居中</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="3" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 3"}checked=""{/if}  > 顶部居右</label></td>
+		  </tr>
+		  <tr>
+			<td><label><input class="radio_style" name="watermark_pos" value="4" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 4"}checked=""{/if}  > 左部居中</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="5" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 5"}checked=""{/if}  > 左部居左</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="6" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 6"}checked=""{/if}  > 左部居右</label></td>
+			</tr>
+		  <tr>
+			<td><label><input class="radio_style" name="watermark_pos" value="7" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 7"}checked=""{/if}  > 底部居左</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="8" type="radio" {if  condition="isset($water_info['watermark_pos']) and $water_info['watermark_pos'] eq 8"}checked=""{/if}  > 底部居中</label></td>
+			  <td><label><input class="radio_style" name="watermark_pos" value="9" type="radio" {if  condition="!isset($water_info['watermark_pos'])  or $water_info['watermark_pos'] eq 9"}checked=""{/if}  > 底部居右</label></td>
+			</tr>
+			</tbody></table>
+      </td>
+    </tr> 
+    <tr>
+      <td class="tableleft"></td>
+      <td><button class="btn btn-primary" type="submit" id="submit_water"> <i class="ace-icon fa fa-check bigger-110"></i> 保存配置 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+    </tr>
+  </table>
+</form>

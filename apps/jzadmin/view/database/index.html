@@ -1,0 +1,144 @@
+	<div class="page-header" style="border-bottom:none; margin:0"> 
+  <button class="btn btn-success btn-sm" id="optimize" data-url="{:url('Database/optimize')}"><i class="ace-icon fa fa-cog"></i>优化表</button>
+  <button class="btn btn-success btn-sm" id="repair"  data-url="{:url('Database/repair')}"><i class="ace-icon fa fa-database" aria-hidden="true"></i>修复表</button>
+  <button type="button" class="btn submit btn-info  btn-sm" id="export"><i class="ace-icon glyphicon glyphicon-file"></i>立即备份</button>
+  </div>
+<form class="definewidth m10" method="post" action="{:url('export')}" id="myform">
+  <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+    <thead>
+      <tr>
+        <th width="20" align="center" style="text-align:center"> <label class="pos-rel">
+            <input type="checkbox" class="ace">
+            <span class="lbl"></span> </label>
+        </th>
+        <th width="196">表名</th>
+        <th width="175">表用途</th>
+        <th width="111">行数</th>
+        <th width="175">引擎类型</th>
+        <th width="200">字符集</th>
+        <th width="209">表大小</th>
+        <th width="209">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    {volist name="list" id="tab"}
+    <tr align="center">
+      <td><label class="pos-rel">
+          <input type="checkbox" class="ace" value="{$tab.Name}" name="table[]">
+          <span class="lbl"></span> </label></td>
+      <td align="left">{$tab.Name} <div class="info red"></div></td>
+      <td>{$tab.Comment}</td>
+      <td>{$tab.Rows}</td>
+      <td>{$tab.Engine}</td>
+      <td>{$tab.Collation}</td>
+      <td>{$tab.size}</td>
+      <td><a href="{:url('Database/optimize',array('tables'=>$tab['Name']))}"  class="green" data-rel="tooltip" data-original-title="优化表">优化表</a> | <a href="{:url('Database/repair',array('tables'=>$tab['Name']))}" class="green"  data-rel="tooltip" data-original-title="修复表">修复表</a></td>
+    </tr>
+    {/volist}
+      </tbody>
+      <tfoot align="center">
+        <tr>
+          <td colspan="6"  align="center"><span style="float:right">数据库中共有{$tables}张表，共计{$total}</span> </td>
+          <td>总计：{$total}</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tfoot>
+  </table>
+</form>
+<script type="text/javascript">
+$form=$("#myform");
+$export=$("#export");
+function backup(tab, code){
+	code && showmsg(tab.id, "开始备份...(0%)");
+	$.get($form.attr("action"), tab, function(data){
+		if(data.code){
+			showmsg(tab.id, data.msg);
+			if(!$.isPlainObject(data.data.tab)){
+				$export.parent().children().removeClass("disabled");
+				$export.html("备份完成，点击重新备份");
+				window.onbeforeunload = function(){ return null }
+				return;
+			}
+			backup(data.data.tab, tab.id != data.data.tab.id);
+		} else {
+			updateAlert(data.msg,'alert-error');
+			$export.parent().children().removeClass("disabled");
+			$export.html("立即备份");
+			setTimeout(function(){
+				$('#top-alert').find('button').click();
+				$(that).removeClass('disabled').prop('disabled',false);
+			},1500);
+		}
+	}, "json");
+
+}
+function showmsg(id, msg){
+	$form.find("input[value=" + tables[id] + "]").closest("tr").find(".info").html(msg);
+}
+$(function(){
+	$("#export").click(function(){
+		if($("tbody input[type='checkbox']:checked").size()==0){
+			layer.msg("请先选择你要备份的数据库表吧");
+			return false;
+		}
+		var files=[];
+		$this=$(this);
+		$("tbody input[type='checkbox'][name='table[]']:checked").each(function(i){
+			 files[i]=$(this).val();
+		 });
+		
+		$this.parent().children().addClass("disabled");
+		$this.html("正在发送备份请求...");		
+		$.post(
+                $form.attr("action"),
+                {"table":files},
+                function(data){
+                    if(data.code){
+                        tables = data.data.tables;
+                        $this.html(data.msg + "开始备份，请不要关闭本页面！");
+                        backup(data.data.tab);
+                        window.onbeforeunload = function(){ return "正在备份数据库，请不要关闭！" }
+                    } else {
+                        layer.alert(data.msg);
+                        $this.parent().children().removeClass("disabled");
+                        $this.html("立即备份");
+                        setTimeout(function(){
+        	                $('#top-alert').find('button').click();
+        	                $(that).removeClass('disabled').prop('disabled',false);
+        	            },1500);
+                    }
+                },
+                "json"
+            );
+            return false;
+	});
+	
+	//优化表
+	$("#optimize,#repair").click(function(){
+		if($("tbody input[type='checkbox']:checked").size()==0){
+			layer.msg("请先选择你处理的的表吧");
+			return false;
+		}
+		var files=[];
+		$this=$(this);
+		$("tbody input[type='checkbox'][name='table[]']:checked").each(function(i){
+			 files[i]=$(this).val();
+		 });
+		 var index = layer.load(1, {
+		  shade: [0.8,'#000'] //0.1透明度的白色背景
+		});
+		var url=$(this).attr("data-url");
+		 $.post(url,{"tables":files},function(data){
+			if(data.code){
+				layer.msg(data.msg,{icon: 1});
+			}else{
+				layer.msg(data.msg,{icon: 2});	
+			}
+			layer.close(index);
+			setTimeout("window.location.reload();",2000);	 
+		 });
+	});
+	
+});
+</script> 
