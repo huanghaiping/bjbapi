@@ -30,7 +30,8 @@ class User extends Common
             $userInfoModel->insert($userDetail);
             //默认赠送空间
             $userDiskModel=model('user.UserDisk');
-            $diskData=array('uid'=>$this->uid,'total_disk_space'=>config('registration_gift_space'),'used_disk_space'=>0);
+            $defaultRegistedSpace=config('registration_gift_space');
+            $diskData=array('uid'=>$this->uid,'total_disk_space'=>$defaultRegistedSpace,'default_disk_space'=>$defaultRegistedSpace,'used_disk_space'=>0);
             $userDiskModel->insert($diskData);
         }
         return $this->uid;

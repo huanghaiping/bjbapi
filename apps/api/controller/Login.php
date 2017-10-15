@@ -125,4 +125,25 @@ class Login extends Common
         $sessionModel->destroy_session($this->accessToken);
         return output(1, lang('EXIT_SUCCESS'));
     }
+
+    /**
+     * 找回密码
+     */
+    public function find_password(){
+
+    }
+
+    /**
+     * 找回密码之重设密码
+     */
+    public function reset_password(){
+
+    }
+
+    /**
+     * IOS客户端提交的devicetoken
+     */
+    public function devicetoken (){
+
+    }
 }

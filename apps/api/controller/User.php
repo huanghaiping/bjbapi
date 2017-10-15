@@ -12,4 +12,32 @@ class User extends  Common
         }
 
     }
+
+    /**
+     * 修改用户密码
+     */
+    public function password(){
+
+    }
+
+    /**
+     * 上传用户头像接口
+     */
+    public function upload(){
+
+    }
+
+    /**
+     * 查询用户的空间使用情况
+     */
+    public function search_user_space(){
+
+    }
+
+    /**
+     * 修改用户信息
+     */
+    public function edit(){
+
+    }
 }

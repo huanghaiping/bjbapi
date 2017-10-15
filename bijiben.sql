@@ -1,16 +1,46 @@
 /*
-MySQL Data Transfer
-Source Host: localhost
-Source Database: bijiben
-Target Host: localhost
-Target Database: bijiben
-Date: 2017-10-13 17:52:43
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50714
+Source Host           : localhost:3306
+Source Database       : bijiben
+
+Target Server Type    : MYSQL
+Target Server Version : 50714
+File Encoding         : 65001
+
+Date: 2017-10-15 22:38:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for thinki_user_authorized
+-- ----------------------------
+DROP TABLE IF EXISTS `thinki_user_authorized`;
+CREATE TABLE `thinki_user_authorized` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `type` smallint(5) NOT NULL,
+  `unionid` varchar(128) NOT NULL DEFAULT '',
+  `openid` varchar(128) NOT NULL,
+  `access_token` varchar(128) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `openid` (`openid`),
+  KEY `unionid` (`unionid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of thinki_user_authorized
+-- ----------------------------
+
 -- ----------------------------
 -- Table structure for think_ad
 -- ----------------------------
+DROP TABLE IF EXISTS `think_ad`;
 CREATE TABLE `think_ad` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `adname` varchar(50) NOT NULL DEFAULT '',
@@ -28,43 +58,13 @@ CREATE TABLE `think_ad` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for think_ad_block
+-- Records of think_ad
 -- ----------------------------
-CREATE TABLE `think_ad_block` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(128) NOT NULL,
-  `lang` char(10) NOT NULL DEFAULT '',
-  `position` varchar(128) NOT NULL DEFAULT '',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `jump_url` varchar(255) NOT NULL DEFAULT '',
-  `content` text,
-  `ctime` int(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `identifier` (`identifier`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_ad_slide
--- ----------------------------
-CREATE TABLE `think_ad_slide` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `typeid` int(11) NOT NULL DEFAULT '0',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `height` int(11) NOT NULL DEFAULT '0',
-  `width` int(11) NOT NULL DEFAULT '0',
-  `linkurl` varchar(255) NOT NULL DEFAULT '',
-  `picurl` varchar(255) NOT NULL DEFAULT '',
-  `sortslide` int(11) NOT NULL DEFAULT '0',
-  `product_title` varchar(255) NOT NULL DEFAULT '',
-  `product_description` varchar(255) NOT NULL DEFAULT '',
-  `ctime` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `typeid` (`typeid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_admin
 -- ----------------------------
+DROP TABLE IF EXISTS `think_admin`;
 CREATE TABLE `think_admin` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
@@ -82,8 +82,59 @@ CREATE TABLE `think_admin` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='网站后台管理员表';
 
 -- ----------------------------
+-- Records of think_admin
+-- ----------------------------
+INSERT INTO `think_admin` VALUES ('1', '1', 'admin', '', 'c2a1f2717ec7c61b5d5d0ab5d98252ed', '1', '', '1507876333', '127.0.0.1', '1507622633');
+
+-- ----------------------------
+-- Table structure for think_ad_block
+-- ----------------------------
+DROP TABLE IF EXISTS `think_ad_block`;
+CREATE TABLE `think_ad_block` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(128) NOT NULL,
+  `lang` char(10) NOT NULL DEFAULT '',
+  `position` varchar(128) NOT NULL DEFAULT '',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `jump_url` varchar(255) NOT NULL DEFAULT '',
+  `content` text,
+  `ctime` int(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identifier` (`identifier`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_ad_block
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_ad_slide
+-- ----------------------------
+DROP TABLE IF EXISTS `think_ad_slide`;
+CREATE TABLE `think_ad_slide` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typeid` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `height` int(11) NOT NULL DEFAULT '0',
+  `width` int(11) NOT NULL DEFAULT '0',
+  `linkurl` varchar(255) NOT NULL DEFAULT '',
+  `picurl` varchar(255) NOT NULL DEFAULT '',
+  `sortslide` int(11) NOT NULL DEFAULT '0',
+  `product_title` varchar(255) NOT NULL DEFAULT '',
+  `product_description` varchar(255) NOT NULL DEFAULT '',
+  `ctime` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `typeid` (`typeid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_ad_slide
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for think_auth_group
 -- ----------------------------
+DROP TABLE IF EXISTS `think_auth_group`;
 CREATE TABLE `think_auth_group` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` char(100) NOT NULL DEFAULT '',
@@ -95,8 +146,14 @@ CREATE TABLE `think_auth_group` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of think_auth_group
+-- ----------------------------
+INSERT INTO `think_auth_group` VALUES ('1', '超级管理员', '1', '', '如果禁用', '1');
+
+-- ----------------------------
 -- Table structure for think_auth_group_access
 -- ----------------------------
+DROP TABLE IF EXISTS `think_auth_group_access`;
 CREATE TABLE `think_auth_group_access` (
   `uid` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
@@ -106,8 +163,13 @@ CREATE TABLE `think_auth_group_access` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of think_auth_group_access
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for think_auth_rule
 -- ----------------------------
+DROP TABLE IF EXISTS `think_auth_rule`;
 CREATE TABLE `think_auth_rule` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` char(80) NOT NULL DEFAULT '',
@@ -127,203 +189,8 @@ CREATE TABLE `think_auth_rule` (
 ) ENGINE=MyISAM AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for think_email_verify
+-- Records of think_auth_rule
 -- ----------------------------
-CREATE TABLE `think_email_verify` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(32) NOT NULL DEFAULT '',
-  `type` smallint(5) NOT NULL DEFAULT '1',
-  `verify` int(6) NOT NULL DEFAULT '0',
-  `status` tinyint(2) NOT NULL DEFAULT '0',
-  `return_status` varchar(255) NOT NULL DEFAULT '',
-  `userip` varchar(64) NOT NULL DEFAULT '',
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  `check_time` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_lang
--- ----------------------------
-CREATE TABLE `think_lang` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL DEFAULT '',
-  `mark` varchar(30) NOT NULL DEFAULT '',
-  `flag` varchar(100) NOT NULL DEFAULT '',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `path` varchar(30) NOT NULL DEFAULT '',
-  `domain` varchar(30) NOT NULL DEFAULT '',
-  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_lang_param
--- ----------------------------
-CREATE TABLE `think_lang_param` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lang_id` tinyint(1) NOT NULL DEFAULT '0',
-  `module_type` char(10) NOT NULL DEFAULT 'index',
-  `mark` char(10) NOT NULL DEFAULT '',
-  `field` varchar(128) NOT NULL DEFAULT '',
-  `value` varchar(500) NOT NULL DEFAULT '',
-  `alisa` varchar(255) NOT NULL DEFAULT '',
-  `ctime` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `lang_id` (`lang_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_site
--- ----------------------------
-CREATE TABLE `think_site` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `groupid` tinyint(1) NOT NULL DEFAULT '0',
-  `varname` varchar(32) NOT NULL DEFAULT '',
-  `info` varchar(65) NOT NULL DEFAULT '',
-  `value` text,
-  `lang` char(10) NOT NULL DEFAULT '',
-  `input_type` char(20) NOT NULL DEFAULT '',
-  `mark` varchar(255) NOT NULL DEFAULT '',
-  `html_text` varchar(255) NOT NULL DEFAULT '',
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `varname` (`varname`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_sms_verify
--- ----------------------------
-CREATE TABLE `think_sms_verify` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mobile` varchar(20) NOT NULL DEFAULT '',
-  `type` smallint(5) NOT NULL DEFAULT '1',
-  `verify` int(6) NOT NULL DEFAULT '0',
-  `status` tinyint(2) NOT NULL DEFAULT '0',
-  `return_status` varchar(255) NOT NULL DEFAULT '',
-  `userip` varchar(64) NOT NULL DEFAULT '',
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  `check_time` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `mobile` (`mobile`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_user
--- ----------------------------
-CREATE TABLE `think_user` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(60) NOT NULL DEFAULT '',
-  `mobile` varchar(60) NOT NULL DEFAULT '',
-  `nickname` varchar(60) NOT NULL DEFAULT '',
-  `password` varchar(32) NOT NULL DEFAULT '',
-  `faceurl` varchar(255) NOT NULL DEFAULT '',
-  `level_id` smallint(5) NOT NULL DEFAULT '1',
-  `money` int(10) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `lang` char(10) NOT NULL DEFAULT 'cn',
-  `client_type` tinyint(1) NOT NULL DEFAULT '0',
-  `usertype` tinyint(1) NOT NULL DEFAULT '0',
-  `reg_time` int(10) NOT NULL DEFAULT '0',
-  `login_time` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `mobile` (`mobile`),
-  UNIQUE KEY `nickname` (`nickname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_user_disk
--- ----------------------------
-CREATE TABLE `think_user_disk` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `total_disk_space` float(10,2) NOT NULL DEFAULT '0.00',
-  `used_disk_space` float(10,2) NOT NULL DEFAULT '0.00',
-  PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_user_info
--- ----------------------------
-CREATE TABLE `think_user_info` (
-  `uid` int(11) NOT NULL,
-  `userip` varchar(32) NOT NULL DEFAULT '',
-  `qq` varchar(32) NOT NULL DEFAULT '',
-  `sex` tinyint(1) NOT NULL DEFAULT '0',
-  `is_email` tinyint(1) NOT NULL DEFAULT '0',
-  `update_time` int(11) NOT NULL DEFAULT '0',
-  `country_id` smallint(5) NOT NULL,
-  `province` smallint(5) NOT NULL DEFAULT '0',
-  `city` smallint(5) NOT NULL DEFAULT '0',
-  `city_name` varchar(255) NOT NULL DEFAULT '',
-  `district` smallint(5) NOT NULL DEFAULT '0',
-  `twon` smallint(5) NOT NULL DEFAULT '0',
-  `address` varchar(255) NOT NULL DEFAULT '',
-  `birth` int(11) NOT NULL DEFAULT '0',
-  `device_name` varchar(128) NOT NULL DEFAULT '',
-  UNIQUE KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_user_level
--- ----------------------------
-CREATE TABLE `think_user_level` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `level_value` int(10) NOT NULL DEFAULT '0',
-  `level_name` varchar(128) NOT NULL DEFAULT '',
-  `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `discount` smallint(5) NOT NULL DEFAULT '0',
-  `description` varchar(255) NOT NULL DEFAULT '',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `lang` char(10) DEFAULT 'cn',
-  `condition` tinyint(1) NOT NULL DEFAULT '0',
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `level_value` (`level_value`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for think_user_template
--- ----------------------------
-CREATE TABLE `think_user_template` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `temp_title` varchar(255) NOT NULL DEFAULT '' COMMENT '节点名称',
-  `temp_key` varchar(128) NOT NULL COMMENT '应用名称',
-  `content_key` text NOT NULL COMMENT '内容key',
-  `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT '标题key',
-  `send_email` tinyint(2) NOT NULL DEFAULT '1' COMMENT '是否发送邮件',
-  `send_message` tinyint(2) NOT NULL DEFAULT '1' COMMENT '是否发送消息',
-  `tip_message` varchar(255) NOT NULL DEFAULT '',
-  `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '信息类型：1 表示用户发送的 2表示是系统发送的',
-  `lang` char(10) NOT NULL DEFAULT 'cn',
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `temp_key` (`temp_key`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for thinki_user_authorized
--- ----------------------------
-CREATE TABLE `thinki_user_authorized` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `type` smallint(5) NOT NULL,
-  `unionid` varchar(128) NOT NULL DEFAULT '',
-  `openid` varchar(128) NOT NULL,
-  `access_token` varchar(128) NOT NULL,
-  `nickname` varchar(50) NOT NULL,
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `openid` (`openid`),
-  KEY `unionid` (`unionid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records 
--- ----------------------------
-INSERT INTO `think_admin` VALUES ('1', '1', 'admin', '', 'c2a1f2717ec7c61b5d5d0ab5d98252ed', '1', '', '1507876333', '127.0.0.1', '1507622633');
-INSERT INTO `think_auth_group` VALUES ('1', '超级管理员', '1', '', '如果禁用', '1');
 INSERT INTO `think_auth_rule` VALUES ('1', '', '0', '系统设置', '1', '1', '', '1', '0', '', 'fa fa-cog', '0');
 INSERT INTO `think_auth_rule` VALUES ('2', '', '0', '会员管理', '1', '1', '', '1', '10', '', 'fa fa-user', '1479181812');
 INSERT INTO `think_auth_rule` VALUES ('3', '', '0', '内容管理', '1', '1', '', '1', '30', '', '', '1479181812');
@@ -393,7 +260,91 @@ INSERT INTO `think_auth_rule` VALUES ('132', 'jzadmin/user.template/add', '100',
 INSERT INTO `think_auth_rule` VALUES ('133', 'jzadmin/user.template/edit', '100', '修改模板', '1', '1', '', '3', '0', '', '', '1492525252');
 INSERT INTO `think_auth_rule` VALUES ('134', 'jzadmin/user.template/del', '100', '删除模板', '1', '1', '', '3', '0', '', '', '1492525273');
 INSERT INTO `think_auth_rule` VALUES ('100', 'jzadmin/user.template/index', '50', '消息模板管理', '1', '1', '', '2', '20', '', '', '1490625155');
+
+-- ----------------------------
+-- Table structure for think_devicetoken
+-- ----------------------------
+DROP TABLE IF EXISTS `think_devicetoken`;
+CREATE TABLE `think_devicetoken` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `udid` varchar(128) NOT NULL,
+  `appid` varchar(64) NOT NULL,
+  `isyueyu` tinyint(2) NOT NULL DEFAULT '0',
+  `system` varchar(128) NOT NULL,
+  `devicetoken` varchar(128) NOT NULL,
+  `ctime` int(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_devicetoken
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_email_verify
+-- ----------------------------
+DROP TABLE IF EXISTS `think_email_verify`;
+CREATE TABLE `think_email_verify` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(32) NOT NULL DEFAULT '',
+  `type` smallint(5) NOT NULL DEFAULT '1',
+  `verify` int(6) NOT NULL DEFAULT '0',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `return_status` varchar(255) NOT NULL DEFAULT '',
+  `userip` varchar(64) NOT NULL DEFAULT '',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  `check_time` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `email` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_email_verify
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_lang
+-- ----------------------------
+DROP TABLE IF EXISTS `think_lang`;
+CREATE TABLE `think_lang` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL DEFAULT '',
+  `mark` varchar(30) NOT NULL DEFAULT '',
+  `flag` varchar(100) NOT NULL DEFAULT '',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `path` varchar(30) NOT NULL DEFAULT '',
+  `domain` varchar(30) NOT NULL DEFAULT '',
+  `listorder` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_lang
+-- ----------------------------
 INSERT INTO `think_lang` VALUES ('1', '中文', 'cn', '', '1', '', '', '50');
+
+-- ----------------------------
+-- Table structure for think_lang_param
+-- ----------------------------
+DROP TABLE IF EXISTS `think_lang_param`;
+CREATE TABLE `think_lang_param` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lang_id` tinyint(1) NOT NULL DEFAULT '0',
+  `module_type` char(10) NOT NULL DEFAULT 'index',
+  `mark` char(10) NOT NULL DEFAULT '',
+  `field` varchar(128) NOT NULL DEFAULT '',
+  `value` varchar(500) NOT NULL DEFAULT '',
+  `alisa` varchar(255) NOT NULL DEFAULT '',
+  `ctime` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `lang_id` (`lang_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_lang_param
+-- ----------------------------
 INSERT INTO `think_lang_param` VALUES ('1', '1', 'api', 'cn', 'PLEASE_INPUT_ACCOUNT', '请输入账号', '请输入账号', '1507627984');
 INSERT INTO `think_lang_param` VALUES ('2', '1', 'api', 'cn', 'MAILBOX_FORMAT_ERROR', '邮箱格式错误', '邮箱格式错误', '1507629034');
 INSERT INTO `think_lang_param` VALUES ('3', '1', 'api', 'cn', 'MAILBOX_HAS_REGISTERED', '邮箱已注册', '邮箱已注册', '1507629103');
@@ -413,8 +364,228 @@ INSERT INTO `think_lang_param` VALUES ('16', '1', 'api', 'cn', 'PLEASE_ENTER_LOG
 INSERT INTO `think_lang_param` VALUES ('17', '1', 'api', 'cn', 'MAILBOX_NOT_REGISTERED', '邮箱未注册', '邮箱未注册', '1507708827');
 INSERT INTO `think_lang_param` VALUES ('18', '1', 'api', 'cn', 'ACCOUNT_IS_DISABLED', '账号已禁用', '账号已禁用', '1507708883');
 INSERT INTO `think_lang_param` VALUES ('19', '1', 'api', 'cn', 'VERIFY_CODE_CORRECT', '验证码正确', '验证码正确', '1507886902');
+
+-- ----------------------------
+-- Table structure for think_note
+-- ----------------------------
+DROP TABLE IF EXISTS `think_note`;
+CREATE TABLE `think_note` (
+  `id` int(11) NOT NULL,
+  `notebook_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `label_num` int(11) DEFAULT '0',
+  `url` varchar(255) DEFAULT '',
+  `file_size` float(10,2) DEFAULT '0.00',
+  `file_ext` varchar(64) DEFAULT '',
+  `ctime` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `notebook_id` (`notebook_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_note
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_notebook
+-- ----------------------------
+DROP TABLE IF EXISTS `think_notebook`;
+CREATE TABLE `think_notebook` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) DEFAULT '0',
+  `name` varchar(255) DEFAULT '',
+  `quantity` int(10) DEFAULT '0',
+  `ctime` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_notebook
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_note_label
+-- ----------------------------
+DROP TABLE IF EXISTS `think_note_label`;
+CREATE TABLE `think_note_label` (
+  `id` int(11) NOT NULL,
+  `note_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT '',
+  `ctime` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `note_id` (`note_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_note_label
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_site
+-- ----------------------------
+DROP TABLE IF EXISTS `think_site`;
+CREATE TABLE `think_site` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `groupid` tinyint(1) NOT NULL DEFAULT '0',
+  `varname` varchar(32) NOT NULL DEFAULT '',
+  `info` varchar(65) NOT NULL DEFAULT '',
+  `value` text,
+  `lang` char(10) NOT NULL DEFAULT '',
+  `input_type` char(20) NOT NULL DEFAULT '',
+  `mark` varchar(255) NOT NULL DEFAULT '',
+  `html_text` varchar(255) NOT NULL DEFAULT '',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `varname` (`varname`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_site
+-- ----------------------------
 INSERT INTO `think_site` VALUES ('1', '3', 'EMAIL_VERIFY_TIME', '邮箱验证间隔', '60', 'cn', 'text', '单位秒(s)', '', '1507715744');
 INSERT INTO `think_site` VALUES ('2', '3', 'Mobile_verify_time', '短信发送间隔', '60', 'cn', 'text', '单位(秒)', '', '1507716654');
 INSERT INTO `think_site` VALUES ('3', '3', 'registration_gift_space', '注册赠送空间', '500', 'cn', 'text', '单位(MB)', '', '1507887413');
+
+-- ----------------------------
+-- Table structure for think_sms_verify
+-- ----------------------------
+DROP TABLE IF EXISTS `think_sms_verify`;
+CREATE TABLE `think_sms_verify` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` varchar(20) NOT NULL DEFAULT '',
+  `type` smallint(5) NOT NULL DEFAULT '1',
+  `verify` int(6) NOT NULL DEFAULT '0',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `return_status` varchar(255) NOT NULL DEFAULT '',
+  `userip` varchar(64) NOT NULL DEFAULT '',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  `check_time` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `mobile` (`mobile`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_sms_verify
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_user
+-- ----------------------------
+DROP TABLE IF EXISTS `think_user`;
+CREATE TABLE `think_user` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(60) NOT NULL DEFAULT '',
+  `mobile` varchar(60) NOT NULL DEFAULT '',
+  `nickname` varchar(60) NOT NULL DEFAULT '',
+  `password` varchar(32) NOT NULL DEFAULT '',
+  `faceurl` varchar(255) NOT NULL DEFAULT '',
+  `level_id` smallint(5) NOT NULL DEFAULT '1',
+  `money` int(10) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `lang` char(10) NOT NULL DEFAULT 'cn',
+  `client_type` tinyint(1) NOT NULL DEFAULT '0',
+  `usertype` tinyint(1) NOT NULL DEFAULT '0',
+  `reg_time` int(10) NOT NULL DEFAULT '0',
+  `login_time` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `mobile` (`mobile`),
+  UNIQUE KEY `nickname` (`nickname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_user_disk
+-- ----------------------------
+DROP TABLE IF EXISTS `think_user_disk`;
+CREATE TABLE `think_user_disk` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `total_disk_space` float(10,2) DEFAULT '0.00',
+  `used_disk_space` float(10,2) DEFAULT '0.00',
+  `default_disk_space` float(10,2) DEFAULT '0.00',
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_user_disk
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_user_info
+-- ----------------------------
+DROP TABLE IF EXISTS `think_user_info`;
+CREATE TABLE `think_user_info` (
+  `uid` int(11) NOT NULL,
+  `userip` varchar(32) NOT NULL DEFAULT '',
+  `qq` varchar(32) NOT NULL DEFAULT '',
+  `sex` tinyint(1) NOT NULL DEFAULT '0',
+  `is_email` tinyint(1) NOT NULL DEFAULT '0',
+  `update_time` int(11) NOT NULL DEFAULT '0',
+  `country_id` smallint(5) NOT NULL,
+  `province` smallint(5) NOT NULL DEFAULT '0',
+  `city` smallint(5) NOT NULL DEFAULT '0',
+  `city_name` varchar(255) NOT NULL DEFAULT '',
+  `district` smallint(5) NOT NULL DEFAULT '0',
+  `twon` smallint(5) NOT NULL DEFAULT '0',
+  `address` varchar(255) NOT NULL DEFAULT '',
+  `birth` int(11) NOT NULL DEFAULT '0',
+  `device_name` varchar(128) NOT NULL DEFAULT '',
+  UNIQUE KEY `uid` (`uid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_user_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_user_level
+-- ----------------------------
+DROP TABLE IF EXISTS `think_user_level`;
+CREATE TABLE `think_user_level` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level_value` int(10) NOT NULL DEFAULT '0',
+  `level_name` varchar(128) NOT NULL DEFAULT '',
+  `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `discount` smallint(5) NOT NULL DEFAULT '0',
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `lang` char(10) DEFAULT 'cn',
+  `condition` tinyint(1) NOT NULL DEFAULT '0',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `level_value` (`level_value`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_user_level
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for think_user_template
+-- ----------------------------
+DROP TABLE IF EXISTS `think_user_template`;
+CREATE TABLE `think_user_template` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `temp_title` varchar(255) NOT NULL DEFAULT '' COMMENT '节点名称',
+  `temp_key` varchar(128) NOT NULL COMMENT '应用名称',
+  `content_key` text NOT NULL COMMENT '内容key',
+  `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT '标题key',
+  `send_email` tinyint(2) NOT NULL DEFAULT '1' COMMENT '是否发送邮件',
+  `send_message` tinyint(2) NOT NULL DEFAULT '1' COMMENT '是否发送消息',
+  `tip_message` varchar(255) NOT NULL DEFAULT '',
+  `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '信息类型：1 表示用户发送的 2表示是系统发送的',
+  `lang` char(10) NOT NULL DEFAULT 'cn',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `temp_key` (`temp_key`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_user_template
+-- ----------------------------
 INSERT INTO `think_user_template` VALUES ('1', '用户注册邮件', 'SEND_EMAIL_REG', '<p><strong>尊敬的:{name},您好</strong><br/>感谢您使用服务，邮箱验证邮件已经发送,您只需在app输入验证码：<br/><strong>{verify}</strong></p><p>即可验证邮箱。<br/>如果在操作过程中有什么问题可以联系我们,联系我们,谢谢！<br/><br/></p>', '邮箱验证邮件已发送 ', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709641');
 INSERT INTO `think_user_template` VALUES ('2', '找回密码邮件', 'SEND_EMAIL_FIND_PASSWORD', '<p><strong>尊敬的:{name},您好</strong><br/>您的密码找回要求已经得到验证,您只需在APP客户端输入验证码：<br/><strong>{verify}</strong></p><p>输入新的密码后提交，之后您即可使用新的密码登录了。<br/>如果在操作过程中有什么问题可以联系我们的\r\n,谢谢！<br/><br/></p>', '找回密码邮件已发送', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709738');
