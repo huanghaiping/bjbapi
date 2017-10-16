@@ -251,4 +251,41 @@ class EmailVerify extends Common
         }
     }
 
+    /**
+     *  发送邮件
+     */
+    public function send($email,$type){
+        if (empty($email)){
+            $this->error=lang('MAILBOX_FORMAT_ERROR');
+            return false;
+        }
+        $userModel = model("User");
+        $userInfo = $userModel->getUserInfoByAccount($email);
+        switch ($type) {
+            //注册邮件
+            case 1 :
+                //检查邮箱是否存在
+                if ($userInfo) {
+                    $this->error=lang('MAILBOX_HAS_REGISTERED');
+                    return false;
+                }
+                $userInfo = array('email' => $email, 'nickname' => "");
+                break;
+            //找回密码
+            case 2 :
+                //检查邮箱是否存在
+                if (!$userInfo) {
+                    $this->error=lang('MAILBOX_NOT_REGISTERED');
+                    return false;
+                }
+                if ($userInfo ['status'] == 0) {
+                    $this->error=lang('ACCOUNT_IS_DISABLED');
+                    return false;
+                }
+                break;
+        }
+        $result = $this->switchSendMail($userInfo, $type);
+        return $result;
+    }
+
 }

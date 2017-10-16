@@ -21,7 +21,7 @@ class Login extends Common
         if ($this->userInfo) {
             return output(0, lang('LOGGED_IN'));
         }
-        $userAccount = isset ($this->post ['userAccount']) ? $this->post ['userAccount'] : ""; //用户账号可以邮箱，邮箱，手机
+        $userAccount = isset ($this->post ['account']) ? $this->post ['account'] : ""; //用户账号可以邮箱，邮箱，手机
         if (empty($userAccount)) {
             return output(0, lang('PLEASE_INPUT_ACCOUNT'));
         }
@@ -32,7 +32,7 @@ class Login extends Common
         $userModel = model("User");
         $userInfo = $userModel->getUserInfoByAccount($userAccount);
         if (!$userInfo) {
-            return output(0, lang('MAILBOX_NOT_REGISTERED'));
+            return output(0, lang('ACCOUNT_ERROR'));
         }
         if ($userInfo ['status'] == 0) {
             return output(0, lang('ACCOUNT_IS_DISABLED'));
@@ -62,7 +62,7 @@ class Login extends Common
         $clientType = isset ($this->post ['client_type']) ? intval($this->post ['client_type']) : 0;
         $userType = isset ($this->post ['usertype']) ? intval($this->post ['usertype']) : 1;
         $dataDetail = array();
-        $dataDetail ['country_id']= isset ($this->post ['country_id']) ? intval($this->post ['country_id']) : 0;
+        $dataDetail ['country_id'] = isset ($this->post ['country_id']) ? intval($this->post ['country_id']) : 0;
         $dataDetail ['location'] = isset ($this->post ['location']) ? ($this->post ['location']) : "";
         $dataDetail ['sex'] = isset ($this->post ['sex']) ? intval($this->post ['sex']) : 0;
         $dataDetail ['description'] = isset ($this->post ['description']) ? ($this->post ['description']) : "";
@@ -126,24 +126,69 @@ class Login extends Common
         return output(1, lang('EXIT_SUCCESS'));
     }
 
-    /**
-     * 找回密码
-     */
-    public function find_password(){
-
-    }
 
     /**
      * 找回密码之重设密码
      */
-    public function reset_password(){
-
+    public function reset_password()
+    {
+        if (empty($this->post)) {
+            return output(0, lang('INVALID_REQUEST'));
+        }
+        $account = isset ($this->post ['account']) ? $this->post ['account'] : ""; //用户注册账号
+        if (empty($account)) {
+            return output(0, lang('PLEASE_INPUT_ACCOUNT'));
+        }
+        if (checkEmailFormat($account)) {
+            $errorTip = lang('MAILBOX_NOT_REGISTERED');
+            $verifyModel = model('EmailVerify');
+        } elseif (valdeTel($account)) {
+            $errorTip = lang('MOIBLE_NOT_REG');
+            $verifyModel = model('SmsVerify');
+        } else {
+            return output(0, lang('ENTER_INPUT_EMAIL_MOBILE'));
+        }
+        $userModel = model("User");
+        $isCheckUser = $userModel->getUserInfoByAccount($account);
+        if (!$isCheckUser) {
+            return output(0, $errorTip);
+        }
+        $verify = isset ($this->post ['verify']) ? $this->post ['verify'] : "";
+        if (empty($verify) || !$verifyModel->checkVerify($account, $verify, 2)) {
+            return output(0, lang('VERIFY_ERROR'));
+        }
+        $password= isset ( $this->post ['password'] ) ? $this->post ['password'] : "";
+        if (empty ( $password ) || ! letterOrNumber ( $password )) {
+            return output(0,lang('PASSWORD_FORMAT_ERROR'));
+        }
+        $userModel->user_edit($isCheckUser['uid'],array('password'=>$password)); //修改密码
+        return output(1,lang('MODIFY_SUCCESS'));
     }
 
     /**
      * IOS客户端提交的devicetoken
      */
-    public function devicetoken (){
-
+    public function devicetoken()
+    {
+        $data=array();
+        $data ['uid'] = isset ($this->post ['uid']) ? intval($this->post ['uid']) : "";
+        $data ['devicetoken'] = isset ($this->post ['devicetoken']) ? trim($this->post ['devicetoken']) : '';
+        $data ['appid'] = (isset ($this->post ['appid'])) ? $this->post ['appid'] : "";
+        $data ['udid'] = isset ($this->post ['udid']) ? trim($this->post ['udid']) : '';
+        $data ['isyueyu'] = (isset ($this->post ['isyueyu']) && is_numeric($this->post ['isyueyu'])) ? ( int )$this->post ['isyueyu'] : 0;
+        $data ['system'] = isset ($this->post ['system_version']) ? trim($this->post ['system_version']) : '';
+        if (empty ($data ['udid'])) {
+            return $this->output(0, lang('UNIQUE_IDENTIFIER_IS_EMPTY'));
+        }
+        if (empty ($data ['devicetoken'])) {
+            return $this->output(0, lang('DEVICETOKEN_IS_EMPTY'));
+        }
+        $devicetokenModel = model("Devicetoken");
+        $result = $devicetokenModel->addDevicetoken($data);
+        if ($result) {
+            return output(1, lang('SUBMIT_SUCCESS'));
+        } else {
+            return output(0, lang('SUBMIT_FAILED'));
+        }
     }
 }
