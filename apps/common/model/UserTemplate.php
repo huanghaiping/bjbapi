@@ -49,7 +49,7 @@ class UserTemplate extends Common {
 		}
 		if (is_array ( $info ) && count ( $info ) > 0) {
 			$temp_find [] = '{time}';
-			$temp_replace [] = getFormatTime('','',$this->lang);
+			$temp_replace [] =date("Y-m-d H:i");
 			foreach ( $info as $key => $value ) {
 				$temp_find [] = "{{$key}}";
 				$temp_replace [] = $value;

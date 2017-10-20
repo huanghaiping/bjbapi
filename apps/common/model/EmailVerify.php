@@ -198,7 +198,7 @@ class EmailVerify extends Common
                 break; //数字+字母
         }
         for ($i = 0; $i < $this->CodeLength; $i++) {
-            $verify .= $chars [rand(0, mb_strlen($chars))];
+            $verify .= $chars [rand(0, mb_strlen($chars)-1)];
         }
         return $verify;
     }

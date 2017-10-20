@@ -36,5 +36,10 @@ return $array = array (
   'GET_SUCCESS' => '请求成功',
   'GET_FAILURES' => '请求失败',
   'ORDER_NO' => '暂无数据',
+  'PLEASE_SELECT_FILE' => '请选择文件',
+  'UPLOAD_SUCCESS' => '上传成功',
+  'UPLOAD_FAILED' => '上传失败',
+  'LOGIN_SUCCESS' => '登录成功',
+  'INSUFFICIENT_STORAGE_SPACE' => '存储空间不足',
 );
 ?>

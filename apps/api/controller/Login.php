@@ -25,8 +25,13 @@ class Login extends Common
         if (empty($userAccount)) {
             return output(0, lang('PLEASE_INPUT_ACCOUNT'));
         }
+        $unencryptedPwd=isset($this->post['unencryptedPwd']) ? $this->post['unencryptedPwd'] : "";
+        if (empty($unencryptedPwd)){
+            return output(0, lang('PASSWORD_FORMAT_ERROR'));
+        }
+        $unencryptedPwd=strtoupper(md5($unencryptedPwd.config('password_key')));
         $password = isset ($this->post ['password']) ? $this->post ['password'] : "";
-        if (empty ($password) || !letterOrNumber($password)) {
+        if (empty ($password) || !letterOrNumber($password) || $unencryptedPwd!=$password ) {
             return output(0, lang('PASSWORD_FORMAT_ERROR'));
         }
         $userModel = model("User");
@@ -44,6 +49,9 @@ class Login extends Common
         $sessionId = $sessionModel->addsess($userInfo ['uid'], $userInfo ['nickname'], $password);
         $userModel->where(array('uid' => $userInfo['uid']))->update(array('login_time' => time())); //更改最后登录时间和devicetoken
         $userInfo['access_token'] = $sessionId;
+        //获取头像
+        $userInfo['fileInfo']=$userModel->getUserFaceUrl($userInfo['faceurl']);
+        unset($userInfo['faceurl']);
         return output(1, lang('LOGIN_SUCCESS'), $userInfo);
     }
 
@@ -59,14 +67,12 @@ class Login extends Common
         $unionId = isset ($this->post ['unionid']) ? trim($this->post ['unionid']) : '';
         $nickname = isset ($this->post ['nickname']) ? trim($this->post ['nickname']) : '';
         $faceUrl = isset ($this->post ['faceurl']) ? trim($this->post ['faceurl']) : '';
-        $clientType = isset ($this->post ['client_type']) ? intval($this->post ['client_type']) : 0;
-        $userType = isset ($this->post ['usertype']) ? intval($this->post ['usertype']) : 1;
+        $clientType = isset ($this->post ['clientType']) ? intval($this->post ['clientType']) : 0;
+        $userType = isset ($this->post ['userType']) ? intval($this->post ['userType']) : 1;
         $dataDetail = array();
-        $dataDetail ['country_id'] = isset ($this->post ['country_id']) ? intval($this->post ['country_id']) : 0;
-        $dataDetail ['location'] = isset ($this->post ['location']) ? ($this->post ['location']) : "";
         $dataDetail ['sex'] = isset ($this->post ['sex']) ? intval($this->post ['sex']) : 0;
         $dataDetail ['description'] = isset ($this->post ['description']) ? ($this->post ['description']) : "";
-        $dataDetail['device_name'] = isset ($this->post ['device_name']) ? $this->post ['device_name'] : "";
+        $dataDetail['device_name'] = isset ($this->post ['deviceName']) ? $this->post ['deviceName'] : "";
         $dataDetail['ip'] = $this->request->ip();
         if (empty ($openId)) {
             return output(0, lang('OPENID_IS_EMPTY'));
@@ -112,20 +118,6 @@ class Login extends Common
         }
     }
 
-    /**
-     * +-----------------------------------------------------------------------
-     * 退出登录
-     * +-----------------------------------------------------------------------
-     */
-    public function logout()
-    {
-        session_unset(); //清空session变量
-        session_destroy(); //销毁session数据
-        $sessionModel = model("Session"); //生成session 数据
-        $sessionModel->destroy_session($this->accessToken);
-        return output(1, lang('EXIT_SUCCESS'));
-    }
-
 
     /**
      * 找回密码之重设密码
@@ -157,8 +149,13 @@ class Login extends Common
         if (empty($verify) || !$verifyModel->checkVerify($account, $verify, 2)) {
             return output(0, lang('VERIFY_ERROR'));
         }
+        $unencryptedPwd=isset($this->post['unencryptedPwd']) ? $this->post['unencryptedPwd'] : "";
+        if (empty($unencryptedPwd)){
+            return output(0, lang('PASSWORD_FORMAT_ERROR'));
+        }
+        $unencryptedPwd=strtoupper(md5($unencryptedPwd.config('password_key')));
         $password= isset ( $this->post ['password'] ) ? $this->post ['password'] : "";
-        if (empty ( $password ) || ! letterOrNumber ( $password )) {
+        if (empty ( $password ) || ! letterOrNumber ( $password ) || $unencryptedPwd!=$password ) {
             return output(0,lang('PASSWORD_FORMAT_ERROR'));
         }
         $userModel->user_edit($isCheckUser['uid'],array('password'=>$password)); //修改密码
@@ -176,7 +173,7 @@ class Login extends Common
         $data ['appid'] = (isset ($this->post ['appid'])) ? $this->post ['appid'] : "";
         $data ['udid'] = isset ($this->post ['udid']) ? trim($this->post ['udid']) : '';
         $data ['isyueyu'] = (isset ($this->post ['isyueyu']) && is_numeric($this->post ['isyueyu'])) ? ( int )$this->post ['isyueyu'] : 0;
-        $data ['system'] = isset ($this->post ['system_version']) ? trim($this->post ['system_version']) : '';
+        $data ['system'] = isset ($this->post ['deviceName']) ? trim($this->post ['deviceName']) : '';
         if (empty ($data ['udid'])) {
             return $this->output(0, lang('UNIQUE_IDENTIFIER_IS_EMPTY'));
         }

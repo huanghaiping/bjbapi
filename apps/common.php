@@ -226,3 +226,39 @@ function array_multi2single($array, $name = 'child') {
     }
     return $result_array;
 }
+
+/**
++----------------------------------------------------------
+ * 功能：计算文件大小
++----------------------------------------------------------
+ * @param int $bytes
++----------------------------------------------------------
+ * @return string 转换后的字符串
++----------------------------------------------------------
+ */
+function byteFormat($bytes) {
+    $sizeText = array (" B", " KB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB" );
+    return round ( $bytes / pow ( 1024, ($i = floor ( log ( $bytes, 1024 ) )) ), 2 ) . $sizeText [$i];
+}
+
+/**
+ * 字节转MB
+ * @param $bytes
+ */
+function byteTomb($bytes){
+    if (empty($bytes))
+        return 0;
+    $ratio=config('Space_exchange_ratio');
+    $bytes /= pow(intval($ratio), 2); // 0:bytes，1:kb,2:mb,3:gb
+    return number_format($bytes, 3); //3 保留3位小数
+}
+
+/**
+ * mb 转字节
+ * @param $mb
+ */
+function mbToByte($mb){
+    $ratio=config('Space_exchange_ratio');
+    $ratio=intval($ratio);
+    return floatval($mb*$ratio*$ratio);
+}

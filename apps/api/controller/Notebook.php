@@ -20,7 +20,7 @@ class Notebook extends Common
         if (empty($uid) || ($this->userInfo && $this->userInfo['uid'] != $uid)) {
             return output(0, lang('UID_IS_EMPTY'));
         }
-        $data = array();
+        $data = array('uid'=>$uid);
         $data['name'] = isset($this->post['name']) ? addSlashesFun($this->post['name']) : "";
         if (empty($data['name'])) {
             return output(0, lang('NOTEBOOK_IS_EMPTY'));
@@ -30,6 +30,7 @@ class Notebook extends Common
         $notebookId = $notebookModel->insertGetId($data);
         if ($notebookId) {
             $data['notebookId'] = $notebookId;
+            $data['quantity'] = 0;
             return output(1, lang('SAVE_SUCCESSFULLY'), $data);
         } else {
             return output(0, lang('SAVE_FAILED'));
@@ -66,6 +67,8 @@ class Notebook extends Common
         $result = $notebookModel->where(array('id' => $notebookId))->update($data);
         if ($notebookId) {
             $data['notebookId'] = $notebookId;
+            $data['quantity'] = isset($notebookInfo['quantity']) ? $notebookInfo['quantity'] : 0;
+            $data['ctime'] =$notebookInfo['ctime'];
             return output(1, lang('SAVE_SUCCESSFULLY'), $data);
         } else {
             return output(0, lang('SAVE_FAILED'));

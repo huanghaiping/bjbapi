@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: bijiben
 Target Host: localhost
 Target Database: bijiben
-Date: 2017-10-16 18:16:57
+Date: 2017-10-20 18:14:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -157,7 +157,7 @@ CREATE TABLE `think_email_verify` (
   `check_time` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_lang
@@ -188,48 +188,79 @@ CREATE TABLE `think_lang_param` (
   `ctime` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `lang_id` (`lang_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_note
 -- ----------------------------
 CREATE TABLE `think_note` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `notebook_id` int(11) NOT NULL DEFAULT '0',
   `uid` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
   `label_num` int(11) NOT NULL DEFAULT '0',
-  `url` varchar(255) NOT NULL DEFAULT '',
-  `file_size` float(10,2) NOT NULL DEFAULT '0.00',
-  `file_ext` varchar(64) NOT NULL DEFAULT '',
+  `file_id` int(11) NOT NULL DEFAULT '0',
   `ctime` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `notebook_id` (`notebook_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_note_label
 -- ----------------------------
 CREATE TABLE `think_note_label` (
-  `id` int(11) NOT NULL,
-  `note_id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `note_id` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT '',
   `ctime` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `note_id` (`note_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_notebook
 -- ----------------------------
 CREATE TABLE `think_notebook` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) DEFAULT '0',
-  `name` varchar(255) DEFAULT '',
-  `quantity` int(10) DEFAULT '0',
-  `ctime` int(11) DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `quantity` int(10) NOT NULL DEFAULT '0',
+  `ctime` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for think_oss_log
+-- ----------------------------
+CREATE TABLE `think_oss_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `typeid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 头像,1笔记',
+  `object_name` varchar(255) NOT NULL DEFAULT '',
+  `oss_url` varchar(255) NOT NULL DEFAULT '',
+  `local_url` varchar(255) NOT NULL DEFAULT '',
+  `requestheaders_host` varchar(255) NOT NULL DEFAULT '',
+  `request_id` varchar(128) NOT NULL DEFAULT '',
+  `extension` char(10) NOT NULL DEFAULT '',
+  `size` float(10,0) NOT NULL DEFAULT '0',
+  `ctime` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for think_session
+-- ----------------------------
+CREATE TABLE `think_session` (
+  `session_id` varchar(255) NOT NULL,
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `session_expire` int(11) NOT NULL,
+  `session_data` longtext,
+  `ip` varchar(64) DEFAULT '',
+  PRIMARY KEY (`session_id`),
+  UNIQUE KEY `session_id` (`session_id`),
+  KEY `ip` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -248,7 +279,7 @@ CREATE TABLE `think_site` (
   `ctime` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `varname` (`varname`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_sms_verify
@@ -265,7 +296,7 @@ CREATE TABLE `think_sms_verify` (
   `check_time` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mobile` (`mobile`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_user
@@ -286,21 +317,53 @@ CREATE TABLE `think_user` (
   `reg_time` int(10) NOT NULL DEFAULT '0',
   `login_time` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `mobile` (`mobile`),
-  UNIQUE KEY `nickname` (`nickname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  KEY `email` (`email`),
+  KEY `mobile` (`mobile`),
+  KEY `nickname` (`nickname`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for think_user_authorized
+-- ----------------------------
+CREATE TABLE `think_user_authorized` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `type` smallint(5) NOT NULL,
+  `unionid` varchar(128) NOT NULL DEFAULT '',
+  `openid` varchar(128) NOT NULL,
+  `access_token` varchar(128) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `openid` (`openid`),
+  KEY `unionid` (`unionid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_user_disk
 -- ----------------------------
 CREATE TABLE `think_user_disk` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `total_disk_space` float(10,2) DEFAULT '0.00',
-  `used_disk_space` float(10,2) DEFAULT '0.00',
-  `default_disk_space` float(10,2) DEFAULT '0.00',
+  `total_disk_space` varchar(64) NOT NULL DEFAULT '0',
+  `used_disk_space` varchar(64) NOT NULL DEFAULT '0',
+  `default_disk_space` varchar(64) NOT NULL DEFAULT '0',
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for think_user_disk_log
+-- ----------------------------
+CREATE TABLE `think_user_disk_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `typeid` tinyint(1) NOT NULL DEFAULT '0',
+  `space_size` varchar(64) NOT NULL DEFAULT '0',
+  `remark` varchar(255) NOT NULL DEFAULT '',
+  `note_id` int(11) NOT NULL DEFAULT '0',
+  `ctime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_user_info
@@ -310,7 +373,6 @@ CREATE TABLE `think_user_info` (
   `userip` varchar(32) NOT NULL DEFAULT '',
   `qq` varchar(32) NOT NULL DEFAULT '',
   `sex` tinyint(1) NOT NULL DEFAULT '0',
-  `is_email` tinyint(1) NOT NULL DEFAULT '0',
   `country_id` smallint(5) NOT NULL,
   `province` smallint(5) NOT NULL DEFAULT '0',
   `city` smallint(5) NOT NULL DEFAULT '0',
@@ -321,6 +383,7 @@ CREATE TABLE `think_user_info` (
   `birth` int(11) NOT NULL DEFAULT '0',
   `device_name` varchar(128) NOT NULL DEFAULT '',
   `update_time` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(255) NOT NULL DEFAULT '',
   UNIQUE KEY `uid` (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -362,26 +425,9 @@ CREATE TABLE `think_user_template` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for thinki_user_authorized
--- ----------------------------
-CREATE TABLE `thinki_user_authorized` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `type` smallint(5) NOT NULL,
-  `unionid` varchar(128) NOT NULL DEFAULT '',
-  `openid` varchar(128) NOT NULL,
-  `access_token` varchar(128) NOT NULL,
-  `nickname` varchar(50) NOT NULL,
-  `ctime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `openid` (`openid`),
-  KEY `unionid` (`unionid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `think_admin` VALUES ('1', '1', 'admin', '', 'c2a1f2717ec7c61b5d5d0ab5d98252ed', '1', '', '1508135923', '127.0.0.1', '1507622633');
+INSERT INTO `think_admin` VALUES ('1', '1', 'admin', '', 'c2a1f2717ec7c61b5d5d0ab5d98252ed', '1', '', '1508483807', '127.0.0.1', '1507622633');
 INSERT INTO `think_auth_group` VALUES ('1', '超级管理员', '1', '', '如果禁用', '1');
 INSERT INTO `think_auth_rule` VALUES ('1', '', '0', '系统设置', '1', '1', '', '1', '0', '', 'fa fa-cog', '0');
 INSERT INTO `think_auth_rule` VALUES ('2', '', '0', '会员管理', '1', '1', '', '1', '10', '', 'fa fa-user', '1479181812');
@@ -488,8 +534,37 @@ INSERT INTO `think_lang_param` VALUES ('32', '1', 'api', 'cn', 'NOTEBOOK_HAS_NOT
 INSERT INTO `think_lang_param` VALUES ('33', '1', 'api', 'cn', 'GET_SUCCESS', '请求成功', '请求成功', '1508144364');
 INSERT INTO `think_lang_param` VALUES ('34', '1', 'api', 'cn', 'GET_FAILURES', '请求失败', '请求失败', '1508144402');
 INSERT INTO `think_lang_param` VALUES ('35', '1', 'api', 'cn', 'ORDER_NO', '暂无数据', '暂无数据', '1508144885');
+INSERT INTO `think_lang_param` VALUES ('36', '1', 'api', 'cn', 'PLEASE_SELECT_FILE', '请选择文件', '请选择文件', '1508222769');
+INSERT INTO `think_lang_param` VALUES ('37', '1', 'api', 'cn', 'UPLOAD_SUCCESS', '上传成功', '上传成功', '1508231448');
+INSERT INTO `think_lang_param` VALUES ('38', '1', 'api', 'cn', 'UPLOAD_FAILED', '上传失败', '上传失败', '1508231459');
+INSERT INTO `think_lang_param` VALUES ('39', '1', 'api', 'cn', 'LOGIN_SUCCESS', '登录成功', '登录成功', '1508317596');
+INSERT INTO `think_lang_param` VALUES ('40', '1', 'api', 'cn', 'INSUFFICIENT_STORAGE_SPACE', '存储空间不足', '存储空间不足', '1508470787');
+INSERT INTO `think_note` VALUES ('3', '10', '24', 'bijiben', '0', '9', '1508486095');
+INSERT INTO `think_note` VALUES ('4', '10', '24', 'bijiben', '0', '8', '1508486631');
+INSERT INTO `think_note` VALUES ('5', '10', '24', 'bijiben', '0', '8', '1508486698');
+INSERT INTO `think_note` VALUES ('6', '10', '24', 'bijiben', '0', '8', '1508486761');
+INSERT INTO `think_note` VALUES ('7', '10', '24', 'bijiben', '0', '8', '1508486783');
+INSERT INTO `think_note` VALUES ('8', '10', '24', 'bijiben', '0', '8', '1508486787');
+INSERT INTO `think_note_label` VALUES ('2', '7', '标签1', '1508486783');
+INSERT INTO `think_note_label` VALUES ('3', '7', '标签2', '1508486783');
+INSERT INTO `think_note_label` VALUES ('4', '7', '标签3', '1508486783');
+INSERT INTO `think_note_label` VALUES ('5', '8', '标签1', '1508486787');
+INSERT INTO `think_note_label` VALUES ('6', '8', '标签2', '1508486787');
+INSERT INTO `think_note_label` VALUES ('7', '8', '标签3', '1508486787');
+INSERT INTO `think_notebook` VALUES ('10', '24', 'bijiben', '4', '1508485876');
+INSERT INTO `think_oss_log` VALUES ('8', '24', '0', 'images/20171020/831334e21f230101f59974547fb08132.jpg', 'http://images-storage.oss-cn-shanghai.aliyuncs.com/images/20171020/831334e21f230101f59974547fb08132.jpg', '/Uploads/images/20171020/831334e21f230101f59974547fb08132.jpg', 'images-storage.oss-cn-shanghai.aliyuncs.com', '59E9A9EE8AFF986AFEEA1714', 'jpg', '55212', '1508485570');
+INSERT INTO `think_oss_log` VALUES ('9', '24', '1', 'note/20171020/213dc0bae003b3e2c5c618071d8c416b.png', 'http://images-storage.oss-cn-shanghai.aliyuncs.com/note/20171020/213dc0bae003b3e2c5c618071d8c416b.png', '/Uploads/note/20171020/213dc0bae003b3e2c5c618071d8c416b.png', 'images-storage.oss-cn-shanghai.aliyuncs.com', '59E9AB589B6B1883FCF16D0D', 'png', '281123', '1508485932');
+INSERT INTO `think_session` VALUES ('35d29090e6b1f7018eaab99013038ef4', '23', '1516260967', 'a:3:{s:3:\"uid\";s:2:\"23\";s:8:\"username\";s:8:\"YWxhbg==\";s:12:\"access_token\";s:32:\"35d29090e6b1f7018eaab99013038ef4\";}', '127.0.0.1');
+INSERT INTO `think_session` VALUES ('31ab7d04dfa3934a480ce5310d2cc892', '24', '1516261401', 'a:3:{s:3:\"uid\";i:24;s:8:\"username\";s:8:\"YWxhbg==\";s:12:\"access_token\";s:32:\"31ab7d04dfa3934a480ce5310d2cc892\";}', '127.0.0.1');
 INSERT INTO `think_site` VALUES ('1', '3', 'EMAIL_VERIFY_TIME', '邮箱验证间隔', '60', 'cn', 'text', '单位秒(s)', '', '1507715744');
 INSERT INTO `think_site` VALUES ('2', '3', 'Mobile_verify_time', '短信发送间隔', '60', 'cn', 'text', '单位(秒)', '', '1507716654');
 INSERT INTO `think_site` VALUES ('3', '3', 'registration_gift_space', '注册赠送空间', '500', 'cn', 'text', '单位(MB)', '', '1507887413');
+INSERT INTO `think_site` VALUES ('4', '3', 'Space_exchange_ratio', '空间存储兑换单位', '1024', 'cn', 'text', '', '', '1508471487');
+INSERT INTO `think_sms_verify` VALUES ('3', '15013352853', '1', '651061', '1', 'a:3:{s:6:\"status\";i:1;s:3:\"msg\";s:2:\"OK\";s:6:\"verify\";s:6:\"651061\";}', '127.0.0.1', '1508484776', '1508485168');
+INSERT INTO `think_user` VALUES ('24', '', '15013352853', 'alan', '6F8CB0469317DE322A8E82D40BB91DB5', '8', '1', '0', '1', 'cn', '1', '1', '1508485168', '1508485401');
+INSERT INTO `think_user_disk` VALUES ('24', '524288000', '281123', '524288000');
+INSERT INTO `think_user_disk_log` VALUES ('2', '24', '3', '524288000', '新增空间:524288000,=500.000M,注册默认赠送', '0', '1508485168');
+INSERT INTO `think_user_disk_log` VALUES ('3', '24', '1', '281123', '使用空间:281123,=0.268M,上传笔记消耗空间', '0', '1508485932');
+INSERT INTO `think_user_info` VALUES ('24', '127.0.0.1', '', '0', '0', '0', '0', '', '0', '0', '', '0', 'iphone se', '1508485735', '');
 INSERT INTO `think_user_template` VALUES ('1', '用户注册邮件', 'SEND_EMAIL_REG', '<p><strong>尊敬的:{name},您好</strong><br/>感谢您使用服务，邮箱验证邮件已经发送,您只需在app输入验证码：<br/><strong>{verify}</strong></p><p>即可验证邮箱。<br/>如果在操作过程中有什么问题可以联系我们,联系我们,谢谢！<br/><br/></p>', '邮箱验证邮件已发送 ', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709641');
 INSERT INTO `think_user_template` VALUES ('2', '找回密码邮件', 'SEND_EMAIL_FIND_PASSWORD', '<p><strong>尊敬的:{name},您好</strong><br/>您的密码找回要求已经得到验证,您只需在APP客户端输入验证码：<br/><strong>{verify}</strong></p><p>输入新的密码后提交，之后您即可使用新的密码登录了。<br/>如果在操作过程中有什么问题可以联系我们的\r\n,谢谢！<br/><br/></p>', '找回密码邮件已发送', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709738');

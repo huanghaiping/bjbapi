@@ -16,7 +16,7 @@ class Common extends \think\Controller
     {
         $this->lang = LANG_SET;
         $this->post = $this->filter_post($this->request->post()); //获取POST传过来的值
-        $this->accessToken = $this->post && isset($this->post['access_token']) ? $this->post['access_token'] : "";
+        $this->accessToken = $this->post && isset($this->post['accessToken']) ? $this->post['accessToken'] : "";
         $action = $this->request->action();
         if (empty($this->accessToken)) { //当请求无效的时候
            exit(outputJson(401, lang('INVALID_REQUEST')) );
@@ -25,7 +25,7 @@ class Common extends \think\Controller
         $uid = isset ( $this->post ['uid'] ) ? intval ( $this->post ['uid'] ) : 0; //当前登录用户
         $this->userInfo=$sessionModel->_check_user($uid,$this->accessToken);
         if (!$this->userInfo){
-            $accessToken=$sessionModel->updateSession($this->session_id,'USER_INFO_KEY');
+            $accessToken=$sessionModel->updateSession($this->accessToken,'USER_INFO_KEY');
             if (empty($accessToken)) {
                 exit(outputJson(401, lang('INVALID_REQUEST')) );
             }

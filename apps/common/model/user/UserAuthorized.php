@@ -1,5 +1,5 @@
 <?php
-namespace  \app\common\model\user;
+namespace app\common\model\user;
 
 class UserAuthorized extends \app\common\model\Common
 {

@@ -41,21 +41,23 @@ class Reg extends Common
         if (empty($verify) || !$verifyModel->checkVerify($account, $verify, 1)) {
             return output(0, lang('VERIFY_ERROR'));
         }
+        $unencryptedPwd=isset($this->post['unencryptedPwd']) ? $this->post['unencryptedPwd'] : "";
+        if (empty($unencryptedPwd)){
+            return output(0, lang('PASSWORD_FORMAT_ERROR'));
+        }
+        $unencryptedPwd=strtoupper(md5($unencryptedPwd.config('password_key')));
         $regData['password'] = isset ($this->post ['password']) ? $this->post ['password'] : "";
-        if (empty ($regData['password']) || !letterOrNumber($regData['password'])) {
+        if (empty ($regData['password']) || !letterOrNumber($regData['password']) || $unencryptedPwd!=$regData['password']) {
             return output(0, lang('PASSWORD_FORMAT_ERROR'));
         }
         $regData['nickname'] = isset ($this->post ['nickname']) ? $this->post ['nickname'] : "";
         if (empty($regData['nickname'])) {
             return output(0, lang('NICKNAME_EMPTY'));
         }
-        if ($userModel->getUserInfoByAccount($regData['nickname'])) {
-            return output(0, lang('NICKNAME_ALREADY_EXISTS'));
-        }
-        $regData['client_type'] = isset ($this->post ['client_type']) ? intval($this->post ['client_type']) : 0;
-        $regData['usertype'] = isset ($this->post ['usertype']) ? intval($this->post ['usertype']) : 1;
-        $device_name = isset ($this->post ['device_name']) ? $this->post ['device_name'] : "";
-        $userInfoData = array('device_name' => $device_name, 'userip' => $this->request->ip());
+        $regData['client_type'] = isset ($this->post ['clientType']) ? intval($this->post ['clientType']) : 0;
+        $regData['usertype'] = isset ($this->post ['userType']) ? intval($this->post ['userType']) : 1;
+        $device_name = isset ($this->post ['deviceName']) ? $this->post ['deviceName'] : "";
+        $userInfoData = array('device_name' => $device_name, 'ip' => $this->request->ip());
         $uid = $userModel->addUser($regData, $userInfoData);
         if ($uid) {
             //保存session数据

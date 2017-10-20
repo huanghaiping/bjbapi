@@ -19,7 +19,7 @@ class Token extends \think\Controller
         $appid = isset ($postData ['appid']) ? $postData ['appid'] : time(); //应用的ID
         $appsecret = isset ($postData ['appsecret']) ? $postData ['appsecret'] : md5(time()); //应用的密钥
         if ($appid != '2017100986524496' && $appsecret != '56b8285d6789f2890554885788eb0c64') {
-            return output(401, lang('INVALID_REQUEST'));
+            return output(0, lang('INVALID_REQUEST'));
         }
         $sessionModel = model("Session");
         $sessionModel->gen_session_id($appid, $appsecret); //生成session 数据
