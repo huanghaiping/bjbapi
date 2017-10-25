@@ -41,5 +41,6 @@ return $array = array (
   'UPLOAD_FAILED' => '上传失败',
   'LOGIN_SUCCESS' => '登录成功',
   'INSUFFICIENT_STORAGE_SPACE' => '存储空间不足',
+  'NOTE_DISABLED' => '笔记已禁用',
 );
 ?>

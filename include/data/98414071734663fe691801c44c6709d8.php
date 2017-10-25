@@ -1,10 +1,10 @@
 <?php return array (
-  'from_name' => 'webmaster@xp-pen.com',
-  'smtp' => 'smtp.ym.163.com',
+  'from_name' => 'service@mail.hanvontouch.com',
+  'smtp' => 'smtpdm.aliyun.com',
   'port' => '465',
-  'accout' => 'webmaster@xp-pen.com',
-  'password' => 'ugee87537115',
+  'accout' => 'service@mail.hanvontouch.com',
+  'password' => 'hanvontouchUGEE123',
   'fromusername' => 'ugee',
   'status' => '1',
-  'ceshi_email' => '451648237@qq.com',
+  'ceshi_email' => '1073763462@qq.com',
 );

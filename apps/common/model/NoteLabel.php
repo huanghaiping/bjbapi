@@ -73,6 +73,7 @@ class NoteLabel extends Common
         foreach ($labelListArray as $value){
             $data[]=array('note_id'=>$noteId,'name'=>$value,'ctime'=>time());
         }
+        model("Note")->where(array('id'=>$noteId))->setField("label_num",count($data));
         $result=$this->insertAll($data);
         return $result;
     }

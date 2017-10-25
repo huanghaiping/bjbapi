@@ -112,30 +112,37 @@ function getUserType($typeid = 0)
 {
     $type_string = '';
     switch ($typeid) {
-        case 0 :
+        case 1 :
             $type_string = "web";
             break;
-        case 1 :
-            $type_string = "IOS";
-            break;
         case 2 :
-            $type_string = "Android";
-            break;
-        case 3 :
             $type_string = "QQ";
             break;
-        case 4 :
+        case 3 :
             $type_string = "Sina";
             break;
-        case 5 :
+        case 4 :
             $type_string = "微信";
             break;
         default :
-            $type_string = "应用";
+            $type_string = "web";
             break;
     }
     return $type_string;
 }
+
+/**
+ * @param $typeId
+ */
+function getClientType($typeId=0){
+    $typeString='';
+    switch ($typeId){
+        case 1 : $typeString="IOS"; break;
+        case 2 : $typeString="Android"; break;
+    }
+    return $typeString;
+}
+
 /**
  * +-----------------------------------------
  * 返回表的DB对象
@@ -261,4 +268,24 @@ function mbToByte($mb){
     $ratio=config('Space_exchange_ratio');
     $ratio=intval($ratio);
     return floatval($mb*$ratio*$ratio);
+}
+
+/**
+ * 格式化时间格式
+ * Enter description here ...
+ */
+function getFormatTime($time = '', $format = '',$lang='') {
+    $time=	empty ( $time ) ?  time() : $time;
+    $time=! is_numeric ( $time ) ? strtotime ( $time ) : $time;
+    $lang= empty ( $lang ) ?  LANG_SET : $lang;
+    $time_string = '';
+    switch ($lang) {
+        case "cn" :
+            $time_string = date ( empty ( $format ) ? 'Y-m-d H:i:s' : $format, $time );
+            break;
+        case "en" :
+            $time_string = date ( empty ( $format ) ? 'M d,Y A H:i' : $format, $time );
+            break;
+    }
+    return $time_string;
 }

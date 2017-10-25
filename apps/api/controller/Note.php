@@ -153,6 +153,9 @@ class Note extends  Common
         if (!$noteInfo || ($noteInfo && $noteInfo['uid']!=$uid)){
             return output(0, lang('PARAM_ERROR'));
         }
+        if ($noteInfo['status']==0){
+            return output(0, lang('NOTE_DISABLED'));
+        }
         $noteInfo['labelList']=array();
         if ($noteInfo['label_num']>0){
             $noteLabelModel=model('NoteLabel');

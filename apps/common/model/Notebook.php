@@ -20,5 +20,26 @@ class Notebook extends Common
         return $noteBookInfo;
     }
 
+    /**
+     * 批量获取笔记本名称
+     * @param $notebookIds
+     */
+    public function getNoteBookListByIds($notebookIds){
+        if (empty($notebookIds))
+            return false;
+        $notebookIds=is_array($notebookIds) ? implode(",",$notebookIds) : "";
+        $noteBookList=$this->where(array("id"=>array('in',$notebookIds)))->order("id desc")->select();
+        if (!$noteBookList->isEmpty()){
+            $noteBookList=$noteBookList->toArray();
+            $noteBookListRow=array();
+            foreach ($noteBookList as $value){
+                $noteBookListRow[$value['id']]=$value;
+            }
+            unset($noteBookList);
+            return $noteBookListRow;
+        }
+        return false;
+    }
+
 
 }

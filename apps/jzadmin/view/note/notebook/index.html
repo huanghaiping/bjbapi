@@ -1,0 +1,59 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+  <form action="{:url('index')}" method="post" name="form" class="form-inline definewidth m10">
+    <input name="keyword" type="text"   value="{$keyword|default=''}" placeholder="笔记名称"  class="form-control search_text">
+    <select name="status"  class="select form-control search_select">
+      <option value="">状态</option>
+      <option value="0"  {if condition="isset($status) and $status eq 0"} selected="selected" {/if}>禁用</option>
+      <option value="1"  {if condition="isset($status) and $status eq 1"} selected="selected" {/if}>启用</option>
+    </select>
+    <button name="btn" type="submit" class="btn btn-primary btn-sm"><i class="ace-icon fa fa-search align-middle bigger-125"></i> 查 询</button>
+ 
+
+  </form>
+</div>
+<table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+  <thead>
+    <tr>
+      <th width="3%"><label class="pos-rel">
+          <input type="checkbox" class="ace">
+          <span class="lbl"></span> </label></th>
+      <th>ID</th>
+      <th>昵称</th>
+      <th>笔记本名称</th>
+      <th>笔记数量</th>
+      
+      <th>状态</th>
+      <th>添加日期</th>
+   
+    </tr>
+  </thead>
+  <tbody>
+  
+  {volist name="list" id="vo" key="k"}
+  <tr id="{$vo.id}">
+    <td align="center"><label class="pos-rel">
+        <input type="checkbox" class="ace" name="ids[]"  value="{$vo.id}">
+        <span class="lbl"></span> </label></td>
+    <td align="left"> {$vo.id}</td>
+      <td align="left">{$vo.userInfo.nickname}</td>
+    <td align="left">{$vo.name}</td>
+     <td align="left"><a href="{:url('note.note/index',array('notebook_id'=>$vo['id']))}">{$vo.quantity|default=0}</a></td>
+     
+    <td align="left"><a href="javascript:void(0)" class="opStatus" val="{$vo.status}">{if condition="$vo['status'] eq 1"}启用
+      {else /} <span class="red">禁用</span>{/if}</a></td>
+    <td align="left">{$vo.ctime|getFormatTime}</td>
+ 
+  </tr>
+  {/volist}
+  {if condition="isset($page)&&trim($page) neq '' "}
+  <tr bgcolor="#FFFFFF">
+    <td colspan="11" align="right"><div class="dataTables_paginate paging_simple_numbers">{$page}</div></td>
+  </tr>
+  {/if}
+    </tbody>
+  
+</table>
+<script type="text/javascript">
+var _MODEL_TABLE_="notebook";
+var _CACHE_NAME_="";
+</script>

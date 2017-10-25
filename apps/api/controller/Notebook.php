@@ -157,6 +157,9 @@ class Notebook extends Common
         if (!$notebookInfo || ($notebookInfo && $notebookInfo['uid'] != $uid)) {
             return output(0, lang('PARAM_ERROR'));
         }
+        if ($notebookInfo['status']==0){
+            return output(0, lang('NOTE_DISABLED'));
+        }
         return output(1, lang('GET_SUCCESS'), $notebookInfo);
     }
 }

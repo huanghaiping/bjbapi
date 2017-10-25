@@ -106,7 +106,7 @@ class Site extends Common {
 			$email_config=F("EmailConfig_".$this->lang,$param,array('path'=>DATA_PATH));
 			if ($this->request->isAjax()&&!empty($param['ceshi_email'])&&checkEmailFormat($param['ceshi_email'])){ //发送测试邮件
 				$mail=new \Mail\SmtpMail($param);
-				$result=$mail->sendmail($param['ceshi_email'],"测试邮件","这是一封测试邮件",$param['fromusername']); 
+				$result=$mail->sendmail($param['ceshi_email'],"系统的测试邮件","尊敬的用户，您好欢迎使用邮件推送产品。这是一封测试邮件，如果有需要可以通知下开发人说明邮件有收到，否则请忽略本邮件",$param['fromusername']); 
 				if ($result&&$result['status']==1){
 					$this->success("发送成功");
 				}else{
