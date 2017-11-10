@@ -117,15 +117,8 @@ class Note extends  Common
         if (!$noteInfo || ($noteInfo && $noteInfo['uid']!=$uid)){
             return output(0, lang('PARAM_ERROR'));
         }
-        $result=$noteModel->where(array('id'=>$noteId))->delete();
+        $result=$noteModel->deleteNoteById($noteId);
         if ($result){
-            //删除旧文件操作(待处理)
-            model("AliyunOss")->deleteObject($noteInfo['file_id']);
-            //删除标签
-            model('NoteLabel')->delLabelByNoteId($noteId);
-            //笔记本统计数-1
-            $notebookModel = model('Notebook');
-            $notebookModel->where(array('id'=>$noteInfo['notebook_id']))->setDec("quantity",1);
             return output(1, lang('DELETE_SUCCESSFULLY'));
         } else {
             return output(0, lang('DELETE_FAILED'));
@@ -243,22 +236,45 @@ class Note extends  Common
         }
         $map=array('notebook_id'=>$notebookId);
         $pageSize=20;
+        $lastNoteId=isset ($this->post ['lastNoteId']) ? intval($this->post ['lastNoteId']) : 0; //请求的最后一条笔记ID
+        if (!empty($lastNoteId)){
+            $map ['id'] = array ('lt', $lastNoteId );
+        }
         $field="id,notebook_id,name,label_num,file_id,ctime";
         $noteModel = model('Note');
         $noteList=$noteModel->where($map)->order("id desc")->paginate($pageSize);
         if (!$noteList->isEmpty()){
             $noteList=$noteList->toArray();
-            $noteLabelModel=model('NoteLabel');
-            $noteLabelList=$noteLabelModel->getLabelListByNoteIds(array_unique(getSubByKey($noteList['data'] ,"id")));
-            //批量获取文件信息
-            $ossLogModel=model("OssLog");
-            $fileList=$ossLogModel->getFileInfoByIds(array_unique(getSubByKey($noteList['data'] ,"file_id")));
-            foreach ($noteList['data'] as $key=>$value){
-                $value['labelList']=$noteLabelList && array_key_exists($value['id'],$noteLabelList) ? $noteLabelList[$value['id']] :array();
-                $fileInfo=$fileList && array_key_exists($value['file_id'],$fileList) ? $fileList[$value['file_id']] :array();
-                $value['fileInfo']=$fileInfo ? $ossLogModel->getFormatFile($fileInfo) : array();
-                $noteList['data'][$key]=$value;
-            }
+            $noteList['data']=$noteModel->formatNoteInfo($noteList['data']);
+            return outputList($noteList['data'],$noteList['total'],ceil ( $noteList['total'] / $pageSize ));
+        }else{
+            return  output ( 0, lang('ORDER_NO') );
+        }
+    }
+
+    /**
+     * 获取用户下的所有笔记本
+     */
+    public function user(){
+        if (empty($this->userInfo)) {
+            return output(0, lang('PLEASE_ENTER_LOGIN'));
+        }
+        $uid = isset ($this->post ['uid']) ? intval($this->post ['uid']) : ""; //当前登录的用户uid
+        if (empty($uid) || ($this->userInfo && $this->userInfo['uid'] != $uid)) {
+            return output(0, lang('UID_IS_EMPTY'));
+        }
+        $map=array('uid'=>$uid);
+        $pageSize=20;
+        $lastNoteId=isset ($this->post ['lastNoteId']) ? intval($this->post ['lastNoteId']) : 0; //请求的最后一条笔记ID
+        if (!empty($lastNoteId)){
+            $map ['id'] = array ('lt', $lastNoteId );
+        }
+        $field="id,notebook_id,name,label_num,file_id,ctime";
+        $noteModel = model('Note');
+        $noteList=$noteModel->where($map)->order("id desc")->paginate($pageSize);
+        if (!$noteList->isEmpty()){
+            $noteList=$noteList->toArray();
+            $noteList['data']=$noteModel->formatNoteInfo($noteList['data']);
             return outputList($noteList['data'],$noteList['total'],ceil ( $noteList['total'] / $pageSize ));
         }else{
             return  output ( 0, lang('ORDER_NO') );

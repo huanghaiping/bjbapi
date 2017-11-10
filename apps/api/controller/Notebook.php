@@ -90,7 +90,8 @@ class Notebook extends Common
         }
         $data = array();
         $notebookId = isset($this->post['notebookId']) ? intval($this->post['notebookId']) : 0;
-        if (empty($notebookId)) {
+        $isDelete=isset($this->post['isDelete']) ? intval($this->post['isDelete']) : 0 ; // 1 表示只删除笔记本不删除笔记，2表示删除笔记本和笔记
+        if (empty($notebookId) || !in_array($isDelete,array(1,2))) {
             return output(0, lang('PARAM_ERROR'));
         }
         $notebookModel = model('Notebook');
@@ -98,11 +99,22 @@ class Notebook extends Common
         if (!$notebookInfo || ($notebookInfo && $notebookInfo['uid'] != $uid)) {
             return output(0, lang('PARAM_ERROR'));
         }
-        if ($notebookInfo['quantity']>0){
-            return output(0, lang('NOTEBOOK_HAS_NOTE'));
-        }
+        $noteModel=model("Note");
         $result=$notebookModel->where(array('id'=>$notebookId))->delete();
         if ($result){
+            switch ($isDelete){
+                //删除笔记本不删除笔记,去掉笔记本下所有的笔记的notebookId为0;
+                case 1 :
+                    $noteModel->noteRemoveNoteBookId($notebookId);
+                    break;
+                //删除笔记本和笔记本下的所有笔记
+                case 2 :
+                    $noteListIds=$noteModel->where("notebook_id",$notebookId)->column("id");
+                    if (!empty($noteListIds)){
+                        $noteModel->deleteNoteById($noteListIds);
+                    }
+                    break;
+            }
             return output(1, lang('DELETE_SUCCESSFULLY'));
         } else {
             return output(0, lang('DELETE_FAILED'));

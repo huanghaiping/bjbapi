@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="311fca42-ed41-4c87-85a4-a7fe8767a40d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/Uploads/images/20171020/831334e21f230101f59974547fb08132.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/Uploads/note/20171020/213dc0bae003b3e2c5c618071d8c416b.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Note.php" afterPath="$PROJECT_DIR$/apps/api/controller/Note.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Notebook.php" afterPath="$PROJECT_DIR$/apps/api/controller/Notebook.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/User.php" afterPath="$PROJECT_DIR$/apps/api/controller/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/lang/cn.php" afterPath="$PROJECT_DIR$/apps/api/lang/cn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common.php" afterPath="$PROJECT_DIR$/apps/common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/NoteLabel.php" afterPath="$PROJECT_DIR$/apps/common/model/NoteLabel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Notebook.php" afterPath="$PROJECT_DIR$/apps/common/model/Notebook.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/Ajax.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/Ajax.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/Site.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/Site.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/User.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/view/user/edit.html" afterPath="$PROJECT_DIR$/apps/jzadmin/view/user/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/view/user/index.html" afterPath="$PROJECT_DIR$/apps/jzadmin/view/user/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/data/184a736a2f93b935d0b6a013baf90fa2.php" afterPath="$PROJECT_DIR$/include/data/184a736a2f93b935d0b6a013baf90fa2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/data/98414071734663fe691801c44c6709d8.php" afterPath="$PROJECT_DIR$/include/data/98414071734663fe691801c44c6709d8.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Token.php" afterPath="$PROJECT_DIR$/apps/api/controller/Token.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Note.php" afterPath="$PROJECT_DIR$/apps/common/model/Note.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -41,6 +29,10 @@
       <find>float</find>
       <find>saveLabel</find>
       <find>delOssLog</find>
+      <find>_check_user</find>
+      <find>deleteNoteById</find>
+      <find>lastNoteId</find>
+      <find>noteRemoveNoteBookId</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,9 +49,7 @@
         <option value="$PROJECT_DIR$/apps/common/Devicetoken.php" />
         <option value="$PROJECT_DIR$/apps/common/model/Devicetoken.php" />
         <option value="$PROJECT_DIR$/apps/api/controller/Space.php" />
-        <option value="$PROJECT_DIR$/apps/common/model/Note.php" />
         <option value="$PROJECT_DIR$/apps/common/model/Attachment.php" />
-        <option value="$PROJECT_DIR$/apps/api/controller/Token.php" />
         <option value="$PROJECT_DIR$/apps/common/model/user/UserAuthorized.php" />
         <option value="$PROJECT_DIR$/apps/api/controller/Common.php" />
         <option value="$PROJECT_DIR$/apps/common/model/EmailVerify.php" />
@@ -82,9 +72,11 @@
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/note/NoteBook.php" />
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php" />
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php" />
-        <option value="$PROJECT_DIR$/apps/api/controller/Note.php" />
-        <option value="$PROJECT_DIR$/apps/api/controller/Notebook.php" />
         <option value="$PROJECT_DIR$/apps/api/controller/User.php" />
+        <option value="$PROJECT_DIR$/apps/api/controller/Token.php" />
+        <option value="$PROJECT_DIR$/apps/api/controller/Note.php" />
+        <option value="$PROJECT_DIR$/apps/common/model/Note.php" />
+        <option value="$PROJECT_DIR$/apps/api/controller/Notebook.php" />
       </list>
     </option>
   </component>
@@ -95,7 +87,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="72" />
     <option name="y" value="31" />
     <option name="width" value="1386" />
@@ -120,7 +112,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,35 +141,27 @@
               <item name="www.bjb.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="www.bjb.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="jzadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="www.bjb.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="www.bjb.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="jzadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="common" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="www.bjb.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="www.bjb.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="jzadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="ad" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="www.bjb.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www.bjb.com" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="jzadmin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="note" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="common" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,22 +256,24 @@
       <workItem from="1508913740465" duration="179000" />
       <workItem from="1508914185303" duration="148000" />
       <workItem from="1508914336559" duration="1042000" />
+      <workItem from="1510106477403" duration="3985000" />
+      <workItem from="1510285270674" duration="11372000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105284000" />
+    <option name="totallyTimeSpent" value="120641000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="72" y="31" width="1386" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17119156" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1762481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17043741" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17019667" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -314,13 +299,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/common/model/Note.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="19" column="75" lean-forward="true" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/api/controller/Notebook.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -404,13 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/api/controller/Common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -505,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/api/controller/Token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/api/controller/Reg.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -582,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/common/model/Note.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/ad/Block.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2950">
@@ -617,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/common/model/Notebook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="775">
@@ -638,24 +588,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/api/controller/Note.php">
+    <entry file="file://$PROJECT_DIR$/apps/api/controller/Common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3725">
-          <caret line="151" column="44" lean-forward="true" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
+        <state relative-caret-position="625">
+          <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/api/controller/Notebook.php">
+    <entry file="file://$PROJECT_DIR$/apps/api/model/Session.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="137" column="7" lean-forward="true" selection-start-line="137" selection-start-column="7" selection-end-line="137" selection-end-column="7" />
+        <state relative-caret-position="4900">
+          <caret line="196" column="25" lean-forward="false" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/api/controller/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="53" />
+        <state relative-caret-position="925">
+          <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/api/controller/Token.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="37" column="40" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/api/controller/Note.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="273" column="81" lean-forward="false" selection-start-line="273" selection-start-column="81" selection-end-line="273" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/model/Note.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="32" column="53" lean-forward="true" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/api/controller/Notebook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="109" column="33" lean-forward="true" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/model/Notebook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
