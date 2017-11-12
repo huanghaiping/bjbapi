@@ -1,0 +1,1780 @@
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] admin.bjb.com/ [运行时间：0.750049s][吞吐率：1.33req/s] [内存消耗：4,747.34kb] [文件加载：53]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /login/index.html
+[ info ] admin.bjb.com/login/index.html [运行时间：0.114694s][吞吐率：8.72req/s] [内存消耗：4,974.77kb] [文件加载：54]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\jzadmin\controller\Login->index[ D:\wamp64\www\www.bjb.com\apps\jzadmin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\www.bjb.com\public/../apps/jzadmin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-rtl.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-rtl.min.css [运行时间：0.202005s][吞吐率：4.95req/s] [内存消耗：2,260.41kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-rtl.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/font-awesome/4.5.0/css/font-awesome.min.css
+[ info ] admin.bjb.com/static/ace/font-awesome/4.5.0/css/font-awesome.min.css [运行时间：0.204567s][吞吐率：4.89req/s] [内存消耗：2,260.69kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'awesome' => '4.5.0',
+  'css' => 'font-awesome.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace.min.css
+[ info ] admin.bjb.com/static/ace/css/ace.min.css [运行时间：0.202254s][吞吐率：4.94req/s] [内存消耗：2,260.29kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.201466s][吞吐率：4.96req/s] [内存消耗：2,260.23kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-skins.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-skins.min.css [运行时间：0.202294s][吞吐率：4.94req/s] [内存消耗：2,260.25kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-skins.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/ace-extra.min.js
+[ info ] admin.bjb.com/static/ace/js/ace-extra.min.js [运行时间：0.035066s][吞吐率：28.52req/s] [内存消耗：2,260.17kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'ace-extra.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/jquery-2.1.4.min.js
+[ info ] admin.bjb.com/static/ace/js/jquery-2.1.4.min.js [运行时间：0.035644s][吞吐率：28.06req/s] [内存消耗：2,260.27kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'jquery-2.1.4.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.036306s][吞吐率：27.54req/s] [内存消耗：2,259.74kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.033188s][吞吐率：30.13req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.032411s][吞吐率：30.85req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /captcha.html
+[ info ] admin.bjb.com/captcha.html [运行时间：0.095593s][吞吐率：10.46req/s] [内存消耗：2,246.52kb] [文件加载：33]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\www.bjb.com\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T10:59:56+08:00 ] 127.0.0.1 127.0.0.1 GET /favicon.ico
+[ info ] admin.bjb.com/favicon.ico [运行时间：0.030493s][吞吐率：32.79req/s] [内存消耗：2,259.68kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'favicon.ico',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /login/index.html
+[ info ] admin.bjb.com/login/index.html [运行时间：0.080561s][吞吐率：12.41req/s] [内存消耗：4,721.09kb] [文件加载：52]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\jzadmin\controller\Login->index[ D:\wamp64\www\www.bjb.com\apps\jzadmin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\www.bjb.com\public/../apps/jzadmin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/bootstrap.min.css
+[ info ] admin.bjb.com/static/ace/css/bootstrap.min.css [运行时间：0.035524s][吞吐率：28.15req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'bootstrap.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace.min.css
+[ info ] admin.bjb.com/static/ace/css/ace.min.css [运行时间：0.036071s][吞吐率：27.72req/s] [内存消耗：2,260.37kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-skins.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-skins.min.css [运行时间：0.037966s][吞吐率：26.34req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-skins.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-rtl.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-rtl.min.css [运行时间：0.038716s][吞吐率：25.83req/s] [内存消耗：2,260.30kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-rtl.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/ace-extra.min.js
+[ info ] admin.bjb.com/static/ace/js/ace-extra.min.js [运行时间：0.038252s][吞吐率：26.14req/s] [内存消耗：2,260.17kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'ace-extra.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/font-awesome/4.5.0/css/font-awesome.min.css
+[ info ] admin.bjb.com/static/ace/font-awesome/4.5.0/css/font-awesome.min.css [运行时间：0.043553s][吞吐率：22.96req/s] [内存消耗：2,260.73kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'awesome' => '4.5.0',
+  'css' => 'font-awesome.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/jquery-2.1.4.min.js
+[ info ] admin.bjb.com/static/ace/js/jquery-2.1.4.min.js [运行时间：0.034668s][吞吐率：28.85req/s] [内存消耗：2,260.25kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'jquery-2.1.4.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.034001s][吞吐率：29.41req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.035623s][吞吐率：28.07req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.030950s][吞吐率：32.31req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:00+08:00 ] 127.0.0.1 127.0.0.1 GET /captcha.html
+[ info ] admin.bjb.com/captcha.html [运行时间：0.036396s][吞吐率：27.48req/s] [内存消耗：2,246.38kb] [文件加载：33]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\www.bjb.com\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /login/index.html
+[ info ] admin.bjb.com/login/index.html [运行时间：0.046742s][吞吐率：21.39req/s] [内存消耗：4,721.09kb] [文件加载：52]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\jzadmin\controller\Login->index[ D:\wamp64\www\www.bjb.com\apps\jzadmin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\www.bjb.com\public/../apps/jzadmin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/bootstrap.min.css
+[ info ] admin.bjb.com/static/ace/css/bootstrap.min.css [运行时间：0.036934s][吞吐率：27.08req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'bootstrap.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-rtl.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-rtl.min.css [运行时间：0.037829s][吞吐率：26.43req/s] [内存消耗：2,260.30kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-rtl.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/ace-extra.min.js
+[ info ] admin.bjb.com/static/ace/js/ace-extra.min.js [运行时间：0.037446s][吞吐率：26.71req/s] [内存消耗：2,260.17kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'ace-extra.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/font-awesome/4.5.0/css/font-awesome.min.css
+[ info ] admin.bjb.com/static/ace/font-awesome/4.5.0/css/font-awesome.min.css [运行时间：0.039405s][吞吐率：25.38req/s] [内存消耗：2,260.73kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'awesome' => '4.5.0',
+  'css' => 'font-awesome.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-skins.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-skins.min.css [运行时间：0.039794s][吞吐率：25.13req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-skins.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace.min.css
+[ info ] admin.bjb.com/static/ace/css/ace.min.css [运行时间：0.040641s][吞吐率：24.61req/s] [内存消耗：2,260.37kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.034033s][吞吐率：29.38req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/jquery-2.1.4.min.js
+[ info ] admin.bjb.com/static/ace/js/jquery-2.1.4.min.js [运行时间：0.033644s][吞吐率：29.72req/s] [内存消耗：2,260.25kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'jquery-2.1.4.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.033300s][吞吐率：30.03req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.029393s][吞吐率：34.02req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.029690s][吞吐率：33.68req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:01+08:00 ] 127.0.0.1 127.0.0.1 GET /captcha.html
+[ info ] admin.bjb.com/captcha.html [运行时间：0.035414s][吞吐率：28.24req/s] [内存消耗：2,246.50kb] [文件加载：33]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\www.bjb.com\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] api.bjb.com/ [运行时间：0.137542s][吞吐率：7.27req/s] [内存消耗：2,542.57kb] [文件加载：39]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:06+08:00 ] 127.0.0.1 127.0.0.1 GET /favicon.ico
+[ info ] api.bjb.com/favicon.ico [运行时间：0.030123s][吞吐率：33.20req/s] [内存消耗：2,253.23kb] [文件加载：37]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'favicon.ico',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://api.bjb.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:08+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] api.bjb.com/ [运行时间：0.029261s][吞吐率：34.18req/s] [内存消耗：2,542.77kb] [文件加载：39]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:09+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] api.bjb.com/ [运行时间：0.028098s][吞吐率：35.59req/s] [内存消耗：2,542.77kb] [文件加载：39]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:17+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] api.bjb.com/ [运行时间：0.029381s][吞吐率：34.04req/s] [内存消耗：2,542.77kb] [文件加载：39]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:18+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] api.bjb.com/ [运行时间：0.029071s][吞吐率：34.40req/s] [内存消耗：2,542.77kb] [文件加载：39]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] admin.bjb.com/ [运行时间：0.049466s][吞吐率：20.22req/s] [内存消耗：4,748.33kb] [文件加载：53]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /login/index.html
+[ info ] admin.bjb.com/login/index.html [运行时间：0.048809s][吞吐率：20.49req/s] [内存消耗：4,720.77kb] [文件加载：52]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\jzadmin\controller\Login->index[ D:\wamp64\www\www.bjb.com\apps\jzadmin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\www.bjb.com\public/../apps/jzadmin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/bootstrap.min.css
+[ info ] admin.bjb.com/static/ace/css/bootstrap.min.css [运行时间：0.034162s][吞吐率：29.27req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'bootstrap.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/font-awesome/4.5.0/css/font-awesome.min.css
+[ info ] admin.bjb.com/static/ace/font-awesome/4.5.0/css/font-awesome.min.css [运行时间：0.036876s][吞吐率：27.12req/s] [内存消耗：2,260.73kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'awesome' => '4.5.0',
+  'css' => 'font-awesome.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace.min.css
+[ info ] admin.bjb.com/static/ace/css/ace.min.css [运行时间：0.037523s][吞吐率：26.65req/s] [内存消耗：2,260.37kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-rtl.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-rtl.min.css [运行时间：0.037633s][吞吐率：26.57req/s] [内存消耗：2,260.30kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-rtl.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/ace-skins.min.css
+[ info ] admin.bjb.com/static/ace/css/ace-skins.min.css [运行时间：0.037398s][吞吐率：26.74req/s] [内存消耗：2,260.14kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'ace-skins.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/ace-extra.min.js
+[ info ] admin.bjb.com/static/ace/js/ace-extra.min.js [运行时间：0.038428s][吞吐率：26.02req/s] [内存消耗：2,260.17kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'ace-extra.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.030842s][吞吐率：32.42req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/js/jquery-2.1.4.min.js
+[ info ] admin.bjb.com/static/ace/js/jquery-2.1.4.min.js [运行时间：0.032283s][吞吐率：30.98req/s] [内存消耗：2,260.25kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'jquery-2.1.4.min.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.032164s][吞吐率：31.09req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/layer/layer.js
+[ info ] admin.bjb.com/static/layer/layer.js [运行时间：0.033292s][吞吐率：30.04req/s] [内存消耗：2,259.72kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'layer',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/jzadmin/style.css
+[ info ] admin.bjb.com/static/css/jzadmin/style.css [运行时间：0.033689s][吞吐率：29.68req/s] [内存消耗：2,260.20kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/css,*/*;q=0.1',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'jzadmin' => 'style.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:32+08:00 ] 127.0.0.1 127.0.0.1 GET /captcha.html
+[ info ] admin.bjb.com/captcha.html [运行时间：0.035631s][吞吐率：28.07req/s] [内存消耗：2,246.32kb] [文件加载：33]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\www.bjb.com\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:34+08:00 ] 127.0.0.1 127.0.0.1 GET /login/index.html
+[ info ] admin.bjb.com/login/index.html [运行时间：0.051718s][吞吐率：19.34req/s] [内存消耗：4,720.77kb] [文件加载：52]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\jzadmin\controller\Login->index[ D:\wamp64\www\www.bjb.com\apps\jzadmin\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\www.bjb.com\public/../apps/jzadmin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T11:00:36+08:00 ] 127.0.0.1 127.0.0.1 GET /static/ace/css/bootstrap.min.css
+[ info ] admin.bjb.com/static/ace/css/bootstrap.min.css [运行时间：0.032016s][吞吐率：31.23req/s] [内存消耗：2,260.86kb] [文件加载：37]
+[ info ] [ BIND ] 'jzadmin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'jzadmin',
+    1 => 'static',
+    2 => 'ace',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'admin.bjb.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://admin.bjb.com/login/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utmt=1; __utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmb=176493942.1.10.1510455585; __utmc=176493942; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=l8pu4tjsl7lheotai9julf6842',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'bootstrap.min.css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-11-12T22:25:05+08:00 ] 127.0.0.1 127.0.0.1 GET /favicon.ico
+[ info ] api.bjb.com/favicon.ico [运行时间：0.810518s][吞吐率：1.23req/s] [内存消耗：2,252.87kb] [文件加载：37]
+[ info ] [ BIND ] 'api'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'favicon.ico',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'api.bjb.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://api.bjb.com/demo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__utma=176493942.396974133.1510455585.1510455585.1510455585.1; __utmz=176493942.1510455585.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\wamp64\www\www.bjb.com\public/../apps/api\lang\cn.php
+[ info ] [ LOG ] INIT File
