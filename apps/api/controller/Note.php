@@ -20,12 +20,13 @@ class Note extends  Common
         }
         $data = array('uid'=>$uid);
         $data['notebook_id']=isset($this->post['notebookId']) ? intval($this->post['notebookId']) : 0;
-        if (empty($data['notebook_id'])){
-            return output(0, lang('PARAM_ERROR'));
-        }
         $data['name'] = isset($this->post['name']) ? addSlashesFun($this->post['name']) : "";
         if (empty($data['name'])) {
             return output(0, lang('NOTEBOOK_IS_EMPTY'));
+        }
+        $data['thumb_id']=isset($this->post['thumbId']) ? intval($this->post['thumbId']) : "";
+        if (empty($data['thumb_id'])){
+            return output(0, lang('PARAM_ERROR'));
         }
         $data['file_id']= isset($this->post['fileId']) ? intval($this->post['fileId']) : "";
         if (empty($data['file_id'])){
@@ -71,14 +72,15 @@ class Note extends  Common
         }
         $data = array('uid'=>$uid);
         $data['notebook_id']=isset($this->post['notebookId']) ? intval($this->post['notebookId']) : 0;
-        if (empty($data['notebook_id'])){
-            return output(0, lang('PARAM_ERROR'));
-        }
         $data['name'] = isset($this->post['name']) ? addSlashesFun($this->post['name']) : "";
         if (empty($data['name'])) {
             return output(0, lang('NOTEBOOK_IS_EMPTY'));
         }
         $data['file_id']= isset($this->post['fileId']) ? intval($this->post['fileId']) : "";
+        $data['thumb_id']=isset($this->post['thumbId']) ? intval($this->post['thumbId']) : "";
+        if (empty($data['thumb_id']) || empty($data['file_id'])){
+            return output(0, lang('PARAM_ERROR'));
+        }
         $data['ctime']=time();
         $result=$noteModel->where(array('id'=>$noteId))->update($data);
         if ($result) {
@@ -90,6 +92,10 @@ class Note extends  Common
             //删除旧文件操作
             if ($noteInfo['file_id']!=$data['file_id']){
                 model("AliyunOss")->deleteObject($noteInfo['file_id']);
+            }
+            //删除缩略图
+            if ($noteInfo['thumb_id']!=$data['thumb_id']){
+                model("AliyunOss")->deleteObject($noteInfo['thumb_id']);
             }
             return output(1, lang('SAVE_SUCCESSFULLY'), array('noteId'=>$noteId));
         } else {
@@ -154,9 +160,14 @@ class Note extends  Common
             $noteLabelModel=model('NoteLabel');
             $noteInfo['labelList']=$noteLabelModel->getLabelListByNoteId();
         }
+        //返回笔记文件信息
+        $ossLogModel=model("OssLog");
         if (!empty($noteInfo['file_id'])){
-            $ossLogModel=model("OssLog");
             $noteInfo['fileInfo']=$ossLogModel->getFormatFile($ossLogModel->getFileInfoById($noteInfo['file_id']));
+        }
+        //返回缩略图文件信息
+        if (!empty($noteInfo['thumb_id'])){
+            $noteInfo['thumbInfo']=$ossLogModel->getFormatFile($ossLogModel->getFileInfoById($noteInfo['thumb_id']));
         }
         return output(1, lang('GET_SUCCESS'), $noteInfo);
     }
@@ -171,6 +182,10 @@ class Note extends  Common
         $uid = isset ($this->post ['uid']) ? intval($this->post ['uid']) : ""; //当前登录的用户uid
         if (empty($uid) || ($this->userInfo && $this->userInfo['uid'] != $uid)) {
             return output(0, lang('UID_IS_EMPTY'));
+        }
+        $typeId=isset ($this->post ['typeId']) ? intval($this->post ['typeId']) : 1;
+        if (empty($typeId) || !in_array($typeId,array(1,3))){
+            return output(0, lang('PARAM_ERROR'));
         }
         $fileType=isset($this->post['fileType']) ? $this->post['fileType'] : "";
         if (! isset ( $_FILES ) || empty ( $_FILES ) || empty($fileType)) {
@@ -199,7 +214,7 @@ class Note extends  Common
                 $aliYunOssModel=model('AliyunOss');
                 $saveName=$uploadImageInfo->getFilename();
                 $extension=$uploadImageInfo->getExtension();
-                $uploadInfo=array('savename'=>$saveName,'url'=>$serverPath,'extension'=>$extension,'typeid'=>1,'size'=>$thumb ['size'],'uid'=>$this->userInfo['uid']);
+                $uploadInfo=array('savename'=>$saveName,'url'=>$serverPath,'extension'=>$extension,'typeid'=>$typeId,'size'=>$thumb ['size'],'uid'=>$this->userInfo['uid']);
                 $aliYunUploadInfo=$aliYunOssModel->uploadFile($uploadInfo,'note',true,'images');
                 if ($aliYunUploadInfo['status']==1){
                     //增加用户使用的空间存储
@@ -240,7 +255,7 @@ class Note extends  Common
         if (!empty($lastNoteId)){
             $map ['id'] = array ('lt', $lastNoteId );
         }
-        $field="id,notebook_id,name,label_num,file_id,ctime";
+        $field="id,notebook_id,name,label_num,file_id,thumb_id,ctime";
         $noteModel = model('Note');
         $noteList=$noteModel->where($map)->order("id desc")->paginate($pageSize);
         if (!$noteList->isEmpty()){
@@ -269,7 +284,7 @@ class Note extends  Common
         if (!empty($lastNoteId)){
             $map ['id'] = array ('lt', $lastNoteId );
         }
-        $field="id,notebook_id,name,label_num,file_id,ctime";
+        $field="id,notebook_id,name,label_num,file_id,thumb_id,ctime";
         $noteModel = model('Note');
         $noteList=$noteModel->where($map)->order("id desc")->paginate($pageSize);
         if (!$noteList->isEmpty()){

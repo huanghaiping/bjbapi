@@ -262,7 +262,7 @@ return [
     // +----------------------------------------------------------------------
     'file_upload' => array(
         'size'  =>20971520, //上传的文件大小限制 (20M,0-不做限制)
-        'ext'     => 'png,xml', //允许上传的文件后缀
+        'ext'     => 'png,xml,jpg,gif,jpeg', //允许上传的文件后缀
         'rootPath' => UPLOADS_PATH."note", //保存根路径
         'saveName' => 'date', //上传文件命名规则 date   md5 	 sha1
         'replace'  => false, //存在同名是否覆盖

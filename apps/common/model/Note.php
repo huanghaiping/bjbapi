@@ -55,6 +55,8 @@ class Note extends Common
             foreach ($noteList as $key => $value) {
                 //删除旧文件操作(待处理)
                 $aliYunOssModel->deleteObject($value['file_id']);
+                //删除缩略图
+                $aliYunOssModel->deleteObject($value['thumb_id']);
                 //删除标签
                 $noteLabelModel->delLabelByNoteId($value['id']);
                 //笔记本统计数-1
@@ -77,6 +79,7 @@ class Note extends Common
         foreach ($noteList as $value) {
             $labelId[] = $value['id'];
             $fileId[] = $value['file_id'];
+            $fileId[]=$value['thumb_id'];
             $noteBookId[] = $value['notebook_id'];
         }
         //获取笔记标签信息
@@ -89,9 +92,15 @@ class Note extends Common
         $notebookModel = model("Notebook");
         $noteBookList = $notebookModel->getNoteBookListByIds(array_unique($noteBookId));
         foreach ($noteList as $key => $value) {
+            //获取标签信息
             $value['labelList'] = $noteLabelList && array_key_exists($value['id'], $noteLabelList) ? $noteLabelList[$value['id']] : array();
+            //获取文件信息
             $fileInfo = $fileList && array_key_exists($value['file_id'], $fileList) ? $fileList[$value['file_id']] : array();
             $value['fileInfo'] = $fileInfo ? $ossLogModel->getFormatFile($fileInfo) : array();
+            //获取缩略图信息
+            $thumbInfo=$fileList && array_key_exists($value['thumb_id'], $fileList) ? $fileList[$value['thumb_id']] : array();
+            $value['thumbInfo'] =$thumbInfo ? $ossLogModel->getFormatFile($thumbInfo) : array();
+            //获取笔记本信息
             $value['noteBookInfo'] = $noteBookList && array_key_exists($value['notebook_id'], $noteBookList) ? $noteBookList[$value['notebook_id']] : array();
             $noteList[$key] = $value;
         }

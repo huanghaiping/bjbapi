@@ -174,4 +174,44 @@ class Notebook extends Common
         }
         return output(1, lang('GET_SUCCESS'), $notebookInfo);
     }
+
+    /**
+     * 笔记本的移动（将笔记本下的所有笔记移动到另外一个笔记本下）
+     */
+    public function move(){
+        if (empty($this->userInfo)) {
+            return output(0, lang('PLEASE_ENTER_LOGIN'));
+        }
+        $uid = isset ($this->post ['uid']) ? intval($this->post ['uid']) : ""; //当前登录的用户uid
+        if (empty($uid) || ($this->userInfo && $this->userInfo['uid'] != $uid)) {
+            return output(0, lang('UID_IS_EMPTY'));
+        }
+        $fromNoteBookId=isset ($this->post ['fromNoteBookId']) ? intval($this->post ['fromNoteBookId']) : "";
+        $toNoteBookId=isset ($this->post ['toNoteBookId']) ? intval($this->post ['toNoteBookId']) : "";
+        if (empty($fromNoteBookId) || empty($toNoteBookId) || $fromNoteBookId==$toNoteBookId){
+            return output(0, lang('PARAM_ERROR'));
+        }
+
+        $notebookModel = model('Notebook');
+        $fromNotebookInfo = $notebookModel->getNoteBookInfoById($fromNoteBookId);
+        if (!$fromNotebookInfo || ($fromNotebookInfo && $fromNotebookInfo['uid'] != $uid)) {
+            return output(0, lang('PARAM_ERROR'));
+        }
+
+        $toNotebookInfo = $notebookModel->getNoteBookInfoById($toNoteBookId);
+        if (!$toNotebookInfo || ($toNotebookInfo && $toNotebookInfo['uid'] != $uid)) {
+            return output(0, lang('PARAM_ERROR'));
+        }
+        $noteModel=model("Note");
+        $fromNoteCount=$noteModel->where(array("notebook_id"=>$fromNoteBookId))->count();
+        if ($fromNoteCount){
+            $noteModel->where(array("notebook_id"=>$fromNoteBookId))->setField("notebook_id",$toNoteBookId);
+            $notebookModel->where(array("id"=>$fromNoteBookId))->setDec("quantity",$fromNoteCount); //旧笔记本减去对应数量
+            $notebookModel->where(array("id"=>$toNoteBookId))->setInc("quantity",$fromNoteCount);  //新笔记本增加对应的数量
+            return output(1, lang('GET_SUCCESS'));
+        }else{
+            return output(0, lang('PARAM_ERROR'));
+        }
+    }
+
 }

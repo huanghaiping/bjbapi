@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: bijiben
 Target Host: localhost
 Target Database: bijiben
-Date: 2017-11-10 16:41:19
+Date: 2017-11-16 16:50:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -199,13 +199,14 @@ CREATE TABLE `think_note` (
   `uid` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `label_num` int(11) NOT NULL DEFAULT '0',
+  `thumb_id` int(11) NOT NULL DEFAULT '0',
   `file_id` int(11) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `ctime` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `notebook_id` (`notebook_id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_note_label
@@ -239,7 +240,7 @@ CREATE TABLE `think_notebook` (
 CREATE TABLE `think_oss_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
-  `typeid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 头像,1笔记',
+  `typeid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 头像,1笔记,3缩略图',
   `object_name` varchar(255) NOT NULL DEFAULT '',
   `oss_url` varchar(255) NOT NULL DEFAULT '',
   `local_url` varchar(255) NOT NULL DEFAULT '',
@@ -250,7 +251,7 @@ CREATE TABLE `think_oss_log` (
   `ctime` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_session
@@ -366,7 +367,7 @@ CREATE TABLE `think_user_disk_log` (
   `ctime` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for think_user_info
@@ -546,14 +547,14 @@ INSERT INTO `think_lang_param` VALUES ('38', '1', 'api', 'cn', 'UPLOAD_FAILED', 
 INSERT INTO `think_lang_param` VALUES ('39', '1', 'api', 'cn', 'LOGIN_SUCCESS', '登录成功', '登录成功', '1508317596');
 INSERT INTO `think_lang_param` VALUES ('40', '1', 'api', 'cn', 'INSUFFICIENT_STORAGE_SPACE', '存储空间不足', '存储空间不足', '1508470787');
 INSERT INTO `think_lang_param` VALUES ('41', '1', 'api', 'cn', 'NOTE_DISABLED', '笔记已禁用', '笔记已禁用', '1508832356');
-INSERT INTO `think_note` VALUES ('9', '10', '24', '测试1', '2', '10', '1', '1508485876');
-INSERT INTO `think_note` VALUES ('11', '0', '24', '测试3', '2', '10', '1', '1508485876');
+INSERT INTO `think_note` VALUES ('9', '10', '24', '测试1', '2', '0', '10', '1', '1508485876');
+INSERT INTO `think_note` VALUES ('11', '10', '24', '测试3', '2', '0', '10', '1', '1508485876');
 INSERT INTO `think_note_label` VALUES ('11', '11', '标签4', '1508485876');
 INSERT INTO `think_note_label` VALUES ('10', '11', '标签3', '1508485876');
 INSERT INTO `think_note_label` VALUES ('9', '9', '标签2', '1508485876');
 INSERT INTO `think_note_label` VALUES ('8', '9', '标签1', '1508485876');
-INSERT INTO `think_notebook` VALUES ('10', '24', 'bijibenname', '4', '1', '1508485876');
-INSERT INTO `think_oss_log` VALUES ('10', '24', '1', 'filename1', 'http://www.baidu.com', 'http://www.baidu2.com', '', '', 'jpg', '10', '1508485876');
+INSERT INTO `think_notebook` VALUES ('10', '24', 'bijibenname', '2', '1', '1508485876');
+INSERT INTO `think_notebook` VALUES ('11', '24', '笔记本2', '0', '1', '1508485876');
 INSERT INTO `think_session` VALUES ('35d29090e6b1f7018eaab99013038ef4', '23', '1516260967', 'a:3:{s:3:\"uid\";s:2:\"23\";s:8:\"username\";s:8:\"YWxhbg==\";s:12:\"access_token\";s:32:\"35d29090e6b1f7018eaab99013038ef4\";}', '127.0.0.1');
 INSERT INTO `think_session` VALUES ('31ab7d04dfa3934a480ce5310d2cc892', '24', '1516261401', 'a:3:{s:3:\"uid\";i:24;s:8:\"username\";s:8:\"YWxhbg==\";s:12:\"access_token\";s:32:\"31ab7d04dfa3934a480ce5310d2cc892\";}', '127.0.0.1');
 INSERT INTO `think_site` VALUES ('1', '3', 'EMAIL_VERIFY_TIME', '邮箱验证间隔', '60', 'cn', 'text', '单位秒(s)', '', '1507715744');
@@ -562,11 +563,13 @@ INSERT INTO `think_site` VALUES ('3', '3', 'registration_gift_space', '注册赠
 INSERT INTO `think_site` VALUES ('4', '3', 'Space_exchange_ratio', '空间存储兑换单位', '1024', 'cn', 'text', '', '', '1508471487');
 INSERT INTO `think_sms_verify` VALUES ('3', '15013352853', '1', '651061', '1', 'a:3:{s:6:\"status\";i:1;s:3:\"msg\";s:2:\"OK\";s:6:\"verify\";s:6:\"651061\";}', '127.0.0.1', '1508484776', '1508485168');
 INSERT INTO `think_user` VALUES ('24', '', '15013352853', 'alan5', '1A5282CC70E7856904A5616CCA8C187C', '8', '1', '0', '1', 'cn', '1', '1', '1508485168', '1508485401');
-INSERT INTO `think_user_disk` VALUES ('24', '524288000', '281123', '524288000');
+INSERT INTO `think_user_disk` VALUES ('24', '524288000', '562246', '524288000');
 INSERT INTO `think_user_disk_log` VALUES ('2', '24', '3', '524288000', '新增空间:524288000,=500.000M,注册默认赠送', '0', '1508485168');
 INSERT INTO `think_user_disk_log` VALUES ('3', '24', '1', '281123', '使用空间:281123,=0.268M,上传笔记消耗空间', '0', '1508485932');
 INSERT INTO `think_user_disk_log` VALUES ('4', '24', '2', '281123', '新增空间:281123,=0.268M,删除文件释放空间', '0', '1508830902');
 INSERT INTO `think_user_disk_log` VALUES ('5', '24', '2', '200', '新增空间:200,=0.000M,删除文件释放空间', '0', '1510301081');
+INSERT INTO `think_user_disk_log` VALUES ('6', '24', '1', '281123', '使用空间:281123,=0.268M,上传笔记消耗空间', '0', '1510816369');
+INSERT INTO `think_user_disk_log` VALUES ('7', '24', '2', '10', '新增空间:10,=0.000M,删除文件释放空间', '0', '1510816806');
 INSERT INTO `think_user_info` VALUES ('24', '127.0.0.1', '', '0', '0', '0', '0', '', '0', '0', '', '0', 'iphone se', '1508900515', '');
 INSERT INTO `think_user_template` VALUES ('1', '用户注册邮件', 'SEND_EMAIL_REG', '<p><strong>尊敬的:{name},您好</strong><br/>感谢您使用服务，邮箱验证邮件已经发送,您只需在app输入验证码：<br/><strong>{verify}</strong></p><p>即可验证邮箱。<br/>如果在操作过程中有什么问题可以联系我们,联系我们,谢谢！<br/><br/></p>', '邮箱验证邮件已发送 ', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709641');
 INSERT INTO `think_user_template` VALUES ('2', '找回密码邮件', 'SEND_EMAIL_FIND_PASSWORD', '<p><strong>尊敬的:{name},您好</strong><br/>您的密码找回要求已经得到验证,您只需在APP客户端输入验证码：<br/><strong>{verify}</strong></p><p>输入新的密码后提交，之后您即可使用新的密码登录了。<br/>如果在操作过程中有什么问题可以联系我们的\r\n,谢谢！<br/><br/></p>', '找回密码邮件已发送', '1', '0', '验证码{verify},示用户名{name} ', '2', 'cn', '1507709738');
