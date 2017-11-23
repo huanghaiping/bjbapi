@@ -97,6 +97,16 @@ class Note extends  Common
             if ($noteInfo['thumb_id']!=$data['thumb_id']){
                 model("AliyunOss")->deleteObject($noteInfo['thumb_id']);
             }
+			//处理新笔记本的下笔记的数量
+			$notebookModel = model('Notebook');
+			
+			if(!empty($data['notebook_id']) && $data['notebook_id']!=$noteInfo['notebook_id'] ){
+				$notebookModel->where(array('id'=>$data['notebook_id']))->setInc("quantity",1);//笔记本统计数+1
+			}
+			//旧笔记本统计数-1
+			if((empty($data['notebook_id']) && !empty($noteInfo['notebook_id'])) || (!empty($data['notebook_id']) && $data['notebook_id']!=$noteInfo['notebook_id']) ){
+				$notebookModel->where(array('id'=>$noteInfo['notebook_id']))->setDec("quantity",1);
+			}
             return output(1, lang('SAVE_SUCCESSFULLY'), array('noteId'=>$noteId));
         } else {
             return output(0, lang('SAVE_FAILED'));
@@ -250,7 +260,7 @@ class Note extends  Common
             return output(0, lang('PARAM_ERROR'));
         }
         $map=array('notebook_id'=>$notebookId);
-        $pageSize=20;
+        $pageSize=10;
         $lastNoteId=isset ($this->post ['lastNoteId']) ? intval($this->post ['lastNoteId']) : 0; //请求的最后一条笔记ID
         if (!empty($lastNoteId)){
             $map ['id'] = array ('lt', $lastNoteId );
@@ -279,7 +289,7 @@ class Note extends  Common
             return output(0, lang('UID_IS_EMPTY'));
         }
         $map=array('uid'=>$uid);
-        $pageSize=20;
+        $pageSize=10;
         $lastNoteId=isset ($this->post ['lastNoteId']) ? intval($this->post ['lastNoteId']) : 0; //请求的最后一条笔记ID
         if (!empty($lastNoteId)){
             $map ['id'] = array ('lt', $lastNoteId );

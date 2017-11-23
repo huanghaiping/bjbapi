@@ -134,7 +134,7 @@ class Notebook extends Common
             return output(0, lang('UID_IS_EMPTY'));
         }
         $map=array('uid'=>$uid);
-        $pageSize=20;
+        $pageSize=10;
         $field="id,name,quantity,ctime";
         $notebookModel = model('Notebook');
         $notebookList=$notebookModel->where($map)->order("id desc")->paginate($pageSize);
