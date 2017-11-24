@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+.img_info{ position:relative;  display:none; overflow:hidden; margin-top:5px; float:left; width:100%}
+.img_info .imgdel,.images_info .imgdel{background: url(../../uploadify/img/icons.png)  no-repeat right top;    width: 20px;    height: 20px;    position: absolute;    right:10px;    top: 10px;    cursor: pointer;}
+
+.images_info{ width:100%; float:left; margin-top:5px; position:relative;}
+.images_info .images_list,.images_info .files_list{ float:left; width:180px; height:250px; margin-right:5px; overflow:hidden; position:relative;}
+.images_info .images_list .fancybox,.images_info .files_list .fancybox{width:180px; height:160px;}
+.images_info .images_list input{ margin-bottom:5px;}
+.image_list{ position:relative; width:160px;}
+.image_list img { width:160px; height:160px;}
+.file_list{ position:relative; width:160px;}
+.file_list img { width:160px; height:160px;}
+.contents{max-height:200px;overflow:auto;text-align:left}
+.contents img{max-width:100%;}
+#tooltip{position:absolute;border:1px solid #ccc;background:#333;padding:2px;display:none;color:#fff;}
+#tooltip img{max-width:400px;max-height:250px;}
+input.search_text,select.search_select{padding:7px 6px; width:150px; display:inline-block}
+
+.shop_info{ width:100%; font-size:12px; text-align:left}
+.shop_info .image{ float:left; width:25%; overflow:hidden;}
+.shop_info .info{ padding-left:10px; float:left; width:75%;}
+.shop_info .info .tit{ max-height:40px; line-height:20px; overflow:hidden;}
+.shop_info .info .spec{ color:#aaa; line-height:16px; margin-top:5px;}

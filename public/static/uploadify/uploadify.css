@@ -1,0 +1,79 @@
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+
+.uploadify {
+	position: relative;
+	float:left;
+	margin-right:15px;
+}
+.uploadify-button {
+	background-color: #fff;
+	 color: #333;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	font: 14px Glyphicons Halflings;
+	text-align: center;
+	width: 100%;
+}
+.uploadify:hover .uploadify-button {
+	  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+.uploadify-queue {
+	margin-bottom: 1em;
+}
+.uploadify-queue-item {
+	background-color: #F5F5F5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 100%;
+	padding: 10px;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background:url(img/uploadify-cancel.png) 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+.uploadify-button-text{ padding-left:5px;}
+#queueFile {overflow: auto;}
+#queueFile .img{	width: 120px;	height: 90px;	overflow: hidden;	float: left;	padding: 10px;	text-align: center;	position: relative;}
+#queueFile .images .imgok{	background: url(img/success.png) no-repeat;	width: 40px;	height: 40px;	position: absolute;	right:10px;	bottom: 5px;}
+#queueFile .images .imgdel{	background: url(img/icons.png) no-repeat right top;	width: 20px;	height: 20px;	position: absolute;	left:10px;	top: 10px;	cursor: pointer;}
+#queueFile .images img{	width:100px;	border-radius: 5px;	height:75px;}
+#queueFile .files .imgok{	background: url(img/success.png) no-repeat;	width: 40px;	height: 40px;	position: absolute;	right:32px;	bottom:9px;}
+#queueFile .files:hover .imgdel{background:#337ab7 url(img/icons.png) no-repeat right top;	width: 20px;	height: 20px;	position: absolute;	right:35px;	top: 17px;	cursor: pointer; display:block;}
+#queueFile .files img{	height:75px;}
+#queue {overflow: auto;}
+.row{	 padding: 10px 0;  margin: 0;}
+#queueFile .imgdel{ background:#CCC}
