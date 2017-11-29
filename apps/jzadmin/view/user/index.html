@@ -57,7 +57,10 @@
       {else /} <span class="red">禁用</span>{/if}</a></td>
     <td align="left">{$vo.reg_time|getFormatTime}</td>
     <td align="left"><a href="{:url('edit',array('uid'=>$vo['uid']))}"  data-rel="tooltip" data-original-title="修改"> 修改</a> 
-      <!-- | <a href="{:url('Order/index',array('uid'=>$vo['uid']))}"  data-rel="tooltip" data-original-title="订单">订单</a> --></td>
+       | <a href="{:url('note.notebook/index',array('uid'=>$vo['uid']))}"  data-rel="tooltip" data-original-title="笔记本">笔记本</a> 
+        | <a href="{:url('note.note/index',array('uid'=>$vo['uid']))}"  data-rel="tooltip" data-original-title="笔记">笔记</a> 
+      
+      </td>
   </tr>
   {/volist}
   {if condition="isset($page)&&trim($page) neq '' "}

@@ -42,7 +42,6 @@ class User extends Common
             return output(0, lang('PASSWORD_FORMAT_ERROR'));
         }
         $unencryptedOldPwd=strtoupper(md5($unencryptedOldPwd.config('password_key')));
-
         $oldPassword = isset($this->post['oldPassword']) ? $this->post['oldPassword'] : "";
         if (empty ($oldPassword) || !letterOrNumber($oldPassword) || $unencryptedOldPwd!=$oldPassword) {
             return output(0, lang('PASSWORD_FORMAT_ERROR'));

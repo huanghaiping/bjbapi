@@ -42,5 +42,8 @@ return $array = array (
   'LOGIN_SUCCESS' => '登录成功',
   'INSUFFICIENT_STORAGE_SPACE' => '存储空间不足',
   'NOTE_DISABLED' => '笔记已禁用',
+  'VERSION_IDVERSION_CODE' => '版本id或者版本码为空',
+  'APPLICATION_ID_EMPTY' => '应用id不能为空',
+  'NO_UPGRADE_INFORMATION' => '暂无升级信息',
 );
 ?>

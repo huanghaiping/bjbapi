@@ -22,6 +22,7 @@
       <th>笔记本名称</th>
       <th>笔记名称</th>
       <th>标签信息</th> 
+      <th>封面</th> 
       <th>文件信息</th> 
       <th>状态</th>
       <th>添加日期</th>
@@ -40,6 +41,13 @@
      <td align="left">{$vo.noteBookInfo.name|default=''}</td>
      <td align="left">{$vo.name|default=''}</td>
     <td align="left">{$vo.labelInfo}</td>
+    <td align="left">
+     {notempty name="vo['thumbInfo']"}
+     <img src="{$vo.thumbInfo.url}" width="100" />
+     {else /}
+     未上传
+     {/notempty}
+    </td>
      <td align="left">
      {notempty name="vo['fileInfo']"}
      ID:{$vo.fileInfo.id},大小:{$vo.fileInfo.size|byteFormat}:<a href="{$vo.fileInfo.url}" target="_blank">点击查看</a>

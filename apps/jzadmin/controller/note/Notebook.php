@@ -12,7 +12,7 @@ class Notebook extends \app\jzadmin\controller\Common
         if (!empty ($keyword)) {
             $where ['name'] = array('like', '%' . $keyword . '%');
         }
-        $request = array('status');
+        $request = array('status','uid');
         foreach ($request as $value) {
             $status = isset ($param [$value]) ? $param [$value] : "";
             if ($status != "") {

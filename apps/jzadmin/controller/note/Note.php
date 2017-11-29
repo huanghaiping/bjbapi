@@ -15,7 +15,7 @@ class Note extends \app\jzadmin\controller\Common
         if (!empty ($keyword)) {
             $where ['name'] = array('like', '%' . $keyword . '%');
         }
-        $request = array('status',"notebook_id");
+        $request = array('status',"notebook_id","uid");
         foreach ($request as $value) {
             $status = isset ($param [$value]) ? $param [$value] : "";
             if ($status != "") {
@@ -32,6 +32,7 @@ class Note extends \app\jzadmin\controller\Common
                 $noteBookIds[] = $value['notebook_id'];
                 $noteIds[] = $value['id'];
                 $fileIds[] = $value['file_id'];
+                $fileIds[] = $value['thumb_id'];
             }
             $userList = model("User")->getUserInfoByUids(array_unique($userIds));
             $noteBooList = model("Notebook")->getNoteBookListByIds(array_unique($noteBookIds));
@@ -45,6 +46,9 @@ class Note extends \app\jzadmin\controller\Common
                 $value['labelInfo']=$labelInfo ? implode(",",getSubByKey($labelInfo,"name")) : "";
                 $fileInfo=$fileList && array_key_exists($value ['file_id'], $fileList) ? $fileList [$value ['file_id']] : array();
                 $value['fileInfo']=$fileInfo ? $ossLogModel->getFormatFile($fileInfo) : array();
+                //缩略图
+                $thumbInfo=$fileList && array_key_exists($value ['thumb_id'], $fileList) ? $fileList [$value ['thumb_id']] : array();
+                $value['thumbInfo']=$thumbInfo ? $ossLogModel->getFormatFile($thumbInfo) : array();
                 $noteList [$key] = $value;
             }
         }

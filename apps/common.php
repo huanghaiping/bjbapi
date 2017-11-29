@@ -244,6 +244,8 @@ function array_multi2single($array, $name = 'child') {
 +----------------------------------------------------------
  */
 function byteFormat($bytes) {
+    if (empty($bytes))
+        return 0;
     $sizeText = array (" B", " KB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB" );
     return round ( $bytes / pow ( 1024, ($i = floor ( log ( $bytes, 1024 ) )) ), 2 ) . $sizeText [$i];
 }
