@@ -1,0 +1,45 @@
+<div class="page-header" style="border-bottom:none; margin:0">
+  <form action="{:url('applog',array('id'=>$id))}" method="post" name="form" class="form-inline definewidth m10">
+    <input name="keyword" type="text"   value="{$keyword|default=''}" placeholder="用户uid"  class="form-control search_text">
+    <button name="btn" type="submit" class="btn btn-primary btn-sm"><i class="ace-icon fa fa-search align-middle bigger-125"></i> 查 询</button>
+  </form>
+</div>
+<table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+  <thead>
+    <tr>
+      <th>用户昵称</th>
+      <th>客户端类型</th>
+      <th>用户设备</th>
+      <th>应用名称</th>
+      <th>应用id</th>
+      <th>from版本ID</th>
+      <th>from版本码</th>
+      <th>to版本ID</th>
+      <th>to版本码</th>
+      <th>升级日期</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  {volist name="list" id="vo" key="k"}
+  <tr id="{$vo.id}">
+    <td align="left"> {$vo.userInfo.nickname|default=''}</td>
+    <td align="left">{if condition="$vo['clientType'] eq 1"}ios{elseif condition="$vo['clientType'] eq 2" /}android {else /}其它{/if}</td>
+    <td align="left"> {$vo.system},{$vo.client_device}</td>
+    <td align="left"> {$vo.appInfo.appname|default=''}</td>
+    <td align="left"> {$vo.appInfo.appid|default=''}</td>
+    <td align="left">{$vo.from_version_id}</td>
+    <td align="left">{$vo.from_version_code|default=''}</td>
+    <td align="left">{$vo.to_version_id}</td>
+    <td align="left">{$vo.to_version_code|default=''}</td>
+    <td align="left">{$vo.ctime|getFormatTime}</td>
+  </tr>
+  {/volist}
+  {if condition="isset($page)&&trim($page) neq '' "}
+  <tr bgcolor="#FFFFFF">
+    <td colspan="11" align="right"><div class="dataTables_paginate paging_simple_numbers">{$page}</div></td>
+  </tr>
+  {/if}
+    </tbody>
+  
+</table>

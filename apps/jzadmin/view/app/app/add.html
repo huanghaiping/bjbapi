@@ -1,0 +1,63 @@
+<form  class="definewidth m10"  action="{:url($method)}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$info.id|default=''}" />
+    <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+      <tr>
+        <th width="130">应用名称：</th>
+        <td><input id="appname" type="text" class="form-control w30"  name="appname" value="{$info.appname|default=''|stripslashes}"/>
+         </td>
+      </tr>
+      <tr>
+        <th>应用id：</th>
+        <td><input id="appid" type="text" class="form-control w30" name="appid" value="{$info.appid|default=''}"/>
+        <div class="help-block">只能是纯数字</div>
+         </td>
+      </tr>        
+     <tr>
+        <th>应用密钥：</th>
+        <td><input id="secret_key" type="text" class="form-control w30" name="secret_key" value="{$info.secret_key|default=''}"/>
+         <div class="help-block">留空系统自动生成</div>
+         </td>
+      </tr>   
+ 
+
+      <tr>
+        <th>应用描述：</th>
+        <td>
+
+        <textarea id="content" class="form-control w30"  name="content" >{$info.content|default=''|stripslashes}</textarea>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>状态：</th>
+        <td><select name="status" class="form-control w30">
+            <option value="1" {if condition="isset($info['status']) and $info['status'] eq 1"} selected="selected"{/if}>启用</option>
+            <option value="0" {if condition="isset($info['status']) and $info['status'] eq 0"} selected="selected"{/if}>禁用</option>
+          </select>
+          <div class="help-block">禁用：客服端将无法获取请求接口的权限</div></td>
+      </tr>
+      
+       <tr>
+        <th></th>
+        <td> <button class="btn btn-primary" type="submit" id="submit_form"> <i class="ace-icon fa fa-check bigger-110"></i> 保存 </button>
+          &nbsp;&nbsp;
+          <button class="btn" type="reset" id="btn_reset" onclick="history.go(-1)"> <i class="ace-icon fa fa-undo bigger-110"></i> 返回 </button></td>
+      </tr>
+    </table>
+   
+  </form>
+<script type="text/javascript">
+$(function(){ 
+	$("#submit_form").click(function(){
+		if($.trim($("#appname").val()).length<=0){
+			layer.alert('应用名称不能为空',{icon: 2});
+			return false;
+		}
+		if($.trim($("#appid").val()).length<=0){
+			layer.alert('appid不能为空',{icon: 2});
+			return false;
+		}
+	
+	});
+});
+</script>
