@@ -65,6 +65,10 @@ class AppUpgrade extends  \app\common\model\Common
             return false;
         $upgradeInfo=$this->where(array('app_id'=>$appId,"upgrade_type"=>$upgradeType))->order("id desc")->limit(1)->find();
         if ($upgradeInfo && $upgradeInfo['status']==1){
+            $preg='/^(http:\/\/|https:\/\/).*$/';  //正则，匹配以http://开头的字符串
+            if (isset($upgradeInfo['download_url']) && !empty($upgradeInfo['download_url']) && !preg_match($preg,$upgradeInfo['download_url'])){
+                $upgradeInfo['download_url']='https://'.$_SERVER['HTTP_HOST'].$upgradeInfo['download_url'];
+            }
             return $upgradeInfo;
         }
         return false;

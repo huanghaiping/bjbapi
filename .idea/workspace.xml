@@ -2,51 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="311fca42-ed41-4c87-85a4-a7fe8767a40d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/data/0f979376353af8a76a4bfa51badf7759.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/data/98414071734663fe691801c44c6709d8.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/log/201711/12.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/runtime/temp/fd7cb9df7ec368f1c3b58426ea682ac5.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Common.php" afterPath="$PROJECT_DIR$/apps/api/controller/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Index.php" afterPath="$PROJECT_DIR$/apps/api/controller/Index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Login.php" afterPath="$PROJECT_DIR$/apps/api/controller/Login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Note.php" afterPath="$PROJECT_DIR$/apps/api/controller/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/NoteLabel.php" afterPath="$PROJECT_DIR$/apps/api/controller/NoteLabel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Notebook.php" afterPath="$PROJECT_DIR$/apps/api/controller/Notebook.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Order.php" afterPath="$PROJECT_DIR$/apps/api/controller/Order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Reg.php" afterPath="$PROJECT_DIR$/apps/api/controller/Reg.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Sms.php" afterPath="$PROJECT_DIR$/apps/api/controller/Sms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Space.php" afterPath="$PROJECT_DIR$/apps/api/controller/Space.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Token.php" afterPath="$PROJECT_DIR$/apps/api/controller/Token.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/User.php" afterPath="$PROJECT_DIR$/apps/api/controller/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/lang/cn.php" afterPath="$PROJECT_DIR$/apps/api/lang/cn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common.php" afterPath="$PROJECT_DIR$/apps/common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/conf/config.php" afterPath="$PROJECT_DIR$/apps/common/conf/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/AliyunOss.php" afterPath="$PROJECT_DIR$/apps/common/model/AliyunOss.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Attachment.php" afterPath="$PROJECT_DIR$/apps/common/model/Attachment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Common.php" afterPath="$PROJECT_DIR$/apps/common/model/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Devicetoken.php" afterPath="$PROJECT_DIR$/apps/common/model/Devicetoken.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/EmailVerify.php" afterPath="$PROJECT_DIR$/apps/common/model/EmailVerify.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Lang.php" afterPath="$PROJECT_DIR$/apps/common/model/Lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Note.php" afterPath="$PROJECT_DIR$/apps/common/model/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/NoteLabel.php" afterPath="$PROJECT_DIR$/apps/common/model/NoteLabel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Notebook.php" afterPath="$PROJECT_DIR$/apps/common/model/Notebook.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/Order.php" afterPath="$PROJECT_DIR$/apps/common/model/Order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/OssLog.php" afterPath="$PROJECT_DIR$/apps/common/model/OssLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/SmsVerify.php" afterPath="$PROJECT_DIR$/apps/common/model/SmsVerify.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/User.php" afterPath="$PROJECT_DIR$/apps/common/model/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/UserLevel.php" afterPath="$PROJECT_DIR$/apps/common/model/UserLevel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/UserTemplate.php" afterPath="$PROJECT_DIR$/apps/common/model/UserTemplate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/user/UserAuthorized.php" afterPath="$PROJECT_DIR$/apps/common/model/user/UserAuthorized.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/user/UserDisk.php" afterPath="$PROJECT_DIR$/apps/common/model/user/UserDisk.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/user/UserDiskLog.php" afterPath="$PROJECT_DIR$/apps/common/model/user/UserDiskLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/user/UserInfo.php" afterPath="$PROJECT_DIR$/apps/common/model/user/UserInfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/ad/Block.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/ad/Block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php" afterPath="$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/view/note/note/index.html" afterPath="$PROJECT_DIR$/apps/jzadmin/view/note/note/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/jzadmin/view/user/index.html" afterPath="$PROJECT_DIR$/apps/jzadmin/view/user/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/data/184a736a2f93b935d0b6a013baf90fa2.php" afterPath="$PROJECT_DIR$/include/data/184a736a2f93b935d0b6a013baf90fa2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/api/controller/Upgrade.php" afterPath="$PROJECT_DIR$/apps/api/controller/Upgrade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/app/AppLog.php" afterPath="$PROJECT_DIR$/apps/common/model/app/AppLog.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php" afterPath="$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,22 +15,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Notebook.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php">
+    <leaf>
+      <file leaf-file-name="Upgrade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/api/controller/Upgrade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+            <state relative-caret-position="496">
+              <caret line="48" column="57" lean-forward="false" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Note.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php">
+      <file leaf-file-name="AppUpgrade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+            <state relative-caret-position="187">
+              <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppLog.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppLog.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="27" column="65" lean-forward="true" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -140,13 +109,13 @@
         <option value="$PROJECT_DIR$/apps/api/controller/Token.php" />
         <option value="$PROJECT_DIR$/apps/common/conf/config.php" />
         <option value="$PROJECT_DIR$/apps/common.php" />
-        <option value="$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php" />
         <option value="$PROJECT_DIR$/apps/common/model/App.php" />
-        <option value="$PROJECT_DIR$/apps/api/controller/Upgrade.php" />
-        <option value="$PROJECT_DIR$/apps/common/model/app/AppLog.php" />
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/app/Upgrade.php" />
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/note/Notebook.php" />
         <option value="$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php" />
+        <option value="$PROJECT_DIR$/apps/api/controller/Upgrade.php" />
+        <option value="$PROJECT_DIR$/apps/common/model/app/AppLog.php" />
+        <option value="$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php" />
       </list>
     </option>
   </component>
@@ -157,7 +126,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="955" />
@@ -180,8 +149,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -294,6 +261,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -394,18 +363,19 @@
       <workItem from="1511515835340" duration="1593000" />
       <workItem from="1511771721554" duration="1161000" />
       <workItem from="1511838487291" duration="15306000" />
-      <workItem from="1511922648279" duration="6807000" />
+      <workItem from="1511922648279" duration="7427000" />
+      <workItem from="1512007317303" duration="1556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154280000" />
+    <option name="totallyTimeSpent" value="156456000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="955" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="947" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17787287" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17726162" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -700,7 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,7 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -716,7 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -732,7 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1584">
           <caret line="72" column="9" lean-forward="false" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,39 +742,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/common/model/App.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="87" column="45" lean-forward="true" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
           <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
+            <element signature="e#6#94#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppLog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/api/controller/Upgrade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="49" column="56" lean-forward="true" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,9 +756,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="144" column="94" lean-forward="false" selection-start-line="144" selection-start-column="94" selection-end-line="144" selection-end-column="94" />
-          <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -826,14 +770,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppLog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="27" column="65" lean-forward="true" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/jzadmin/controller/note/Note.php">
+    <entry file="file://$PROJECT_DIR$/apps/api/controller/Upgrade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+        <state relative-caret-position="496">
+          <caret line="48" column="57" lean-forward="false" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/common/model/app/AppUpgrade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
           <folding />
         </state>
       </provider>

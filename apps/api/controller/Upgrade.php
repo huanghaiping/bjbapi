@@ -56,7 +56,8 @@ class Upgrade extends \think\Controller
 
             //记录请求的日志
             $fromUpgradeInfo=array('versionId'=>$versionId,'versionCode'=>$versionCode);
-            model("app.AppLog")->saveLog($fromUpgradeInfo,$toUpgradeInfo,array('uid'=>$uid,'clientType'=>$clientType,"system"=>$system,'clientDevice'=>$clientDevice));
+            $upgradeInfoLog=array('uid'=>$uid,'clientType'=>$clientType,"system"=>$system,'clientDevice'=>$clientDevice,'id'=>$authGetAppId['id']);
+            model("app.AppLog")->saveLog($fromUpgradeInfo,$toUpgradeInfo,$upgradeInfoLog);
             return output(1,lang('GET_SUCCESS'),$toUpgradeInfo);
         }else{
             return output(0, lang('NO_UPGRADE_INFORMATION'));

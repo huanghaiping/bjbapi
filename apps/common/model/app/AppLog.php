@@ -21,7 +21,7 @@ class AppLog extends \app\common\model\Common
     {
         if (empty($fromUpgradeInfo) || empty($toUpgradeInfo))
             return false;
-        $data = array('uid' => $upgradeInfo['uid'], 'app_id' => $toUpgradeInfo['id'], 'clientType' => $upgradeInfo['clientType']);
+        $data = array('uid' => $upgradeInfo['uid'], 'app_id' => $upgradeInfo['id'], 'clientType' => $upgradeInfo['clientType']);
         $data['to_upgrade_id'] = $toUpgradeInfo['id'];
         $data['to_version_id'] = $toUpgradeInfo['versionId'];
         $data['to_version_code'] = $toUpgradeInfo['versionCode'];
